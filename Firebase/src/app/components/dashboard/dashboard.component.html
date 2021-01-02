@@ -1,1 +1,32 @@
 <h3><i class="fa fa-cog"></i> Dashboard</h3>
+<div class="row">
+  <div class="col-md-9">
+    <table class="table table-striped">
+      <thead>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Brand</th>
+        <th>Seller</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salesGoal of salesGoals">
+          <td>{{ salesGoal.year }}</td>
+          <td>{{ salesGoal.month }}</td>
+          <td>{{ salesGoal.brand }}</td>
+          <td>{{ salesGoal.seller }}</td>
+          <td>{{ salesGoal.amount }}</td>
+          <td>
+            <a href="#"><i class="fa fa-book"></i> More info</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <a href="#" class="btn btn-success btn-block">
+      <i class="fa fa-plus"></i> Add new sales goal
+    </a>
+  </div>
+</div>
