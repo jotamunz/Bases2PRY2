@@ -40,4 +40,8 @@ export class SalesGoalsService {
       .doc(id)
       .valueChanges({ idField: 'id' });
   }
+
+  public removeSalesGoal(id: string): Promise<void> {
+    return this.firestore.collection('salesGoals').doc(id).delete();
+  }
 }

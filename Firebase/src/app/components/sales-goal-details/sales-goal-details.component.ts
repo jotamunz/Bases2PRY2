@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { SalesGoalsService } from '../../services/sales-goals.service';
 
 import { SalesGoal } from '../../models/SalesGoal';
@@ -14,7 +15,9 @@ export class SalesGoalDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private salesGoalService: SalesGoalsService
+    private salesGoalService: SalesGoalsService,
+    private router: Router,
+    private flashMessageService: FlashMessagesService
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +31,17 @@ export class SalesGoalDetailsComponent implements OnInit {
           this.salesGoal = salesGoal;
         });
     });
+  }
+
+  public onDeleteClick(): void {
+    if (confirm('Are you sure you want delete this sales goal?')) {
+      // Remove sales goal
+      this.salesGoalService.removeSalesGoal(this.salesGoal.id).then(() => {
+        this.router.navigateByUrl('/');
+        this.flashMessageService.show('Sales goal removed', {
+          cssClass: 'alert alert-success',
+        });
+      });
+    }
   }
 }

@@ -6,7 +6,8 @@
       <hr />
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>Year: </strong> {{ salesGoal.year }}
+          <strong>Year: </strong>
+          {{ salesGoal.year }}
         </li>
         <li class="list-group-item">
           <strong>Month: </strong> {{ salesGoal.month }}
@@ -27,8 +28,8 @@
     <a href="#" class="btn btn-warning btn-block"
       ><i class="fa fa-pen"></i> Edit sales goal</a
     >
-    <a href="#" class="btn btn-danger btn-block"
-      ><i class="fa fa-times-circle"></i> Remove sales goal</a
-    >
+    <button (click)="onDeleteClick()" class="btn btn-danger btn-block">
+      <i class="fa fa-times-circle"></i> Remove sales goal
+    </button>
   </div>
 </div>
