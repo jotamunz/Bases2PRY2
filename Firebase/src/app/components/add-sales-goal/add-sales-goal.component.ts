@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalesGoalsService } from '../../services/sales-goals.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ValidationService } from '../../services/validation.service';
 
 import { SalesGoal } from '../../models/SalesGoal';
+import { ValidationError } from '../../models/ValidationError';
 
 @Component({
   selector: 'app-add-sales-goal',
@@ -15,7 +17,7 @@ export class AddSalesGoalComponent implements OnInit {
     seller: null,
     brand: '',
     year: null,
-    month: null,
+    month: 1,
     amount: 0,
   };
   public months: object[] = [
@@ -35,6 +37,7 @@ export class AddSalesGoalComponent implements OnInit {
 
   constructor(
     private salesGoalService: SalesGoalsService,
+    private validationService: ValidationService,
     private flashMessageService: FlashMessagesService,
     private router: Router
   ) {}
@@ -43,6 +46,18 @@ export class AddSalesGoalComponent implements OnInit {
 
   public async onSubmit(): Promise<void> {
     try {
+      // Validate data
+      let errors: ValidationError[] = this.validationService.validateSalesGoal(
+        this.salesGoal
+      );
+      if (errors.length > 0) {
+        errors.forEach((error: ValidationError) => {
+          this.flashMessageService.show(error.message, {
+            cssClass: 'alert alert-danger',
+          });
+        });
+        return;
+      }
       // Add sales goal
       await this.salesGoalService.addSalesGoal(this.salesGoal);
       // Show message & redirect
