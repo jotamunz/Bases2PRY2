@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SalesGoalsService } from '../../services/sales-goals.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ValidationService } from '../../services/validation.service';
 
 import { SalesGoal } from '../../models/SalesGoal';
+import { ValidationError } from '../../models/ValidationError';
 
 @Component({
   selector: 'app-edit-sales-goal',
@@ -36,13 +38,16 @@ export class EditSalesGoalComponent implements OnInit {
   constructor(
     private salesGoalService: SalesGoalsService,
     private flashMessageService: FlashMessagesService,
+    private validationService: ValidationService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    // Get sales goal id
     this.route.params.subscribe((params) => {
       const { id } = params;
+      // Fetch sales goal
       this.salesGoalService
         .getSingleSalesGoal(id)
         .subscribe((salesGoal: SalesGoal) => {
@@ -51,16 +56,28 @@ export class EditSalesGoalComponent implements OnInit {
     });
   }
 
-  public onSubmit(): void {
-    // Edit sales goal
-    this.salesGoalService
-      .editSalesGoal(this.salesGoal)
-      .then(() => {
-        this.flashMessageService.show('Sales goal updated', {
-          cssClass: 'alert alert-success',
+  public async onSubmit(): Promise<void> {
+    try {
+      // Validate data
+      let errors: ValidationError[] = this.validationService.validateSalesGoal(
+        this.salesGoal
+      );
+      if (errors.length > 0) {
+        errors.forEach((error: ValidationError) => {
+          this.flashMessageService.show(error.message, {
+            cssClass: 'alert alert-danger',
+          });
         });
-        this.router.navigateByUrl(`/salesGoals/${this.salesGoal.id}`);
-      })
-      .catch((err) => console.error(err));
+        return;
+      }
+      // Edit sales goal
+      await this.salesGoalService.editSalesGoal(this.salesGoal);
+      this.flashMessageService.show('Sales goal updated', {
+        cssClass: 'alert alert-success',
+      });
+      this.router.navigateByUrl(`/salesGoals/${this.salesGoal.id}`);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
