@@ -16,6 +16,7 @@ import { SalesGoalDetailsComponent } from './components/sales-goal-details/sales
 
 import { environment } from '../environments/environment';
 import { EditSalesGoalComponent } from './components/edit-sales-goal/edit-sales-goal.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { EditSalesGoalComponent } from './components/edit-sales-goal/edit-sales-
     AddSalesGoalComponent,
     SalesGoalDetailsComponent,
     EditSalesGoalComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

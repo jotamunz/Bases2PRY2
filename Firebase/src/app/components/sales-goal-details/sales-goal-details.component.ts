@@ -11,7 +11,13 @@ import { SalesGoal } from '../../models/SalesGoal';
   styleUrls: ['./sales-goal-details.component.css'],
 })
 export class SalesGoalDetailsComponent implements OnInit {
-  public salesGoal: SalesGoal;
+  public salesGoal: SalesGoal = {
+    year: null,
+    month: null,
+    brand: '',
+    seller: null,
+    amount: null,
+  };
 
   constructor(
     private route: ActivatedRoute,
