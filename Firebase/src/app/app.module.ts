@@ -15,6 +15,7 @@ import { AddSalesGoalComponent } from './components/add-sales-goal/add-sales-goa
 import { SalesGoalDetailsComponent } from './components/sales-goal-details/sales-goal-details.component';
 
 import { environment } from '../environments/environment';
+import { EditSalesGoalComponent } from './components/edit-sales-goal/edit-sales-goal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     DashboardComponent,
     AddSalesGoalComponent,
     SalesGoalDetailsComponent,
+    EditSalesGoalComponent,
   ],
   imports: [
     BrowserModule,

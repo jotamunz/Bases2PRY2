@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { SalesGoal } from '../models/SalesGoal';
@@ -41,7 +38,22 @@ export class SalesGoalsService {
       .valueChanges({ idField: 'id' });
   }
 
+  /**
+   * Removes a single sales goal
+   * @param id The id of the sales goal
+   */
   public removeSalesGoal(id: string): Promise<void> {
     return this.firestore.collection('salesGoals').doc(id).delete();
+  }
+
+  /**
+   * Updates a single sales goal
+   * @param salesGoal The new sales goal data
+   */
+  public editSalesGoal(salesGoal: SalesGoal): Promise<void> {
+    return this.firestore
+      .collection('salesGoals')
+      .doc(salesGoal.id)
+      .set(salesGoal);
   }
 }

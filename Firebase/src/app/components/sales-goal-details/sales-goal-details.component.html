@@ -25,7 +25,9 @@
     </div>
   </div>
   <div class="col-md-3">
-    <a href="#" class="btn btn-warning btn-block"
+    <a
+      routerLink="/salesGoals/{{ salesGoal.id }}/edit"
+      class="btn btn-warning btn-block"
       ><i class="fa fa-pen"></i> Edit sales goal</a
     >
     <button (click)="onDeleteClick()" class="btn btn-danger btn-block">
