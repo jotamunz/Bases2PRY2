@@ -11,9 +11,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddSalesGoalComponent } from './components/add-sales-goal/add-sales-goal.component';
+import { SalesGoalDetailsComponent } from './components/sales-goal-details/sales-goal-details.component';
 
 import { environment } from '../environments/environment';
-import { AddSalesGoalComponent } from './components/add-sales-goal/add-sales-goal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddSalesGoalComponent } from './components/add-sales-goal/add-sales-goa
     FooterComponent,
     DashboardComponent,
     AddSalesGoalComponent,
+    SalesGoalDetailsComponent,
   ],
   imports: [
     BrowserModule,

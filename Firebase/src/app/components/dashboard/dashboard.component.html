@@ -1,8 +1,9 @@
 <h3><i class="fa fa-cog"></i> Dashboard</h3>
-<div class="row">
+<p>Here are the available sales goals.</p>
+<div class="row mt-4">
   <div class="col-md-9">
-    <table class="table table-striped">
-      <thead>
+    <table *ngIf="!isLoading; else loading" class="table table-striped">
+      <thead class="thead-dark">
         <th>Year</th>
         <th>Month</th>
         <th>Brand</th>
@@ -16,13 +17,28 @@
           <td>{{ salesGoal.month }}</td>
           <td>{{ salesGoal.brand }}</td>
           <td>{{ salesGoal.seller }}</td>
-          <td>{{ salesGoal.amount }}</td>
+          <td [ngClass]="{ 'text-success': salesGoal.amount > 0 }">
+            {{ salesGoal.amount | currency }}
+          </td>
           <td>
-            <a href="#"><i class="fa fa-book"></i> More info</a>
+            <a routerLink="/salesGoals/{{ salesGoal.id }}"
+              ><i class="fa fa-book"></i> More info</a
+            >
           </td>
         </tr>
       </tbody>
     </table>
+    <!-- Loading spinner -->
+    <ng-template #loading>
+      <div class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div
+          class="spinner-border ml-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </div>
+    </ng-template>
   </div>
   <div class="col-md-3">
     <a routerLink="/salesGoals/add" class="btn btn-success btn-block">

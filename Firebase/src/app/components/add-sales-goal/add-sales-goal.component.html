@@ -8,30 +8,25 @@
       </p>
       <form (ngSubmit)="onSubmit()" #salesGoalForm="ngForm">
         <!-- Date inputs -->
-        <div class="row">
-          <!-- Year input -->
-          <div class="col-lg-6">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><i class="fa fa-calendar-plus"></i
-                ></span>
-              </div>
-              <input
-                type="number"
-                step="1"
-                name="year"
-                [(ngModel)]="salesGoal.year"
-                class="form-control"
-                placeholder="Year..."
-                aria-label="Year"
-                aria-describedby="basic-addon1"
-              />
-            </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fa fa-calendar-plus"></i
+            ></span>
           </div>
-          <!-- Month input -->
-          <div class="col-lg-6">
-            <div class="input-group mb-3">
+          <input
+            type="number"
+            step="1"
+            name="year"
+            [(ngModel)]="salesGoal.year"
+            class="form-control"
+            placeholder="Year..."
+            aria-label="Year"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <!-- Month input -->
+        <!-- <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2"
                   ><i class="fa fa-calendar-week"></i
@@ -48,7 +43,19 @@
                 aria-describedby="basic-addon2"
               />
             </div>
-          </div>
+          </div> -->
+        <div class="form-group">
+          <label for="monthSelect">Month</label>
+          <select
+            class="form-control"
+            name="month"
+            [(ngModel)]="salesGoal.month"
+            id="monthSelect"
+          >
+            <option *ngFor="let month of months" value="{{ month.value }}">
+              {{ month.name }}
+            </option>
+          </select>
         </div>
         <!-- Brand code input -->
         <div class="input-group mb-3">

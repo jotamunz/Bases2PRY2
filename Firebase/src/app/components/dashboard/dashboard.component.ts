@@ -10,14 +10,17 @@ import { SalesGoal } from '../../models/SalesGoal';
 })
 export class DashboardComponent implements OnInit {
   public salesGoals: SalesGoal[];
+  public isLoading: boolean = true;
 
   constructor(private salesGoalsService: SalesGoalsService) {}
 
   ngOnInit(): void {
+    // Get sales goals
     this.salesGoalsService
       .getSalesGoals()
       .subscribe((salesGoals: SalesGoal[]) => {
         this.salesGoals = salesGoals;
+        this.isLoading = false;
       });
   }
 }
