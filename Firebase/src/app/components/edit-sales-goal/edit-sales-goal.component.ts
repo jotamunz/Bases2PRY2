@@ -58,6 +58,7 @@ export class EditSalesGoalComponent implements OnInit {
 
   public async onSubmit(): Promise<void> {
     try {
+      this.salesGoal.month = parseInt(this.salesGoal.month.toString());
       // Validate data
       let errors: ValidationError[] = this.validationService.validateSalesGoal(
         this.salesGoal

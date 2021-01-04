@@ -6,17 +6,13 @@
       <thead class="thead-dark">
         <th>Year</th>
         <th>Month</th>
-        <th>Brand</th>
-        <th>Seller</th>
         <th>Amount</th>
         <th>Actions</th>
       </thead>
       <tbody>
         <tr *ngFor="let salesGoal of salesGoals">
           <td>{{ salesGoal.year }}</td>
-          <td>{{ salesGoal.month }}</td>
-          <td>{{ salesGoal.brand }}</td>
-          <td>{{ salesGoal.seller }}</td>
+          <td>{{ getMonthNameFromNumber(salesGoal.month) }}</td>
           <td [ngClass]="{ 'text-success': salesGoal.amount > 0 }">
             {{ salesGoal.amount | currency }}
           </td>

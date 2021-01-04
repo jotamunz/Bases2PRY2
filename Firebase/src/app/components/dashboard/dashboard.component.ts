@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalesGoalsService } from '../../services/sales-goals.service';
+import { getMonthName } from '../../utils/getMonthName';
 
 import { SalesGoal } from '../../models/SalesGoal';
 
@@ -22,5 +23,14 @@ export class DashboardComponent implements OnInit {
         this.salesGoals = salesGoals;
         this.isLoading = false;
       });
+  }
+
+  /**
+   * Gets the name of the month
+   * @param value The numeric value of the month
+   */
+  public getMonthNameFromNumber(value: number): string {
+    console.log(value);
+    return getMonthName(value);
   }
 }
