@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
    * @param value The numeric value of the month
    */
   public getMonthNameFromNumber(value: number): string {
-    console.log(value);
     return getMonthName(value);
   }
 }

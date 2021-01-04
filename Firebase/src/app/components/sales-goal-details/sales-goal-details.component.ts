@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { SalesGoalsService } from '../../services/sales-goals.service';
+import { getMonthName } from '../../utils/getMonthName';
 
 import { SalesGoal } from '../../models/SalesGoal';
 
@@ -49,5 +50,13 @@ export class SalesGoalDetailsComponent implements OnInit {
         });
       });
     }
+  }
+
+  /**
+   * Gets the name of the month
+   * @param value The numeric value of the month
+   */
+  public getMonthNameFromNumber(value: number): string {
+    return getMonthName(value);
   }
 }
