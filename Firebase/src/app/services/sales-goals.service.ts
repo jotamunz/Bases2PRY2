@@ -62,7 +62,7 @@ export class SalesGoalsService {
    * Updates a single sales goal
    * @param salesGoal The new sales goal data
    */
-  public editSalesGoal(salesGoal: SalesGoal): Promise<void> {
-    return this.salesGoalCollection.doc(salesGoal.id).set(salesGoal);
+  public editSalesGoal(id: string, salesGoal: SalesGoal): Promise<void> {
+    return this.salesGoalCollection.doc(id).set(salesGoal);
   }
 }

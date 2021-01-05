@@ -10,7 +10,7 @@ import { SalesGoal } from '../../models/SalesGoal';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  public salesGoals: SalesGoal[];
+  public salesGoals: SalesGoal[] = [];
   public isLoading: boolean = true;
 
   constructor(private salesGoalsService: SalesGoalsService) {}

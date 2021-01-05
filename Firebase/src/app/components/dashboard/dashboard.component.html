@@ -1,8 +1,11 @@
 <h3><i class="fa fa-cog"></i> Dashboard</h3>
 <p>Here are the available sales goals.</p>
 <div class="row mt-4">
-  <div class="col-md-9">
-    <table *ngIf="!isLoading; else loading" class="table table-striped">
+  <div *ngIf="!isLoading; else loading" class="col-md-9">
+    <table
+      *ngIf="salesGoals.length > 0; else noSalesGoals"
+      class="table table-striped"
+    >
       <thead class="thead-dark">
         <th>Year</th>
         <th>Month</th>
@@ -24,8 +27,14 @@
         </tr>
       </tbody>
     </table>
-    <!-- Loading spinner -->
-    <ng-template #loading>
+
+    <ng-template #noSalesGoals>
+      <h4>There are no sales goals currently registered</h4>
+    </ng-template>
+  </div>
+  <!-- Loading spinner -->
+  <ng-template #loading>
+    <div class="col-md-9">
       <div class="d-flex align-items-center">
         <strong>Loading...</strong>
         <div
@@ -34,8 +43,9 @@
           aria-hidden="true"
         ></div>
       </div>
-    </ng-template>
-  </div>
+    </div>
+  </ng-template>
+  <!-- Dashboard sidebar -->
   <div class="col-md-3">
     <a routerLink="/salesGoals/add" class="btn btn-success btn-block">
       <i class="fa fa-plus"></i> Add new sales goal

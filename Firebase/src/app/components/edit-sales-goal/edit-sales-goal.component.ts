@@ -75,7 +75,10 @@ export class EditSalesGoalComponent implements OnInit {
         return;
       }
       // Edit sales goal
-      await this.salesGoalService.editSalesGoal(this.salesGoal);
+      await this.salesGoalService.editSalesGoal(
+        this.salesGoalId,
+        this.salesGoal
+      );
       this.flashMessageService.show('Sales goal updated', {
         cssClass: 'alert alert-success',
       });
