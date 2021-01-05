@@ -13,10 +13,10 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddSalesGoalComponent } from './components/add-sales-goal/add-sales-goal.component';
 import { SalesGoalDetailsComponent } from './components/sales-goal-details/sales-goal-details.component';
-
-import { environment } from '../environments/environment';
 import { EditSalesGoalComponent } from './components/edit-sales-goal/edit-sales-goal.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [

@@ -43,6 +43,14 @@ export class SalesGoalsService {
   }
 
   /**
+   * Gets a singles sales goal without the id field
+   * @param id The sales goal id
+   */
+  public getSingleSalesGoalWithoutId(id: string): Observable<SalesGoal> {
+    return this.salesGoalCollection.doc(id).valueChanges();
+  }
+
+  /**
    * Removes a single sales goal
    * @param id The id of the sales goal
    */

@@ -20,6 +20,7 @@ export class EditSalesGoalComponent implements OnInit {
     month: null,
     amount: 0,
   };
+  private salesGoalId: string;
   public months: object[] = [
     { value: 1, name: 'January' },
     { value: 2, name: 'February' },
@@ -47,9 +48,10 @@ export class EditSalesGoalComponent implements OnInit {
     // Get sales goal id
     this.route.params.subscribe((params) => {
       const { id } = params;
+      this.salesGoalId = id;
       // Fetch sales goal
       this.salesGoalService
-        .getSingleSalesGoal(id)
+        .getSingleSalesGoalWithoutId(id)
         .subscribe((salesGoal: SalesGoal) => {
           this.salesGoal = salesGoal;
         });
@@ -57,6 +59,7 @@ export class EditSalesGoalComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
+    // console.log(this.salesGoal);
     try {
       this.salesGoal.month = parseInt(this.salesGoal.month.toString());
       // Validate data
@@ -76,7 +79,7 @@ export class EditSalesGoalComponent implements OnInit {
       this.flashMessageService.show('Sales goal updated', {
         cssClass: 'alert alert-success',
       });
-      this.router.navigateByUrl(`/salesGoals/${this.salesGoal.id}`);
+      this.router.navigateByUrl(`/salesGoals/${this.salesGoalId}`);
     } catch (err) {
       console.error(err);
     }
