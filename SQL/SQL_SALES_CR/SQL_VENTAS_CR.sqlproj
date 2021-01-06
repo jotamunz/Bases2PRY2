@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>SQL_SALES_MAIN</Name>
+    <Name>SQL_VENTAS_CR</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{f76463ee-9f17-4c55-bf56-23474aba0e22}</ProjectGuid>
+    <ProjectGuid>{32deb34d-12a0-434f-add7-54a06ecf353b}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>SQL_VENTAS_MAIN</RootNamespace>
-    <AssemblyName>SQL_VENTAS_MAIN</AssemblyName>
+    <RootNamespace>SQL_SALES_CR</RootNamespace>
+    <AssemblyName>SQL_SALES_CR</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -58,6 +58,6 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="SALES.sql" />
+    <Build Include="VENTAS_CR.sql" />
   </ItemGroup>
 </Project>

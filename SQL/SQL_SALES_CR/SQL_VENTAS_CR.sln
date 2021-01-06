@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_SALES_CR", "SQL_SALES_CR.sqlproj", "{32DEB34D-12A0-434F-ADD7-54A06ECF353B}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_VENTAS_CR", "SQL_VENTAS_CR.sqlproj", "{32DEB34D-12A0-434F-ADD7-54A06ECF353B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
