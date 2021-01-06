@@ -19,6 +19,11 @@ const ArticleSchema = mongoose.Schema(
 			type: Number,
 			required: true,
 			min: 0
+		},
+		articleTotal: {
+			type: Number,
+			required: true,
+			min: 0
 		}
 	},
 	{ _id: false }
@@ -39,7 +44,7 @@ const PurchaseSchema = mongoose.Schema({
 		required: true,
 		enum: [1, 2]
 	},
-	total: {
+	orderTotal: {
 		type: Number,
 		required: true,
 		min: 0
