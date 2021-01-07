@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  currencies : object[] = [
+    {value: 1, name : 'Colones'},
+    {value: 2, name : 'Dollars'}
+  ]
 }
