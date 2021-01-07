@@ -19,7 +19,7 @@ const router = express.Router();
 	tax: Number
 */
 // O: Saved purchase date
-// E: 408, 400
+// E: 400
 router.post('/', async (req, res) => {
 	const purchase = new Purchase({
 		clientCode: req.body.clientCode,
@@ -27,12 +27,21 @@ router.post('/', async (req, res) => {
 		currency: req.body.currency,
 		tax: req.body.tax
 	});
-	// TODO
-	purchase.orderTotal;
+	let total = 0;
+	for (let key in purchase.articles) {
+		if (purchase.articles.hasOwnProperty(key)) {
+			article = purchase.articles[key];
+			article.articleTotal = article.quantity * article.unitPrice;
+			total += article.articleTotal;
+		}
+	}
+	purchase.orderTotal = total;
 	try {
 		const savedPurchase = await purchase.save();
 		res.json({ date: savedPurchase.date });
 	} catch (error) {
-		res.status(408).json({ message: error });
+		res.status(400).json({ message: error.message });
 	}
 });
+
+module.exports = router;
