@@ -1,7 +1,193 @@
 <div class="row">
-    <div class="col-md-8 mx-auto">
+    <!-- Purchase Card -->
+    <div class="col-md-6">
         <div class="card card-body">
-            <p>adding-dashboard works!</p>
+            <h3><i class="fa fa-plus"></i> Add new purchase</h3>
+            <p>
+                Add a new purchase. Enter the client's code, currency of the sale and tax 
+            </p>
+            <form (ngSubmit)="onSubmit()" #salesGoalForm="ngForm">
+                <!-- Client code input -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">
+                        <i class="far fa-user"></i
+                    ></span>
+                    </div>
+                    <input
+                    type="text"
+                    name="client"
+                    [(ngModel)]="purchase.clientCode"
+                    class="form-control"
+                    placeholder="Client Code..."
+                    aria-label="brand"
+                    aria-describedby="basic-addon3"
+                    />
+                </div>
+                <!-- Currency input -->
+                <div class="form-group">
+                    <i class="fa fa-coins"></i>
+                    <label for="currencySelect">Currency</label>
+                    <select
+                    class="form-control"
+                    name="currency"
+                    [(ngModel)]="purchase.currency"
+                    id="currencySelect"
+                    >
+                    
+                    <option *ngFor="let currency of currencies" value="{{ currency.value }}">
+                        {{ currency.name }}
+                    </option>
+                    </select>
+                </div>
+                <!-- Tax input -->
+                <label for="TaxSelect">Tax Porcentage</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        ><i class="fas fa-percentage"></i>
+                    </span>
+                    </div>
+                    <input
+                    type="number"
+                    step="1"
+                    name="tax"
+                    [(ngModel)]="purchase.tax"
+                    class="form-control"
+                    placeholder="Tax..."
+                    aria-label="Tax"
+                    aria-describedby="basic-addon1"
+                    />
+                </div>
+                <ul class="list-group">
+                    <li *ngFor = "let article of purchase.articles ; let counter = index" class="list-group-item">
+                        <h5>Article {{counter+1}}</h5>
+                        <!-- Article Code Display -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">
+                                <i class="fas fa-tags"></i
+                            ></span>
+                            </div>
+                            <input disabled
+                            type="text"
+                            name="ArticleCodeDisplay"
+                            class="form-control"
+                            placeholder= {{article.articleCode}}
+                            aria-label="ArticleCodeDisplay"
+                            aria-describedby="basic-addon3"
+                            />
+                        </div>
+                        <!-- Unit Price Display -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">
+                                <i class="fas fa-money-bill"></i
+                            ></span>
+                            </div>
+                            <input disabled
+                            type="text"
+                            name="UnitPriceDisplay"
+                            class="form-control"
+                            placeholder= {{article.unitPrice}}
+                            aria-label="UnitPriceDisplay"
+                            aria-describedby="basic-addon3"
+                            />
+                        </div>
+                        <!-- Quantity Display -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">
+                                <i class="fas fa-shopping-basket"></i
+                            ></span>
+                            </div>
+                            <input disabled
+                            type="text"
+                            name="QuantityDisplay"
+                            class="form-control"
+                            placeholder= {{article.quantity}}
+                            aria-label="QuantityDisplay"
+                            aria-describedby="basic-addon3"
+                            />
+                        </div>
+                        <button (click)="deleteArticle(article)" class="btn btn-danger btn-block">
+                            <i class="fa fa-plus"></i> Remove Article
+                        </button>
+                    </li>
+                </ul>
+                <button type="submit" class="btn btn-success btn-block">
+                    <i class="fa fa-plus"></i> Add purchase
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Article Card -->
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3><i class="fa fa-plus"></i> Add new article</h3>
+            <p>
+                Add an article information
+            </p>
+            <form (ngSubmit)="onSubmit()" #salesGoalForm="ngForm">
+                <!-- Article code input -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">
+                        <i class="fas fa-tags"></i
+                    ></span>
+                    </div>
+                    <input
+                    type="text"
+                    name="article"
+                    [(ngModel)]="article.articleCode"
+                    class="form-control"
+                    placeholder="Article Code..."
+                    aria-label="brand"
+                    aria-describedby="basic-addon3"
+                    />
+                </div>
+                <!-- Quantity input -->
+                <label for="quantitySelect">Quantity</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        ><i class="fas fa-shopping-basket"></i>
+                    </span>
+                    </div>
+                    <input
+                    type="number"
+                    step="1"
+                    name="quantity"
+                    [(ngModel)]="article.quantity"
+                    class="form-control"
+                    placeholder="Quantity..."
+                    aria-label="Quantity"
+                    aria-describedby="basic-addon1"
+                    />
+                </div>
+                <!-- Unit Price input -->
+                <label for="unitPriceSelect">Unit Price</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        ><i class="fas fa-money-bill"></i>
+                    </span>
+                    </div>
+                    <input
+                    type="number"
+                    step="1"
+                    name="unitPrice"
+                    [(ngModel)]="article.unitPrice"
+                    class="form-control"
+                    placeholder="Unit Price..."
+                    aria-label="UnitPrice"
+                    aria-describedby="basic-addon1"
+                    />
+                </div>
+                <button (click)="submitArticle()" class="btn btn-success btn-block">
+                    <i class="fa fa-plus"></i> Add article
+                </button>
+            </form>
         </div>
     </div>
 </div>
