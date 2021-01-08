@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article, Purchase } from 'src/app/Models/purchaseModel';
-//import { PurchasesService } from '../../Services/purchases.service';
+import { PurchasesService } from '../../Services/purchases.service';
 
 
 
@@ -10,6 +10,7 @@ import { Article, Purchase } from 'src/app/Models/purchaseModel';
   styleUrls: ['./adding-dashboard.component.css']
 })
 export class AddingDashboardComponent implements OnInit {
+  public errors : String[] = [];
   public purchase : Purchase = {
     clientCode : "",
     currency : 1,
@@ -30,7 +31,7 @@ export class AddingDashboardComponent implements OnInit {
   ];
 
   constructor(
-    //private purchasesService : PurchasesService
+    private purchasesService : PurchasesService
   ) { 
   }
 
@@ -54,13 +55,30 @@ export class AddingDashboardComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
-    console.log(this.purchase);
+    this.purchasesService.addPurchase(this.purchase).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.resetPurchase();
   }
 
   private resetArticle(){
     this.article.articleCode = "";
     this.article.unitPrice = 0;
     this.article.quantity = 0;
+  }
+
+  private resetPurchase(){
+    this.purchase = {
+      clientCode : "",
+      currency : 1,
+      tax : 0,
+      articles : []
+    };
   }
 
 }

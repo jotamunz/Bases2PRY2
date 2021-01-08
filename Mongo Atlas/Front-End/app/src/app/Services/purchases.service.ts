@@ -18,7 +18,7 @@ export class PurchasesService {
    */
   public addPurchase(purchase: Purchase): Observable<any> {
     return this.httpClient.post<any>(
-      'http://localhost:3000/',
+      'http://localhost:3000/purchase',
       purchase,
       {
         headers: {
