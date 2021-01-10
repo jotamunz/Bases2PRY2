@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[VENTAS_STAGING]
+(
+    [Factura] NVARCHAR(255) NOT NULL, 
+    [Fecha] NVARCHAR(255) NOT NULL, 
+    [FechaVencimiento] NVARCHAR(255) NOT NULL, 
+    [Cliente] NVARCHAR(255) NOT NULL, 
+    [Producto] NVARCHAR(255) NOT NULL, 
+    [Cantidad] NVARCHAR(255) NOT NULL, 
+    [Moneda] NVARCHAR(255) NOT NULL, 
+    [Precio] NVARCHAR(255) NOT NULL, 
+    [Total] NVARCHAR(255) NOT NULL, 
+    [Almacen] NVARCHAR(255) NOT NULL, 
+    [Vendedor] NVARCHAR(255) NOT NULL, 
+    [TotalUSD] NVARCHAR(255) NOT NULL, 
+    [Impuesto] NVARCHAR(255) NOT NULL, 
+    [ImpuestoUSD] NVARCHAR(255) NOT NULL, 
+    [TipoDeCambio] NVARCHAR(255) NULL, 
+    [Ganancia] NVARCHAR(255) NOT NULL, 
+    [GananciaUSD] NVARCHAR(255) NOT NULL,
+)
