@@ -5,43 +5,197 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="JOS-PC"
   DTS:CreatorName="JOS-PC\JOS"
-  DTS:DTSID="{FA68A344-60EE-4723-BC35-430E4F3416DB}"
+  DTS:DTSID="{3D4BAA88-7EF4-483C-AC0B-883064670907}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.150"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Excel_package"
+  DTS:ObjectName="TextFile_package"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{0384CD9D-B879-4B18-88D5-D6DEAD0DFED8}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{BC7BE4DA-4F4F-4E14-B90B-4A265F0333D4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{AB68E44E-4EB7-4241-88EE-16AC65D6331B}"
+      DTS:DTSID="{CA2150F8-BDDB-4144-82D2-544D03D66332}"
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=JOS-PC;User ID=&quot;&quot;;Initial Catalog=SQL_VENTAS_MAIN;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Persist Security Info=False;Initial File Name=&quot;&quot;;Server SPN=&quot;&quot;;Authentication=&quot;&quot;;Access Token=&quot;&quot;;" />
+          DTS:ConnectionString="Data Source=JOS-PC;User ID=;Initial Catalog=SQL_VENTAS_MAIN;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-TextFile_package-{CA2150F8-BDDB-4144-82D2-544D03D66332}DestinationConnectionOLEDB;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{F5FAD44E-52CE-4399-B854-BC07A08DC15A}"
-      DTS:ObjectName="SourceConnectionExcel">
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6B848458-DB2A-4178-836C-6CF55204AFE3}"
+      DTS:ObjectName="SourceConnectionFlatFile">
       <DTS:PropertyExpression
-        DTS:Name="ExcelFilePath">@[User::ProcessingFile]</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[User::ProcessingFile]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Processing\EXCEL_000-100.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Processing\TAB_401-500.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Factura"
+              DTS:DTSID="{CAF0484C-46D0-4388-B356-E45F62D8019F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fecha"
+              DTS:DTSID="{B57D102A-F22F-4C23-AB80-D39AB6035DA3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FechaVencimiento"
+              DTS:DTSID="{D23B83C8-D66B-4EA2-94DB-13AAD04E9F4A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cliente"
+              DTS:DTSID="{A2E86E58-7278-4A16-A48D-4CA6B36D3A4B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Producto"
+              DTS:DTSID="{36D2C978-F18C-45AD-975A-8F4E3D755719}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cantidad"
+              DTS:DTSID="{93A4474B-230F-45C1-8BA1-ED1C8D34DD4C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Moneda"
+              DTS:DTSID="{DAEF5834-EC81-49F0-BD72-CB6606298192}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Precio"
+              DTS:DTSID="{A13F3231-BE1B-42E1-B034-A9E8BEA1DEB8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total"
+              DTS:DTSID="{51F6CD02-D42E-4F75-B0A3-66F9508A112E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AlmacŽn"
+              DTS:DTSID="{E0FEAB0D-1E32-4947-A462-26F07A2A147A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Vendedor"
+              DTS:DTSID="{59FA8125-9773-40FB-8AA3-6B9162623A3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalUSD"
+              DTS:DTSID="{530A43A7-2A5D-4B86-B14B-7957016F72B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Impuesto"
+              DTS:DTSID="{9085047B-9308-46B1-AD93-401AB4730E5A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tipo de cambio"
+              DTS:DTSID="{0C0454B0-4CA2-449B-849C-5D45AEB4A9D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ganacia"
+              DTS:DTSID="{18E50FAA-3AD2-48A6-93F1-53C7F0B1C0B9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GananciaUSD"
+              DTS:DTSID="{ED332E0D-4FAB-40E6-8555-3210BA66711E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[WMI Connection Manager]"
       DTS:CreationName="WMI"
-      DTS:DTSID="{CAC52F4B-E5FC-4D6F-AD02-CE1F7618ECB9}"
+      DTS:DTSID="{7FA3B567-E4A3-4462-9171-CAD6FF1A4F58}"
       DTS:ObjectName="WMI Connection Manager">
       <DTS:ObjectData>
         <WmiConnectionManager
@@ -53,18 +207,18 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{EBE277C1-3F75-4960-B100-7719E6CF91E2}"
+      DTS:DTSID="{B2360BFA-1462-44F1-B3B2-16CF956DDD32}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::ArchivePath] +  @[User::FileName]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Archive\EXCEL_000-100.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Archive\TAB_401-500.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{04C748D2-ADCD-4DA0-B855-570794B6F7B4}"
+      DTS:DTSID="{948CF53D-5904-40D7-AF4F-00D79C078940}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::Drive] +  @[User::Path] + &quot;Archive\\&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -75,7 +229,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{45BFEAFC-5027-4696-B2A1-7C76096C0D39}"
+      DTS:DTSID="{C50E4589-549D-4CF4-BDD4-038FDC261939}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Drive">
@@ -84,18 +238,18 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{866563F4-78BD-46DC-9DED-DE02F24BDE9F}"
+      DTS:DTSID="{107C69C6-2AB3-4573-961B-56AFDCFF3D22}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::DropPath] +  @[User::FileName]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DropFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\EXCEL_000-100.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\TAB_401-500.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A2731550-A851-40B9-AC29-6A94A85EEFEA}"
+      DTS:DTSID="{F62E4B01-466C-4808-BEED-6F72E7E82657}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::Drive] +  @[User::Path]"
       DTS:IncludeInDebugDump="2345"
@@ -106,45 +260,45 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D64C665E-8917-4D62-A922-B2E18FC13641}"
+      DTS:DTSID="{EE7D794B-777B-4F19-8721-D8583345A5AD}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FileExtension">
       <DTS:VariableValue
-        DTS:DataType="8">xlsx</DTS:VariableValue>
+        DTS:DataType="8">txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{00858CF7-8BB6-4053-8447-0E7B806BA852}"
+      DTS:DTSID="{CA2A0FBC-9A26-4028-9BD1-5C6417668B0E}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::FileNamePrefix] + &quot;.&quot; + @[User::FileExtension]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FileMask">
       <DTS:VariableValue
-        DTS:DataType="8">EXCEL_000-100.xlsx</DTS:VariableValue>
+        DTS:DataType="8">TAB_401-500.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{93926717-5F4F-4687-B282-AD49896B54E7}"
+      DTS:DTSID="{E8560572-607F-46FA-9B30-6D25CD66F347}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FileName">
       <DTS:VariableValue
-        DTS:DataType="8">EXCEL_000-100.xlsx</DTS:VariableValue>
+        DTS:DataType="8">TAB_401-500.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C06DD032-3499-435A-9A93-BE19D476FC88}"
+      DTS:DTSID="{CA982EE8-A3C3-48EA-9EDC-0CCB6B64D388}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FileNamePrefix">
       <DTS:VariableValue
-        DTS:DataType="8">EXCEL_000-100</DTS:VariableValue>
+        DTS:DataType="8">TAB_401-500</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{1E7F594B-3183-4207-87C7-A7690FE95778}"
+      DTS:DTSID="{2EA3F7FC-1851-4159-A011-BA926BB5AA5D}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Path">
@@ -153,18 +307,18 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{39FB7200-5DC8-4140-9A9A-579CE85FC46A}"
+      DTS:DTSID="{7FA48DBE-B329-438A-A9F4-3E11482DEF7B}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::ProcessingPath] + @[User::FileName]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ProcessingFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Processing\EXCEL_000-100.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Processing\TAB_401-500.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{01819990-6775-41C1-AC8A-C33E68960591}"
+      DTS:DTSID="{171FD9F0-4462-44D2-AE02-9FBE829F0086}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::Drive] +  @[User::Path] + &quot;Processing\\&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -175,14 +329,14 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{88D3A3C9-A5BE-46DA-A982-E22D4765C3DC}"
+      DTS:DTSID="{B4B26FE6-B2AA-4CF1-815E-391828768A8A}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;SELECT * FROM __InstanceCreationEvent WITHIN 5 WHERE TargetInstance ISA 'CIM_DataFile' AND TargetInstance.Drive = 'C:' AND TargetInstance.Path = '&quot;+ REPLACE( @[User::Path], &quot;\\&quot;, &quot;\\\\&quot;)  +&quot;' AND TargetInstance.FileName LIKE '&quot;+ @[User::FileNamePrefix] +&quot;%' AND TargetInstance.Extension = '&quot;+ @[User::FileExtension] +&quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="WqlQuerySource">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT * FROM __InstanceCreationEvent WITHIN 5 WHERE TargetInstance ISA 'CIM_DataFile' AND TargetInstance.Drive = 'C:' AND TargetInstance.Path = '\\Users\\JOS\\Desktop\\Bases2PRY2\\SQL\\Files\\' AND TargetInstance.FileName LIKE 'EXCEL_000-100%' AND TargetInstance.Extension = 'xlsx'</DTS:VariableValue>
+        DTS:DataType="8">SELECT * FROM __InstanceCreationEvent WITHIN 5 WHERE TargetInstance ISA 'CIM_DataFile' AND TargetInstance.Drive = 'C:' AND TargetInstance.Path = '\\Users\\JOS\\Desktop\\Bases2PRY2\\SQL\\Files\\' AND TargetInstance.FileName LIKE 'TAB_401-500%' AND TargetInstance.Extension = 'txt'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -190,7 +344,7 @@
       DTS:refId="Package\For Loop Container"
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
-      DTS:DTSID="{EDD702DB-C8DB-40D3-9361-9367AC3341D5}"
+      DTS:DTSID="{D1EB2046-F474-4E96-BE45-2D6C66FA904D}"
       DTS:EvalExpression="1 == 1"
       DTS:ExecutableType="STOCK:FORLOOP"
       DTS:LocaleID="-1"
@@ -201,7 +355,7 @@
         <DTS:Executable
           DTS:refId="Package\For Loop Container\Create Staging Table"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:DTSID="{17f18360-3a40-4277-bd43-f459c124d54f}"
+          DTS:DTSID="{d1db473b-1132-48c2-affa-1b96ac81c47a}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:FailPackageOnFailure="True"
           DTS:LocaleID="-1"
@@ -211,15 +365,15 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{AB68E44E-4EB7-4241-88EE-16AC65D6331B}"
-              SQLTask:SqlStatementSource="CREATE TABLE [dbo].[VENTAS_EXCEL_STAGING] (&#xA;[Factura] nvarchar(255) NOT NULL,&#xA;[Fecha] nvarchar(255) NOT NULL,&#xA;[FechaVencimiento] nvarchar(255) NOT NULL,&#xA;[Cliente] nvarchar(255) NOT NULL,&#xA;[Producto] nvarchar(255) NOT NULL,&#xA;[Cantidad] nvarchar(255) NOT NULL,&#xA;[Moneda] nvarchar(255) NULL,&#xA;[Precio] nvarchar(255) NOT NULL,&#xA;[Total] nvarchar(255) NOT NULL,&#xA;[Almacén] nvarchar(255) NOT NULL,&#xA;[Vendedor] float NOT NULL,&#xA;[TotalUSD] float NOT NULL,&#xA;[Impuesto] nvarchar(255) NOT NULL,&#xA;[ImpuestoUSD] float NOT NULL,&#xA;[Tipo de cambio] nvarchar(255) NOT NULL,&#xA;[Ganacia] nvarchar(255) NOT NULL,&#xA;[GananciaUSD] float NOT NULL&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{CA2150F8-BDDB-4144-82D2-544D03D66332}"
+              SQLTask:SqlStatementSource="CREATE TABLE [dbo].[VENTAS_TEXT_STAGING] (&#xA;[Factura] nvarchar(50) NOT NULL,&#xA;[Fecha] nvarchar(50) NOT NULL,&#xA;[FechaVencimiento] nvarchar(50) NOT NULL,&#xA;[Cliente] nvarchar(50) NOT NULL,&#xA;[Producto] nvarchar(50) NOT NULL,&#xA;[Cantidad] nvarchar(50) NOT NULL,&#xA;[Moneda] nvarchar(50) NOT NULL,&#xA;[Precio] nvarchar(50) NOT NULL,&#xA;[Total] nvarchar(50) NOT NULL,&#xA;[AlmacŽn] nvarchar(50) NOT NULL,&#xA;[Vendedor] nvarchar(50) NOT NULL,&#xA;[TotalUSD] nvarchar(50) NOT NULL,&#xA;[Impuesto] nvarchar(50) NOT NULL,&#xA;[Tipo de cambio] nvarchar(50) NOT NULL,&#xA;[Ganacia] nvarchar(50) NOT NULL,&#xA;[GananciaUSD] nvarchar(50) NOT NULL&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\For Loop Container\Drop Staging Table"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{7A1C6B6A-BA2F-4514-B37F-91B3DFA53CC8}"
+          DTS:DTSID="{B75C85FC-81A9-487A-ABA8-D1FF247A1A0C}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Drop Staging Table"
@@ -228,19 +382,19 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{AB68E44E-4EB7-4241-88EE-16AC65D6331B}"
-              SQLTask:SqlStatementSource="DROP TABLE [dbo].[VENTAS_EXCEL_STAGING]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{CA2150F8-BDDB-4144-82D2-544D03D66332}"
+              SQLTask:SqlStatementSource="DROP TABLE VENTAS_TEXT_STAGING" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\Load Excel Data to Staging Table"
+          DTS:refId="Package\For Loop Container\Load Data From Text File To Staging Table"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:DelayValidation="True"
-          DTS:DTSID="{18ffc27b-2c6c-4a17-839e-5430c1116833}"
+          DTS:DTSID="{87c2c955-af8e-4afb-8de5-b23e23ae19e1}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:FailPackageOnFailure="True"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Load Excel Data to Staging Table"
+          DTS:ObjectName="Load Data From Text File To Staging Table"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -249,11 +403,11 @@
               version="1">
               <components>
                 <component
-                  refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING"
+                  refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="Destination - VENTAS_STAGING"
+                  name="Destination - VENTAS_TEXT_STAGING"
                   usesDispositions="true"
                   validateExternalMetadata="False"
                   version="4">
@@ -265,7 +419,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[VENTAS_EXCEL_STAGING]</property>
+                      name="OpenRowset">[dbo].[VENTAS_TEXT_STAGING]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -307,7 +461,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Connections[OleDbConnection]"
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
                       connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
                       description="The OLE DB runtime connection used to access the database."
@@ -315,232 +469,228 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input]"
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Factura]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Factura]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Factura"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Factura]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Factura]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Factura]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Factura]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Fecha]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Fecha]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Fecha"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Fecha]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Fecha]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Fecha]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Fecha]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[FechaVencimiento]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[FechaVencimiento]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="FechaVencimiento"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[FechaVencimiento]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[FechaVencimiento]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[FechaVencimiento]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[FechaVencimiento]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Cliente]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Cliente]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Cliente"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Cliente]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cliente]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Cliente]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cliente]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Producto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Producto]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Producto"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Producto]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Producto]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Producto]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Producto]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Cantidad]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Cantidad]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Cantidad"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Cantidad]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cantidad]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Cantidad]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cantidad]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Moneda]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Moneda]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Moneda"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Moneda]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Moneda]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Moneda]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Moneda]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Precio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Precio]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Precio"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Precio]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Precio]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Precio]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Precio]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Total]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Total]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Total"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Total]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Total]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Total]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Total]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Almacén]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[AlmacŽn]"
                           cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Almacén"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Almacén]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Almacén]" />
+                          cachedLength="50"
+                          cachedName="AlmacŽn"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[AlmacŽn]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[AlmacŽn]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Vendedor]"
-                          cachedDataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Vendedor]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
                           cachedName="Vendedor"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Vendedor]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Vendedor]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Vendedor]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Vendedor]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[TotalUSD]"
-                          cachedDataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[TotalUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
                           cachedName="TotalUSD"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[TotalUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[TotalUSD]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[TotalUSD]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[TotalUSD]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Impuesto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Impuesto]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Impuesto"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Impuesto]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Impuesto]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Impuesto]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Impuesto]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[ImpuestoUSD]"
-                          cachedDataType="r8"
-                          cachedName="ImpuestoUSD"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[ImpuestoUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[ImpuestoUSD]" />
-                        <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Tipo de cambio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Tipo de cambio]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Tipo de cambio"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Tipo de cambio]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Tipo de cambio]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Tipo de cambio]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Tipo de cambio]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[Ganacia]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[Ganacia]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="50"
                           cachedName="Ganacia"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Ganacia]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Ganacia]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Ganacia]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Ganacia]" />
                         <inputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].Columns[GananciaUSD]"
-                          cachedDataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].Columns[GananciaUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
                           cachedName="GananciaUSD"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[GananciaUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[GananciaUSD]" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[GananciaUSD]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[GananciaUSD]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Factura]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Factura]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Factura" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Fecha]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Fecha]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Fecha" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[FechaVencimiento]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[FechaVencimiento]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="FechaVencimiento" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Cliente]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Cliente]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Cliente" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Producto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Producto]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Producto" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Cantidad]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Cantidad]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Cantidad" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Moneda]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Moneda]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Moneda" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Precio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Precio]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Precio" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Total]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Total]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Total" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Almacén]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[AlmacŽn]"
                           dataType="wstr"
-                          length="255"
-                          name="Almacén" />
+                          length="50"
+                          name="AlmacŽn" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Vendedor]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Vendedor]"
+                          dataType="wstr"
+                          length="50"
                           name="Vendedor" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[TotalUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[TotalUSD]"
+                          dataType="wstr"
+                          length="50"
                           name="TotalUSD" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Impuesto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Impuesto]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Impuesto" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[ImpuestoUSD]"
-                          dataType="r8"
-                          name="ImpuestoUSD" />
-                        <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Tipo de cambio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Tipo de cambio]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Tipo de cambio" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[Ganacia]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[Ganacia]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Ganacia" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input].ExternalColumns[GananciaUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input].ExternalColumns[GananciaUSD]"
+                          dataType="wstr"
+                          length="50"
                           name="GananciaUSD" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input]">
+                      synchronousInputId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -549,424 +699,479 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'"
-                  componentClassID="Microsoft.ExcelSource"
-                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="Excel Source"
-                  name="Source - '001-100$'"
+                  refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Source - TAB_401-500_txt"
                   usesDispositions="true"
-                  validateExternalMetadata="False"
                   version="1">
                   <properties>
                     <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">true</property>
                     <property
                       dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">'001-100$'</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The mapping from parameters in the SQL command to variables."
-                      name="ParameterMapping"></property>
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
-                      connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      name="FlatFileConnection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output]"
-                      name="Excel Source Output">
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Factura]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Factura]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Factura]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Factura]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Factura]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Factura]"
                           name="Factura"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Fecha]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Fecha]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Fecha]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Fecha]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Fecha]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Fecha]"
                           name="Fecha"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[FechaVencimiento]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[FechaVencimiento]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[FechaVencimiento]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[FechaVencimiento]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[FechaVencimiento]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[FechaVencimiento]"
                           name="FechaVencimiento"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cliente]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cliente]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Cliente]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cliente]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Cliente]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cliente]"
                           name="Cliente"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Producto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Producto]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Producto]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Producto]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Producto]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Producto]"
                           name="Producto"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cantidad]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cantidad]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Cantidad]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Cantidad]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Cantidad]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Cantidad]"
                           name="Cantidad"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Moneda]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Moneda]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Moneda]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Moneda]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Moneda]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Moneda]"
                           name="Moneda"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Precio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Precio]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Precio]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Precio]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Precio]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Precio]"
                           name="Precio"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Total]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Total]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Total]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Total]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Total]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Total]"
                           name="Total"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Almacén]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[AlmacŽn]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Almacén]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Almacén]"
-                          name="Almacén"
-                          truncationRowDisposition="FailComponent" />
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[AlmacŽn]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[AlmacŽn]"
+                          name="AlmacŽn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Vendedor]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Vendedor]"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Vendedor]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Vendedor]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Vendedor]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Vendedor]"
                           name="Vendedor"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[TotalUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[TotalUSD]"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[TotalUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[TotalUSD]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[TotalUSD]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[TotalUSD]"
                           name="TotalUSD"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Impuesto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Impuesto]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Impuesto]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Impuesto]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Impuesto]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Impuesto]"
                           name="Impuesto"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[ImpuestoUSD]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[ImpuestoUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[ImpuestoUSD]"
-                          name="ImpuestoUSD"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Tipo de cambio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Tipo de cambio]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Tipo de cambio]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Tipo de cambio]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Tipo de cambio]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Tipo de cambio]"
                           name="Tipo de cambio"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Ganacia]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Ganacia]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Ganacia]"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[Ganacia]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Ganacia]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[Ganacia]"
                           name="Ganacia"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[GananciaUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[GananciaUSD]"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[GananciaUSD]"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].Columns[GananciaUSD]"
+                          externalMetadataColumnId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[GananciaUSD]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].Columns[GananciaUSD]"
                           name="GananciaUSD"
-                          truncationRowDisposition="FailComponent" />
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Factura]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Factura]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Factura" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Fecha]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Fecha" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[FechaVencimiento]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[FechaVencimiento]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="FechaVencimiento" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Cliente]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Cliente]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Cliente" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Producto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Producto]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Producto" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Cantidad]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Cantidad]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Cantidad" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Moneda]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Moneda]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Moneda" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Precio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Precio]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Precio" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Total]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Total]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Total" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Almacén]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[AlmacŽn]"
                           dataType="wstr"
-                          length="255"
-                          name="Almacén" />
+                          length="50"
+                          name="AlmacŽn" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Vendedor]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Vendedor]"
+                          dataType="wstr"
+                          length="50"
                           name="Vendedor" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[TotalUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[TotalUSD]"
+                          dataType="wstr"
+                          length="50"
                           name="TotalUSD" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Impuesto]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Impuesto]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Impuesto" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[ImpuestoUSD]"
-                          dataType="r8"
-                          name="ImpuestoUSD" />
-                        <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Tipo de cambio]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Tipo de cambio]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Tipo de cambio" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[Ganacia]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[Ganacia]"
                           dataType="wstr"
-                          length="255"
+                          length="50"
                           name="Ganacia" />
                         <externalMetadataColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output].ExternalColumns[GananciaUSD]"
-                          dataType="r8"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output].ExternalColumns[GananciaUSD]"
+                          dataType="wstr"
+                          length="50"
                           name="GananciaUSD" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output]"
+                      refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output]"
                       isErrorOut="true"
-                      name="Excel Source Error Output">
+                      name="Flat File Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Factura]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Factura]"
-                          name="Factura" />
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Fecha]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Fecha]"
-                          name="Fecha" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[FechaVencimiento]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[FechaVencimiento]"
-                          name="FechaVencimiento" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Cliente]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Cliente]"
-                          name="Cliente" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Producto]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Producto]"
-                          name="Producto" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Cantidad]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Cantidad]"
-                          name="Cantidad" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Moneda]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Moneda]"
-                          name="Moneda" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Precio]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Precio]"
-                          name="Precio" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Total]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Total]"
-                          name="Total" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Almacén]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Almacén]"
-                          name="Almacén" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Vendedor]"
-                          dataType="r8"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Vendedor]"
-                          name="Vendedor" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[TotalUSD]"
-                          dataType="r8"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[TotalUSD]"
-                          name="TotalUSD" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Impuesto]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Impuesto]"
-                          name="Impuesto" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ImpuestoUSD]"
-                          dataType="r8"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ImpuestoUSD]"
-                          name="ImpuestoUSD" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Tipo de cambio]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Tipo de cambio]"
-                          name="Tipo de cambio" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Ganacia]"
-                          dataType="wstr"
-                          length="255"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[Ganacia]"
-                          name="Ganacia" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[GananciaUSD]"
-                          dataType="r8"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[GananciaUSD]"
-                          name="GananciaUSD" />
-                        <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -977,10 +1182,10 @@
               </components>
               <paths>
                 <path
-                  refId="Package\For Loop Container\Load Excel Data to Staging Table.Paths[Excel Source Output]"
-                  endId="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING.Inputs[Destination Input]"
-                  name="Excel Source Output"
-                  startId="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'.Outputs[Excel Source Output]" />
+                  refId="Package\For Loop Container\Load Data From Text File To Staging Table.Paths[Flat File Source Output]"
+                  endId="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING.Inputs[Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt.Outputs[Flat File Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -989,7 +1194,7 @@
           DTS:refId="Package\For Loop Container\Move Data File To Processing Directory"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
-          DTS:DTSID="{221C9BBF-9263-496C-9367-887E58722AF2}"
+          DTS:DTSID="{7BF7D99A-C359-4569-99CD-A73D6E378815}"
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move Data File To Processing Directory"
@@ -1010,7 +1215,7 @@
           DTS:refId="Package\For Loop Container\Move Data From Staging Table To Final Table"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{aaf72d83-d011-44d7-928e-c76d957bbc89}"
+          DTS:DTSID="{7849B759-BF7D-48CF-9201-0FFA15CF8BFB}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move Data From Staging Table To Final Table"
@@ -1019,15 +1224,15 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{AB68E44E-4EB7-4241-88EE-16AC65D6331B}"
-              SQLTask:SqlStatementSource="INSERT INTO VENTAS (&#xA;    [Factura],&#xA;    [Fecha],&#xA;    [FechaVencimiento],&#xA;    [Cliente],&#xA;    [Producto],&#xA;    [Cantidad],&#xA;    [Moneda],&#xA;    [Precio],&#xA;    [Total],&#xA;    [Almacen],&#xA;    [Vendedor],&#xA;    [TotalUSD],&#xA;    [Impuesto],&#xA;    [ImpuestoUSD],&#xA;    [TipoDeCambio],&#xA;    [Ganancia],&#xA;    [GananciaUSD]&#xA;&#xA;)&#xA;SELECT&#xA;CAST (T1.Factura AS INT),&#xA;Convert(date,T1.Fecha,103),&#xA;Convert(date,T1.FechaVencimiento,103),&#xA;CAST (T1.Cliente AS NCHAR(5)),&#xA;CAST (T1.Producto AS NCHAR(7)),&#xA;CAST ((CONVERT(DECIMAL(10,2), REPLACE(T1.Cantidad, ',', ''))) AS INT),&#xA;CAST (ISNULL(T1.Moneda, N'USD') AS NCHAR (3)),&#xA;CAST (REPLACE(T1.Precio, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Total, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (T1.Almacén AS INT),&#xA;CAST (T1.Vendedor AS INT),&#xA;CAST (REPLACE(T1.TotalUSD, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Impuesto, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.ImpuestoUSD, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.[Tipo de cambio], ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Ganacia, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.GananciaUSD, ',', '') AS DECIMAL (30, 5))&#xA;FROM [dbo].[VENTAS_EXCEL_STAGING] AS T1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{CA2150F8-BDDB-4144-82D2-544D03D66332}"
+              SQLTask:SqlStatementSource="INSERT INTO VENTAS (&#xA;    [Factura],&#xA;    [Fecha],&#xA;    [FechaVencimiento],&#xA;    [Cliente],&#xA;    [Producto],&#xA;    [Cantidad],&#xA;    [Moneda],&#xA;    [Precio],&#xA;    [Total],&#xA;    [Almacen],&#xA;    [Vendedor],&#xA;    [TotalUSD],&#xA;    [Impuesto],&#xA;    [ImpuestoUSD],&#xA;    [TipoDeCambio],&#xA;    [Ganancia],&#xA;    [GananciaUSD]&#xA;&#xA;)&#xA;SELECT&#xA;CAST (T1.Factura AS INT),&#xA;Convert(date,T1.Fecha,3),&#xA;Convert(date,T1.FechaVencimiento,3),&#xA;CAST (T1.Cliente AS NCHAR(5)),&#xA;CAST ((N'0000' + T1.Producto) AS NCHAR(7)),&#xA;CAST ((CONVERT(DECIMAL(10,2), REPLACE(T1.Cantidad, ',', ''))) AS INT),&#xA;CAST (T1.Moneda AS NCHAR (3)),&#xA;CAST ((REPLACE(LEFT(REPLACE(T1.Precio, ',', ''), LEN(REPLACE(T1.Precio, ',', '')) - CHARINDEX('.', REVERSE(REPLACE(T1.Precio, ',', '')))), '.', '') + RIGHT(REPLACE(T1.Precio, ',', ''), CHARINDEX('.', REVERSE(REPLACE(T1.Precio, ',', ''))))) AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Total, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (T1.AlmacŽn AS INT),&#xA;CAST (T1.Vendedor AS INT),&#xA;CAST (REPLACE(T1.TotalUSD, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (T1.Impuesto AS DECIMAL (30,5)),&#xA;0,&#xA;CAST (REPLACE(T1.[Tipo de cambio], ',', '') AS DECIMAL (30, 5)),&#xA;CAST ((REPLACE(LEFT(REPLACE(T1.Ganacia, ',', ''), LEN(REPLACE(T1.Ganacia, ',', '')) - CHARINDEX('.', REVERSE(REPLACE(T1.Ganacia, ',', '')))), '.', '') + RIGHT(REPLACE(T1.Ganacia, ',', ''), CHARINDEX('.', REVERSE(REPLACE(T1.Ganacia, ',', ''))))) AS DECIMAL (30, 5)),&#xA;CAST ((REPLACE(LEFT(REPLACE(T1.GananciaUSD, ',', ''), LEN(REPLACE(T1.GananciaUSD, ',', '')) - CHARINDEX('.', REVERSE(REPLACE(T1.GananciaUSD, ',', '')))), '.', '') + RIGHT(REPLACE(T1.GananciaUSD, ',', ''), CHARINDEX('.', REVERSE(REPLACE(T1.GananciaUSD, ',', ''))))) AS DECIMAL (30, 5))&#xA;FROM [dbo].[VENTAS_TEXT_STAGING] AS T1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\For Loop Container\Move Processed File To Archive Directory"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
-          DTS:DTSID="{D1A89D69-36A8-4591-887B-3262C7B79717}"
+          DTS:DTSID="{1FD10E83-6385-4E1F-8979-793F1256884E}"
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move Processed File To Archive Directory"
@@ -1045,21 +1250,21 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\Watch For Incoming Excel File"
+          DTS:refId="Package\For Loop Container\Watch For Incoming Text File"
           DTS:CreationName="Microsoft.WmiEventWatcherTask"
-          DTS:Description="Watch For Incoming Excel File"
-          DTS:DTSID="{4A8E3AA0-FEB4-402B-A837-18CEAC92B5C1}"
+          DTS:Description="Watch For Incoming Text  File"
+          DTS:DTSID="{B56725A3-5CC8-420E-B6D7-8E83F3237736}"
           DTS:ExecutableType="Microsoft.WmiEventWatcherTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Watch For Incoming Excel File"
+          DTS:ObjectName="Watch For Incoming Text File"
           DTS:TaskContact="WMI Event Watcher Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
-              DTS:refId="Package\For Loop Container\Watch For Incoming Excel File.EventHandlers[WMIEventWatcherEventOccurred]"
+              DTS:refId="Package\For Loop Container\Watch For Incoming Text File.EventHandlers[WMIEventWatcherEventOccurred]"
               DTS:CreationName="WMIEventWatcherEventOccurred"
-              DTS:DTSID="{A3129197-FDE0-433D-A5A7-583D3F22830F}"
+              DTS:DTSID="{4ACB8B49-DC52-4799-B492-0EB5693621FC}"
               DTS:EventID="0"
               DTS:EventName="WMIEventWatcherEventOccurred"
               DTS:LocaleID="-1">
@@ -1067,7 +1272,7 @@
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:Description="The propagate property of the event"
-                  DTS:DTSID="{C03D6AA8-557F-4BF0-AAC9-DE63B63F6CC5}"
+                  DTS:DTSID="{59ED607B-45D9-46B0-B730-A52211FDB98E}"
                   DTS:IncludeInDebugDump="6789"
                   DTS:Namespace="System"
                   DTS:ObjectName="Propagate">
@@ -1077,10 +1282,10 @@
               </DTS:Variables>
               <DTS:Executables>
                 <DTS:Executable
-                  DTS:refId="Package\For Loop Container\Watch For Incoming Excel File.EventHandlers[WMIEventWatcherEventOccurred]\Check File Availability"
+                  DTS:refId="Package\For Loop Container\Watch For Incoming Text File.EventHandlers[WMIEventWatcherEventOccurred]\Check File Availability"
                   DTS:CreationName="Microsoft.ScriptTask"
                   DTS:Description="Script Task"
-                  DTS:DTSID="{ee97216e-18c4-44d3-96b8-057912fd3b14}"
+                  DTS:DTSID="{DF8E08A0-A487-4E8F-89C5-A063A5CE5671}"
                   DTS:ExecutableType="Microsoft.ScriptTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="Check File Availability">
@@ -1094,35 +1299,14 @@
                       ReadOnlyVariables="User::DropPath,User::FileMask"
                       ReadWriteVariables="User::FileName">
                       <ProjectItem
-                        Name="Properties\AssemblyInfo.cs"
-                        Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_16bbecfe2cc8413490876c23c55ff7d9")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_16bbecfe2cc8413490876c23c55ff7d9")]
-[assembly: AssemblyCopyright("Copyright @  2021")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                        Name="Properties\Settings.settings"
+                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
                       <ProjectItem
                         Name="Properties\Resources.resx"
                         Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1431,14 +1615,35 @@ namespace ST_16bbecfe2cc8413490876c23c55ff7d9.Properties {
     }
 }]]></ProjectItem>
                       <ProjectItem
-                        Name="Properties\Settings.settings"
-                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                        Name="Properties\AssemblyInfo.cs"
+                        Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_16bbecfe2cc8413490876c23c55ff7d9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_16bbecfe2cc8413490876c23c55ff7d9")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
                       <ProjectItem
                         Name="Properties\Resources.Designer.cs"
                         Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1633,7 +1838,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </DTS:EventHandlers>
           <DTS:ObjectData>
             <WMIEWTaskData
-              WMIConnectionName="{CAC52F4B-E5FC-4D6F-AD02-CE1F7618ECB9}"
+              WMIConnectionName="{7FA3B567-E4A3-4462-9171-CAD6FF1A4F58}"
               WQLQuerySourceType="Variable"
               WQLQuerySource="User::WqlQuerySource" />
           </DTS:ObjectData>
@@ -1643,23 +1848,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{EBC0DFD1-999F-471C-9304-DC4BA448E8BF}"
-          DTS:From="Package\For Loop Container\Watch For Incoming Excel File"
+          DTS:DTSID="{67A6303A-E4FF-4B4B-835A-FF627B187D42}"
+          DTS:From="Package\For Loop Container\Watch For Incoming Text File"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\For Loop Container\Move Data File To Processing Directory" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint1]"
-          DTS:CreationName=""
-          DTS:DTSID="{B7311A4C-1278-4FF1-B806-619017D3D785}"
-          DTS:From="Package\For Loop Container\Create Staging Table"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\For Loop Container\Load Excel Data to Staging Table" />
-        <DTS:PrecedenceConstraint
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{8BA386DC-19AB-45FA-A7A5-E2C8871DEE0D}"
+          DTS:DTSID="{1390ED8F-CAB6-4E56-BF19-4C1A0D5E5D78}"
           DTS:From="Package\For Loop Container\Move Data File To Processing Directory"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -1667,15 +1864,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{50BB83C8-9931-40AE-B5AD-A27114C75D3E}"
-          DTS:From="Package\For Loop Container\Drop Staging Table"
+          DTS:DTSID="{B8DBB053-D4CF-4244-B1AE-C9905B84C201}"
+          DTS:From="Package\For Loop Container\Load Data From Text File To Staging Table"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\For Loop Container\Move Processed File To Archive Directory" />
+          DTS:To="Package\For Loop Container\Move Data From Staging Table To Final Table" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{B4579B31-DCF6-4414-ABA2-0AC33E90761F}"
+          DTS:DTSID="{4232049C-E5E4-49EB-8040-E0205530729D}"
           DTS:From="Package\For Loop Container\Move Data From Staging Table To Final Table"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
@@ -1683,11 +1880,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
-          DTS:DTSID="{59E1323B-1010-4DAC-BEE5-96DFC5CF09EA}"
-          DTS:From="Package\For Loop Container\Load Excel Data to Staging Table"
+          DTS:DTSID="{244A205B-8758-4CC2-854B-87FCF95BF9A4}"
+          DTS:From="Package\For Loop Container\Drop Staging Table"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 4"
-          DTS:To="Package\For Loop Container\Move Data From Staging Table To Final Table" />
+          DTS:To="Package\For Loop Container\Move Processed File To Archive Directory" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[{2BFBF7F4-22EB-41CF-BDB2-7D05AF00C841\}]"
+          DTS:CreationName=""
+          DTS:DTSID="{4f032a6a-f82f-4c46-86ea-f4b6829c0a4a}"
+          DTS:From="Package\For Loop Container\Create Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="{2BFBF7F4-22EB-41CF-BDB2-7D05AF00C841}"
+          DTS:To="Package\For Loop Container\Load Data From Text File To Staging Table" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1695,7 +1900,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[OnError]"
       DTS:CreationName="OnError"
-      DTS:DTSID="{D923458E-1A40-4C7A-9FC3-BCA75CD0C918}"
+      DTS:DTSID="{52BF1843-B40C-4140-9CBB-679E8B5E594F}"
       DTS:EventID="0"
       DTS:EventName="OnError"
       DTS:LocaleID="-1">
@@ -1703,7 +1908,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{EA6BE600-18C9-4ED2-91FC-F719C0949C3C}"
+          DTS:DTSID="{0C5EC96B-F608-496D-AAF5-D1C57474FE96}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -1716,7 +1921,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[WMIEventWatcherEventOccurred]"
       DTS:CreationName="WMIEventWatcherEventOccurred"
-      DTS:DTSID="{F0F67213-BEB9-4605-85E4-2DFA8FA2AF93}"
+      DTS:DTSID="{D8140701-9D6E-43EE-9380-8A81F5383BE2}"
       DTS:EventID="-1"
       DTS:EventName="WMIEventWatcherEventOccurred"
       DTS:LocaleID="-1">
@@ -1724,7 +1929,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{75C79D5C-9D2E-4955-AF05-73B562A779A2}"
+          DTS:DTSID="{C75CB2B5-89A7-4469-80A3-F6408F83D2C7}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -1748,21 +1953,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
-          Id="Package\For Loop Container\Create Staging Table"
-          TopLeft="234,222" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\For Loop Container\Drop Staging Table"
-          TopLeft="258,484" />
-        <NodeLayout
-          Size="235,42"
-          Id="Package\For Loop Container\Load Excel Data to Staging Table"
-          TopLeft="214,299" />
-        <NodeLayout
           Size="263,42"
           Id="Package\For Loop Container\Move Data File To Processing Directory"
-          TopLeft="198,148" />
+          TopLeft="211,126" />
         <NodeLayout
           Size="294,42"
           Id="Package\For Loop Container\Move Data From Staging Table To Final Table"
@@ -1770,14 +1963,44 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="273,42"
           Id="Package\For Loop Container\Move Processed File To Archive Directory"
-          TopLeft="210,562" />
+          TopLeft="200,534" />
         <NodeLayout
           Size="221,42"
-          Id="Package\For Loop Container\Watch For Incoming Excel File"
-          TopLeft="215,53" />
+          Id="Package\For Loop Container\Watch For Incoming Text File"
+          TopLeft="236,54" />
         <EdgeLayout
           Id="Package\For Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="327.5,95">
+          TopLeft="344.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="281,42"
+          Id="Package\For Loop Container\Load Data From Text File To Staging Table"
+          TopLeft="199,310" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\For Loop Container\Create Staging Table"
+          TopLeft="245,215" />
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[{2BFBF7F4-22EB-41CF-BDB2-7D05AF00C841\}]"
+          TopLeft="339.75,257">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1798,96 +2021,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint1]"
-          TopLeft="330.25,264">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="329.25,190">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="344.5,526">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="339.75,430">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
-          TopLeft="334.25,341">
+          TopLeft="341.25,168">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1907,13 +2042,83 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="338.25,352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,50"
+          Id="Package\For Loop Container\Drop Staging Table"
+          TopLeft="240.636363636364,455.090909090909" />
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="335.568181818182,430">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.090909090909"
+              Start="0,0"
+              End="0,17.590909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.590909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="335.318181818182,505.090909090909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.909090909091"
+              Start="0,0"
+              End="0,21.409090909091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.409090909091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="718,687"
-          Size="718,730"
+          PanelSize="584,631"
+          Size="584,674"
           Id="Package\For Loop Container"
-          TopLeft="227,47" />
+          TopLeft="52.8181818181817,597.272727272727" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1929,22 +2134,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\For Loop Container\Load Excel Data to Staging Table">
+  <DtsEventHandler
+    design-time-name="Package\For Loop Container\Watch For Incoming Text File.EventHandlers[WMIEventWatcherEventOccurred]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\For Loop Container\Load Excel Data to Staging Table\Source - '001-100$'"
-          TopLeft="35,5.5" />
+          Size="180,42"
+          Id="Package\For Loop Container\Watch For Incoming Text File.EventHandlers[WMIEventWatcherEventOccurred]\Check File Availability"
+          TopLeft="477,351" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\For Loop Container\Load Data From Text File To Staging Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="230,42"
-          Id="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING"
-          TopLeft="5.50000000000001,107.5" />
+          Size="261,42"
+          Id="Package\For Loop Container\Load Data From Text File To Staging Table\Destination - VENTAS_TEXT_STAGING"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\For Loop Container\Load Data From Text File To Staging Table\Source - TAB_401-500_txt"
+          TopLeft="34.5,5.5" />
         <EdgeLayout
-          Id="Package\For Loop Container\Load Excel Data to Staging Table.Paths[Excel Source Output]"
-          TopLeft="120.5,47.5">
+          Id="Package\For Loop Container\Load Data From Text File To Staging Table.Paths[Flat File Source Output]"
+          TopLeft="136,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1961,38 +2178,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\For Loop Container\Load Excel Data to Staging Table\Destination - VENTAS_STAGING">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\For Loop Container\Watch For Incoming Excel File.EventHandlers[WMIEventWatcherEventOccurred]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="180,42"
-          Id="Package\For Loop Container\Watch For Incoming Excel File.EventHandlers[WMIEventWatcherEventOccurred]\Check File Availability"
-          TopLeft="477,351" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
