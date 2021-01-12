@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[VENTAS]
 (
-	[Id] INT NOT NULL, 
+	[Id] INT IDENTITY NOT NULL, 
     [Factura] INT NOT NULL, 
     [Fecha] DATE NOT NULL, 
     [FechaVencimiento] DATE NOT NULL, 
     [Cliente] NCHAR(5) NOT NULL, 
-    [Producto ] NCHAR(6) NOT NULL, 
+    [Producto] NCHAR(7) NOT NULL, 
     [Cantidad] INT NOT NULL, 
     [Moneda] NCHAR(3) NOT NULL, 
     [Precio] DECIMAL(30, 5) NOT NULL, 

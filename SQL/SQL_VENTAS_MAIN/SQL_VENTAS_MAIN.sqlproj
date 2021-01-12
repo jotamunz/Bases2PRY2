@@ -59,6 +59,5 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="VENTAS.sql" />
-    <Build Include="VENTAS_STAGING.sql" />
   </ItemGroup>
 </Project>
