@@ -58,6 +58,6 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="VENTAS_CR.sql" />
+    <Build Include="VENTAS.sql" />
   </ItemGroup>
 </Project>

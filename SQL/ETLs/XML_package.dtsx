@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="XML_package"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{D5AF6233-5D49-4774-AC38-C1E3A9B9BA54}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{58C2709D-F59B-4A8D-823C-DAB83AFFF78A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JOS-PC.SQL_VENTAS_MAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9D417868-9747-4B95-9893-CAF1D5A36399}"
+      DTS:ObjectName="JOS-PC.SQL_VENTAS_MAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JOS-PC;Initial Catalog=SQL_VENTAS_MAIN;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[WMI Connection Manager]"
       DTS:CreationName="WMI"
@@ -177,18 +187,38 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\Data Flow Task"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{F6F8F43A-AFA1-45C5-80E5-25DA087278C0}"
-          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:refId="Package\For Loop Container\Create Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{54d73e72-df5f-49b5-b63a-ca6d2792d168}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Data Flow Task"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          DTS:ObjectName="Create Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
-            <pipeline
-              version="1" />
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9D417868-9747-4B95-9893-CAF1D5A36399}"
+              SQLTask:SqlStatementSource="CREATE TABLE [dbo].[VENTAS_XML_STAGING] (&#xA;    [Factura]        NVARCHAR (255) NOT NULL,&#xA;    [Año]            NVARCHAR (255) NOT NULL,&#xA;    [Mes]            NVARCHAR (255) NOT NULL,&#xA;    [Dia]            NVARCHAR (255) NOT NULL,&#xA;    [AñoVencimiento] NVARCHAR (255) NOT NULL,&#xA;    [MesVencimiento] NVARCHAR (255) NOT NULL,&#xA;    [DiaVencimiento] NVARCHAR (255) NOT NULL,&#xA;    [Cliente]        NVARCHAR (255) NOT NULL,&#xA;    [Producto]       NVARCHAR (255) NOT NULL,&#xA;    [Cantidad]       NVARCHAR (255) NOT NULL,&#xA;    [Moneda]         NVARCHAR (255) NULL,&#xA;    [Precio]         NVARCHAR (255) NOT NULL,&#xA;    [Total]          NVARCHAR (255) NOT NULL,&#xA;    [Almacén]        NVARCHAR (255) NOT NULL,&#xA;    [Vendedor]       NVARCHAR (255) NOT NULL,&#xA;    [TotalUSD]       NVARCHAR (255) NOT NULL,&#xA;    [Impuesto]       NVARCHAR (255) NOT NULL,&#xA;    [ImpuestoUSD]    NVARCHAR (255) NOT NULL,&#xA;    [TipoDeCambio]   NVARCHAR (255) NOT NULL,&#xA;    [Ganacia]        NVARCHAR (255) NOT NULL,&#xA;    [GananciaUSD]    NVARCHAR (255) NOT NULL&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Drop Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{785d1a87-82e9-4179-a9d0-e985731e30cc}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9D417868-9747-4B95-9893-CAF1D5A36399}"
+              SQLTask:SqlStatementSource="DROP TABLE [dbo].[VENTAS_XML_STAGING]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -213,6 +243,1113 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\For Loop Container\Move Data From Staging Table To Final Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{65FEC29F-8726-48AA-907E-A24C6303CC4D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Move Data From Staging Table To Final Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9D417868-9747-4B95-9893-CAF1D5A36399}"
+              SQLTask:SqlStatementSource="INSERT INTO VENTAS (&#xA;    [Factura],&#xA;    [Fecha],&#xA;    [FechaVencimiento],&#xA;    [Cliente],&#xA;    [Producto],&#xA;    [Cantidad],&#xA;    [Moneda],&#xA;    [Precio],&#xA;    [Total],&#xA;    [Almacen],&#xA;    [Vendedor],&#xA;    [TotalUSD],&#xA;    [Impuesto],&#xA;    [ImpuestoUSD],&#xA;    [TipoDeCambio],&#xA;    [Ganancia],&#xA;    [GananciaUSD]&#xA;&#xA;)&#xA;SELECT&#xA;CAST (T1.Factura AS INT),&#xA;CONVERT (DATE, RIGHT(N'00' + T1.Dia,2) + N'/'+ RIGHT(N'00' + T1.Mes,2) + N'/' + T1.Año, 103),&#xA;CONVERT (DATE, RIGHT(N'00' + T1.DiaVencimiento,2) + N'/'+ RIGHT(N'00' + T1.MesVencimiento,2) + N'/' + T1.AñoVencimiento, 103),&#xA;CAST (T1.Cliente AS NCHAR(5)),&#xA;CAST ((N'0000' + T1.Producto) AS NCHAR(7)),&#xA;CAST ((CONVERT(DECIMAL(10,2), REPLACE(T1.Cantidad, ',', ''))) AS INT),&#xA;CAST (ISNULL(T1.Moneda, N'CRC') AS NCHAR (3)),&#xA;CAST (REPLACE(T1.Precio, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Total, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (T1.Almacén AS INT),&#xA;CAST (T1.Vendedor AS INT),&#xA;CAST (REPLACE(T1.TotalUSD, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.Impuesto, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.ImpuestoUSD, ',', '') AS DECIMAL (30, 5)),&#xA;CAST (REPLACE(T1.TipoDeCambio, ',', '') AS DECIMAL (30, 5)),&#xA;CAST ((REPLACE(LEFT(REPLACE(T1.Ganacia, ',', ''), LEN(REPLACE(T1.Ganacia, ',', '')) - CHARINDEX('.', REVERSE(REPLACE(T1.Ganacia, ',', '')))), '.', '') + RIGHT(REPLACE(T1.Ganacia, ',', ''), CHARINDEX('.', REVERSE(REPLACE(T1.Ganacia, ',', ''))))) AS DECIMAL (30, 5)),&#xA;CAST ((REPLACE(LEFT(REPLACE(T1.GananciaUSD, ',', ''), LEN(REPLACE(T1.GananciaUSD, ',', '')) - CHARINDEX('.', REVERSE(REPLACE(T1.GananciaUSD, ',', '')))), '.', '') + RIGHT(REPLACE(T1.GananciaUSD, ',', ''), CHARINDEX('.', REVERSE(REPLACE(T1.GananciaUSD, ',', ''))))) AS DECIMAL (30, 5))&#xA;FROM [dbo].[VENTAS_XML_STAGING] AS T1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Move Data From XML To Staging Table"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F6F8F43A-AFA1-45C5-80E5-25DA087278C0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Move Data From XML To Staging Table"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[VENTAS_XML_STAGING]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[JOS-PC.SQL_VENTAS_MAIN]"
+                      connectionManagerRefId="Package.ConnectionManagers[JOS-PC.SQL_VENTAS_MAIN]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Factura]"
+                          cachedDataType="ui4"
+                          cachedName="Factura"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Factura]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Factura]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cliente]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Cliente"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cliente]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Producto]"
+                          cachedDataType="ui2"
+                          cachedName="Producto"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Producto]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Cantidad"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cantidad]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Moneda]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Moneda"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Moneda]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Precio]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Precio"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Precio]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Total"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Total]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vendedor]"
+                          cachedDataType="i2"
+                          cachedName="Vendedor"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Vendedor]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TotalUSD"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TotalUSD]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Impuesto]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Impuesto"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Impuesto]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ImpuestoUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ImpuestoUSD"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[ImpuestoUSD]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TipoDeCambio]"
+                          cachedDataType="decimal"
+                          cachedName="TipoDeCambio"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TipoDeCambio]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TipoDeCambio]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GananciaUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="GananciaUSD"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[GananciaUSD]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Año]"
+                          cachedDataType="ui2"
+                          cachedName="Año"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Año]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Mes]"
+                          cachedDataType="ui1"
+                          cachedName="Mes"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Mes]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dia]"
+                          cachedDataType="ui1"
+                          cachedName="Dia"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dia]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Dia]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AñoVencimiento]"
+                          cachedDataType="ui2"
+                          cachedName="AñoVencimiento"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AñoVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[AñoVencimiento]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MesVencimiento]"
+                          cachedDataType="ui1"
+                          cachedName="MesVencimiento"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MesVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[MesVencimiento]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiaVencimiento]"
+                          cachedDataType="ui1"
+                          cachedName="DiaVencimiento"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiaVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[DiaVencimiento]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Almacén]"
+                          cachedDataType="ui1"
+                          cachedName="Almacén"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacén]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Almacén]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ganacia]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Ganacia"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganacia]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Ganacia]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Factura]"
+                          dataType="wstr"
+                          length="255"
+                          name="Factura" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                          dataType="wstr"
+                          length="255"
+                          name="Producto" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cantidad" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                          dataType="wstr"
+                          length="255"
+                          name="Moneda" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                          dataType="wstr"
+                          length="255"
+                          name="Precio" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                          dataType="wstr"
+                          length="255"
+                          name="Total" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                          dataType="wstr"
+                          length="255"
+                          name="Vendedor" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="TotalUSD" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                          dataType="wstr"
+                          length="255"
+                          name="Impuesto" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="ImpuestoUSD" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TipoDeCambio]"
+                          dataType="wstr"
+                          length="255"
+                          name="TipoDeCambio" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="GananciaUSD" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                          dataType="wstr"
+                          length="255"
+                          name="Año" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          dataType="wstr"
+                          length="255"
+                          name="Mes" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dia]"
+                          dataType="wstr"
+                          length="255"
+                          name="Dia" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AñoVencimiento]"
+                          dataType="wstr"
+                          length="255"
+                          name="AñoVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MesVencimiento]"
+                          dataType="wstr"
+                          length="255"
+                          name="MesVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiaVencimiento]"
+                          dataType="wstr"
+                          length="255"
+                          name="DiaVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacén]"
+                          dataType="wstr"
+                          length="255"
+                          name="Almacén" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganacia]"
+                          dataType="wstr"
+                          length="255"
+                          name="Ganacia" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+                  name="XML Source"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML data used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLData"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable used by the XML source adapter to specify XML data."
+                      name="XMLDataVariable">User::ProcessingFile</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how the XML source adapter gets XML data."
+                      name="AccessMode">1</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML schema definition used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLSchemaDefinition">C:\Users\JOS\Desktop\Bases2PRY2\SQL\Files\Resources\201-300.xsd</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Identifies whether or not to use inline schema."
+                      name="UseInlineSchema">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how XML integer types are mapped."
+                      name="XMLIntegerMapping"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row]"
+                      name="row">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">row</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Factura]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Factura]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Factura]"
+                          name="Factura"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Año]"
+                          dataType="ui2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Año]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Año]"
+                          name="Año"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Mes]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Mes]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Mes]"
+                          name="Mes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Dia]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Dia]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Dia]"
+                          name="Dia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[AñoVencimiento]"
+                          dataType="ui2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[AñoVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[AñoVencimiento]"
+                          name="AñoVencimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[MesVencimiento]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[MesVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[MesVencimiento]"
+                          name="MesVencimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[DiaVencimiento]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[DiaVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[DiaVencimiento]"
+                          name="DiaVencimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Cliente]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cliente]"
+                          name="Cliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Producto]"
+                          dataType="ui2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Producto]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Producto]"
+                          name="Producto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cantidad]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Cantidad]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Cantidad]"
+                          name="Cantidad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Moneda]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Moneda]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Moneda]"
+                          name="Moneda"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Precio]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Precio]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Precio]"
+                          name="Precio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Total]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Total]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Total]"
+                          name="Total"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Almacén]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Almacén]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Almacén]"
+                          name="Almacén"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Vendedor]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Vendedor]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Vendedor]"
+                          name="Vendedor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TotalUSD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[TotalUSD]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TotalUSD]"
+                          name="TotalUSD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Impuesto]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Impuesto]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Impuesto]"
+                          name="Impuesto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[ImpuestoUSD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[ImpuestoUSD]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[ImpuestoUSD]"
+                          name="ImpuestoUSD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TipoDeCambio]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[TipoDeCambio]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[TipoDeCambio]"
+                          name="TipoDeCambio"
+                          scale="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Ganacia]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Ganacia]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[Ganacia]"
+                          name="Ganacia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[GananciaUSD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[GananciaUSD]"
+                          length="255"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].Columns[GananciaUSD]"
+                          name="GananciaUSD"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Factura]"
+                          dataType="ui4"
+                          name="Factura">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt32</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Año]"
+                          dataType="ui2"
+                          name="Año">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt16</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Mes]"
+                          dataType="ui1"
+                          name="Mes">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Byte</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Dia]"
+                          dataType="ui1"
+                          name="Dia">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Byte</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[AñoVencimiento]"
+                          dataType="ui2"
+                          name="AñoVencimiento">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt16</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[MesVencimiento]"
+                          dataType="ui1"
+                          name="MesVencimiento">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Byte</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[DiaVencimiento]"
+                          dataType="ui1"
+                          name="DiaVencimiento">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Byte</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Cliente]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cliente">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Producto]"
+                          dataType="ui2"
+                          name="Producto">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt16</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Cantidad]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cantidad">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Moneda]"
+                          dataType="wstr"
+                          length="255"
+                          name="Moneda">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Precio]"
+                          dataType="wstr"
+                          length="255"
+                          name="Precio">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Total]"
+                          dataType="wstr"
+                          length="255"
+                          name="Total">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Almacén]"
+                          dataType="ui1"
+                          name="Almacén">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Byte</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Vendedor]"
+                          dataType="i2"
+                          name="Vendedor">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Int16</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[TotalUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="TotalUSD">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Impuesto]"
+                          dataType="wstr"
+                          length="255"
+                          name="Impuesto">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[ImpuestoUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="ImpuestoUSD">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[TipoDeCambio]"
+                          dataType="decimal"
+                          name="TipoDeCambio"
+                          scale="10">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Decimal</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[Ganacia]"
+                          dataType="wstr"
+                          length="255"
+                          name="Ganacia">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row].ExternalColumns[GananciaUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="GananciaUSD">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output]"
+                      isErrorOut="true"
+                      name="row Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">row</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Factura]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Factura]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Factura]"
+                          name="Factura" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Año]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Año]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Año]"
+                          name="Año" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Mes]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Mes]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Mes]"
+                          name="Mes" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Dia]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Dia]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Dia]"
+                          name="Dia" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[AñoVencimiento]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[AñoVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[AñoVencimiento]"
+                          name="AñoVencimiento" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[MesVencimiento]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[MesVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[MesVencimiento]"
+                          name="MesVencimiento" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[DiaVencimiento]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[DiaVencimiento]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[DiaVencimiento]"
+                          name="DiaVencimiento" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Cliente]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Cliente]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Cliente]"
+                          name="Cliente" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Producto]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Producto]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Producto]"
+                          name="Producto" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Cantidad]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Cantidad]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Cantidad]"
+                          name="Cantidad" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Moneda]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Moneda]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Moneda]"
+                          name="Moneda" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Precio]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Precio]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Precio]"
+                          name="Precio" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Total]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Total]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Total]"
+                          name="Total" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Almacén]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Almacén]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Almacén]"
+                          name="Almacén" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Vendedor]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Vendedor]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Vendedor]"
+                          name="Vendedor" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[TotalUSD]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[TotalUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[TotalUSD]"
+                          name="TotalUSD" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Impuesto]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Impuesto]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Impuesto]"
+                          name="Impuesto" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ImpuestoUSD]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[ImpuestoUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ImpuestoUSD]"
+                          name="ImpuestoUSD" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[TipoDeCambio]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[TipoDeCambio]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[TipoDeCambio]"
+                          name="TipoDeCambio" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Ganacia]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Ganacia]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[Ganacia]"
+                          name="Ganacia" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[GananciaUSD]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[GananciaUSD]"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[GananciaUSD]"
+                          name="GananciaUSD" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Factura]"
+                          dataType="nText"
+                          name="Factura" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Año]"
+                          dataType="nText"
+                          name="Año" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Mes]"
+                          dataType="nText"
+                          name="Mes" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Dia]"
+                          dataType="nText"
+                          name="Dia" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[AñoVencimiento]"
+                          dataType="nText"
+                          name="AñoVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[MesVencimiento]"
+                          dataType="nText"
+                          name="MesVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[DiaVencimiento]"
+                          dataType="nText"
+                          name="DiaVencimiento" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Cliente]"
+                          dataType="nText"
+                          name="Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Producto]"
+                          dataType="nText"
+                          name="Producto" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Cantidad]"
+                          dataType="nText"
+                          name="Cantidad" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Moneda]"
+                          dataType="nText"
+                          name="Moneda" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Precio]"
+                          dataType="nText"
+                          name="Precio" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Total]"
+                          dataType="nText"
+                          name="Total" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Almacén]"
+                          dataType="nText"
+                          name="Almacén" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Vendedor]"
+                          dataType="nText"
+                          name="Vendedor" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[TotalUSD]"
+                          dataType="nText"
+                          name="TotalUSD" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Impuesto]"
+                          dataType="nText"
+                          name="Impuesto" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[ImpuestoUSD]"
+                          dataType="nText"
+                          name="ImpuestoUSD" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[TipoDeCambio]"
+                          dataType="nText"
+                          name="TipoDeCambio" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[Ganacia]"
+                          dataType="nText"
+                          name="Ganacia" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row Error Output].ExternalColumns[GananciaUSD]"
+                          dataType="nText"
+                          name="GananciaUSD" />
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Loop Container\Move Data From XML To Staging Table.Paths[row]"
+                  endId="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="row"
+                  startId="Package\For Loop Container\Move Data From XML To Staging Table\XML Source.Outputs[row]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\For Loop Container\Move Processed File To Archive Directory"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
@@ -221,7 +1358,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Move Processed File To Archive Directory"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -283,14 +1420,35 @@
                       ReadOnlyVariables="User::DropPath,User::FileMask"
                       ReadWriteVariables="User::FileName">
                       <ProjectItem
-                        Name="Properties\Settings.settings"
-                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                        Name="Properties\AssemblyInfo.cs"
+                        Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_16bbecfe2cc8413490876c23c55ff7d9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_16bbecfe2cc8413490876c23c55ff7d9")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
                       <ProjectItem
                         Name="Properties\Resources.resx"
                         Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -599,35 +1757,14 @@ namespace ST_16bbecfe2cc8413490876c23c55ff7d9.Properties {
     }
 }]]></ProjectItem>
                       <ProjectItem
-                        Name="Properties\AssemblyInfo.cs"
-                        Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_16bbecfe2cc8413490876c23c55ff7d9")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_16bbecfe2cc8413490876c23c55ff7d9")]
-[assembly: AssemblyCopyright("Copyright @  2021")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                        Name="Properties\Settings.settings"
+                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
                       <ProjectItem
                         Name="Properties\Resources.Designer.cs"
                         Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -837,6 +1974,46 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\For Loop Container\Move Data File To Processing Directory" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{8246B16D-0BAC-4BE7-A513-3E2482FE3217}"
+          DTS:From="Package\For Loop Container\Move Data File To Processing Directory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\For Loop Container\Create Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5B023AAB-C804-4040-B18F-DAE25AECF0C7}"
+          DTS:From="Package\For Loop Container\Create Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\For Loop Container\Move Data From XML To Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{D80123EA-11F2-49D4-865F-0220FFAADF6A}"
+          DTS:From="Package\For Loop Container\Move Data From XML To Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\For Loop Container\Move Data From Staging Table To Final Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{A1232AC7-5C47-47BC-A439-AA31D4E61761}"
+          DTS:From="Package\For Loop Container\Move Data From Staging Table To Final Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\For Loop Container\Drop Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{A1B98EDE-48A1-4D0B-8BDA-EAC8ED709F6D}"
+          DTS:From="Package\For Loop Container\Drop Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\For Loop Container\Move Processed File To Archive Directory" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -895,7 +2072,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="263,42"
+          Id="Package\For Loop Container\Move Data From XML To Staging Table"
+          TopLeft="202,293" />
         <NodeLayout
           Size="263,42"
           Id="Package\For Loop Container\Move Data File To Processing Directory"
@@ -931,9 +2112,139 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="151,42"
-          Id="Package\For Loop Container\Data Flow Task"
-          TopLeft="179,306" />
+          Size="247,53"
+          Id="Package\For Loop Container\Move Data From Staging Table To Final Table"
+          TopLeft="214,376" />
+        <NodeLayout
+          Size="303,42"
+          Id="Package\For Loop Container\Drop Staging Table"
+          TopLeft="200,462" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\For Loop Container\Create Staging Table"
+          TopLeft="244,227" />
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="337.5,429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,33"
+              Start="0,0"
+              End="14,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="10,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,16.5"
+                    Point2="14,16.5"
+                    Point3="14,20.5" />
+                  <mssgle:LineSegment
+                    End="14,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="349,504">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="331,190">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="333,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="335.5,335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -956,6 +2267,44 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\For Loop Container\Move Data From XML To Staging Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\For Loop Container\Move Data From XML To Staging Table\XML Source"
+          TopLeft="462,38" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination"
+          TopLeft="436,237" />
+        <EdgeLayout
+          Id="Package\For Loop Container\Move Data From XML To Staging Table.Paths[row]"
+          TopLeft="525.25,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,157"
+              Start="0,0"
+              End="0,149.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,149.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <DtsEventHandler
     design-time-name="Package\For Loop Container\Watch For Incoming XML File.EventHandlers[WMIEventWatcherEventOccurred]">
     <LayoutInfo>
@@ -968,5 +2317,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Container\Move Data From XML To Staging Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
