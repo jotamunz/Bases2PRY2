@@ -6,6 +6,7 @@
             <p>
                 Add a new purchase. Enter the client's code, currency of the sale and tax 
             </p>
+            <div [style.color]="'red'" *ngIf="errors.length != 0">{{errors}}</div>
             <form (ngSubmit)="onSubmit()" #salesGoalForm="ngForm">
                 <!-- Client code input -->
                 <div class="input-group mb-3">

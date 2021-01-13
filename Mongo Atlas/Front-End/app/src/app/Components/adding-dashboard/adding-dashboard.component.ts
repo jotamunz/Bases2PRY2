@@ -10,7 +10,7 @@ import { PurchasesService } from '../../Services/purchases.service';
   styleUrls: ['./adding-dashboard.component.css']
 })
 export class AddingDashboardComponent implements OnInit {
-  public errors : String[] = [];
+  public errors : String = "";
   public purchase : Purchase = {
     clientCode : "",
     currency : 1,
@@ -61,6 +61,7 @@ export class AddingDashboardComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+        this.errors = err.error.message
       }
     );
     this.resetPurchase();
