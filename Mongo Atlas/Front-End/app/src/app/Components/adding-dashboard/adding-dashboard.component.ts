@@ -55,6 +55,11 @@ export class AddingDashboardComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
+    
+    if (this.purchase.tax != null){
+      this.purchase.tax = this.purchase.tax/100
+    }
+
     this.purchasesService.addPurchase(this.purchase).subscribe(
       (response: any) => {
         console.log(response);
