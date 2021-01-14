@@ -1,0 +1,17 @@
+{
+  "name": "firebaseetl",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Firebase ETL service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Andrés Aguilar Moya",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "firebase": "^8.2.2"
+  }
+}
