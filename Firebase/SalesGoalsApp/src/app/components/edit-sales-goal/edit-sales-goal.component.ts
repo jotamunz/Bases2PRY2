@@ -59,7 +59,6 @@ export class EditSalesGoalComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
-    // console.log(this.salesGoal);
     try {
       this.salesGoal.month = parseInt(this.salesGoal.month.toString());
       // Validate data
