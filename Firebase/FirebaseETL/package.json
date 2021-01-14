@@ -12,7 +12,8 @@
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
-    "firebase": "^8.2.2"
+    "firebase": "^8.2.2",
+    "mssql": "^6.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { connectToMSSQL } = require('./config/mssqlConnection');
 const listenForSalesGoalsChanges = require('./firebase/salesGoals');
-const dotenv = require('dotenv');
 require('colors');
 
-// Initialize environment variables
-dotenv.config();
+// Connect to MSSQL
+connectToMSSQL();
 
+// Listen for changes
 listenForSalesGoalsChanges();
