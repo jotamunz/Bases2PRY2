@@ -1,4 +1,8 @@
-import firebase from 'firebase';
-import 'colors';
+const listenForSalesGoalsChanges = require('./firebase/salesGoals');
+const dotenv = require('dotenv');
+require('colors');
 
-console.log(`Connected to Firebase...`.yellow.bold);
+// Initialize environment variables
+dotenv.config();
+
+listenForSalesGoalsChanges();
