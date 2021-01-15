@@ -1,0 +1,150 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/15/2021 2:23:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JOTA-PC"
+  DTS:CreatorName="Jota-PC\Jota"
+  DTS:DTSID="{8872C65A-9391-41EA-A5E0-6AE855BE8B18}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A20C79EA-DC24-4454-A021-F1B92C2578C6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CurrencyExchangeTemp.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1A1E2716-7456-4A2B-A61E-A6E2F8893588}"
+      DTS:ObjectName="CurrencyExchangeTemp.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Projects\Coding Projects\Mongo Projects\Bases2PRY2\BCCR\BCCR Import\CurrencyExchangeTemp.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{B6846657-7E10-44FE-9C7C-38BC979E94D2}"
+      DTS:ObjectName="HTTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx?WSDL">
+          <DTS:HttpConnection
+            DTS:ServerURL="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx?WSDL">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5pbWdOzeBE2937qjpp1zwAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB4IeistQ1ruQL/DqLv9P2re3kM1X1rt9mAHNVRSoLvDgAAAAAOgAAAAAIAACAAAABtTbGDn19wo28/KpLB+PMmQnKrj7CMdsUh6nsEisE6GBAAAACO+3EewwQRJ6LCwLsMw1+iQAAAAOfbl2f+tuvppUTIOHM00S18keRd90+hRmOcnYVKcESJc36UNnXA55luq5GsF6n2rP6wgsOtJGhvEPan9sQnNic</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5pbWdOzeBE2937qjpp1zwAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADTvARyRqw2FxTcw6j8J9mQXs3RuofnObHjewFPM3pEtAAAAAAOgAAAAAIAACAAAADwkwpB3OdI6pPSrzcANzyILcnfzmQT0XhaEScFAYynCBAAAACRW0WI+ejxrGB4em77azN+QAAAAA5ctyuvMljMciuUiGEyv2a8/GpFvxcoPJcm694feUUi3UsX6fykkHfcNizzm9nGP8Rs6zoTLuC2Knt8HMaDwzA</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Web Service Task"
+      DTS:CreationName="Microsoft.WebServiceTask"
+      DTS:Description="Web Service Task"
+      DTS:DTSID="{AC3DB2B2-D421-4683-B7E0-61C3D304E47F}"
+      DTS:ExecutableType="Microsoft.WebServiceTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Web Service Task"
+      DTS:TaskContact="Web Service Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WSTask:WebServiceTaskData
+          WSTask:ConnectionName="{B6846657-7E10-44FE-9C7C-38BC979E94D2}"
+          WSTask:Service="wsindicadoreseconomicos"
+          WSTask:WSDLFile="D:\Projects\Coding Projects\Mongo Projects\Bases2PRY2\BCCR\BCCR Import\CurrencyExchange.wsdl"
+          WSTask:OverwriteWSDLFile="True"
+          WSTask:OutputLocation="CurrencyExchangeTemp.xml" xmlns:WSTask="www.microsoft.com/sqlserver/dts/tasks/webservicetask">
+          <WSTask:MethodInfo
+            WSTask:MethodName="ObtenerIndicadoresEconomicosXML"
+            WSTask:MessageName="">
+            <WSTask:Documentation>Obtiene los valores del indicador econÃ³mico deseado (XML) para un rango de fecha determinado con formato dd/mm/yyyy (dÃ­a/mes/aÃ±o). ParÃ¡metros de entrada: Indicador de tipo numÃ©rico entero positivo, Fecha de inicio de tipo string , Fecha final de tipo string, Nombre de la persona que utiliza el servicio, SubNiveles (S = Si o N = No) para indicar si desea o no obtener los subniveles del indicador a consultar, correo electrÃ³nico y token de suscripciÃ³n. Retorna un XML con los siguientes campos: CÃ³digo de la variable tipo string, fecha tipo date y el valor tipo numeric. TODOS los campos son obligatorios, de no ingresar alguno de los parÃ¡metros el valor de retorno del servicio serÃ¡ Nothing. </WSTask:Documentation>
+            <WSTask:ParamInfo
+              WSTask:Name="Indicador"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="0">
+              <WSTask:PrimitiveValue>317</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="FechaInicio"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="1">
+              <WSTask:PrimitiveValue>15/01/2021</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="FechaFinal"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="2">
+              <WSTask:PrimitiveValue>15/01/2021</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="Nombre"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="3">
+              <WSTask:PrimitiveValue>N</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="SubNiveles"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="4">
+              <WSTask:PrimitiveValue>N</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="CorreoElectronico"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="5">
+              <WSTask:PrimitiveValue>proyectoscompartidostec@gmail.com</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="Token"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="6">
+              <WSTask:PrimitiveValue>1ZICS0OUT7</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+          </WSTask:MethodInfo>
+        </WSTask:WebServiceTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Web Service Task"
+          TopLeft="349.333319452074,58.9333338016934" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
