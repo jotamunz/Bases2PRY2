@@ -57,7 +57,4 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
-  <ItemGroup>
-    <Build Include="VENTAS.sql" />
-  </ItemGroup>
 </Project>
