@@ -24,6 +24,17 @@ const ArticleSchema = mongoose.Schema(
 			type: Number,
 			required: true,
 			min: 0
+		},
+		profit: {
+			type: Number,
+			required: true,
+			min: 0
+		},
+		tax: {
+			type: Number,
+			required: true,
+			min: 0,
+			max: 1
 		}
 	},
 	{ _id: false }
@@ -48,17 +59,6 @@ const PurchaseSchema = mongoose.Schema({
 		type: Number,
 		required: true,
 		min: 0
-	},
-	profit: {
-		type: Number,
-		required: true,
-		min: 0
-	},
-	tax: {
-		type: Number,
-		required: true,
-		min: 0,
-		max: 1
 	},
 	date: {
 		type: Date,
