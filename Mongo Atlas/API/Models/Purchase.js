@@ -49,6 +49,11 @@ const PurchaseSchema = mongoose.Schema({
 		required: true,
 		min: 0
 	},
+	profit: {
+		type: Number,
+		required: true,
+		min: 0
+	},
 	tax: {
 		type: Number,
 		required: true,
