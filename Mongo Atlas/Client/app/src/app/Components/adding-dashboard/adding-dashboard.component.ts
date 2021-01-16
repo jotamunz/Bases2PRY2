@@ -41,6 +41,9 @@ export class AddingDashboardComponent implements OnInit {
 
   public submitArticle(){
     let temp : Article = JSON.parse(JSON.stringify(this.article));
+    if (temp.tax != null) {
+      temp.tax = temp.tax/100;
+    }
     this.purchase.articles = this.purchase.articles?.concat(temp);
     this.resetArticle();
     
@@ -56,12 +59,6 @@ export class AddingDashboardComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
-
-    
-    if (this.article.tax != null){
-      this.article.tax = this.article.tax/100
-    }
-
     this.purchasesService.addPurchase(this.purchase).subscribe(
       (response: any) => {
         console.log(response);
