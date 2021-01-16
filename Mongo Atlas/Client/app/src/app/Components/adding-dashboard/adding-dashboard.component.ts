@@ -14,14 +14,15 @@ export class AddingDashboardComponent implements OnInit {
   public purchase : Purchase = {
     clientCode : "",
     currency : 1,
-    tax : 0,
     articles : []
   };
 
   public article : Article = {
     articleCode : "",
     unitPrice : 0,
-    quantity : 0
+    quantity : 0,
+    tax : 0,
+    profit : 0
   }
 
 
@@ -55,9 +56,10 @@ export class AddingDashboardComponent implements OnInit {
   }
 
   public async onSubmit(): Promise<void> {
+
     
-    if (this.purchase.tax != null){
-      this.purchase.tax = this.purchase.tax/100
+    if (this.article.tax != null){
+      this.article.tax = this.article.tax/100
     }
 
     this.purchasesService.addPurchase(this.purchase).subscribe(
@@ -76,13 +78,14 @@ export class AddingDashboardComponent implements OnInit {
     this.article.articleCode = "";
     this.article.unitPrice = 0;
     this.article.quantity = 0;
+    this.article.profit = 0;
+    this.article.tax = 0;
   }
 
   private resetPurchase(){
     this.purchase = {
       clientCode : "",
       currency : 1,
-      tax : 0,
       articles : []
     };
   }

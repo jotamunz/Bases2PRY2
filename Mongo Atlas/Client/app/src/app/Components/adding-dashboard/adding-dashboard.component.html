@@ -41,25 +41,6 @@
                     </option>
                     </select>
                 </div>
-                <!-- Tax input -->
-                <label for="TaxSelect">Tax Porcentage</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"
-                        ><i class="fas fa-percentage"></i>
-                    </span>
-                    </div>
-                    <input
-                    type="number"
-                    step="1"
-                    name="tax"
-                    [(ngModel)]="purchase.tax"
-                    class="form-control"
-                    placeholder="Tax..."
-                    aria-label="Tax"
-                    aria-describedby="basic-addon1"
-                    />
-                </div>
                 <ul class="list-group">
                     <li *ngFor = "let article of purchase.articles ; let counter = index" class="list-group-item">
                         <h5>Article {{counter+1}}</h5>
@@ -108,6 +89,38 @@
                             class="form-control"
                             placeholder= {{article.quantity}}
                             aria-label="QuantityDisplay"
+                            aria-describedby="basic-addon3"
+                            />
+                        </div>
+                        <!-- Tax Display -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">
+                                <i class="fas fa-percentage"></i
+                            ></span>
+                            </div>
+                            <input disabled
+                            type="text"
+                            name="TaxDisplay"
+                            class="form-control"
+                            placeholder= {{article.tax}}
+                            aria-label="TaxDisplay"
+                            aria-describedby="basic-addon3"
+                            />
+                        </div>
+                        <!-- Profit Display -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">
+                                <i class="fas fa-dollar-sign"></i
+                            ></span>
+                            </div>
+                            <input disabled
+                            type="text"
+                            name="ProfitDisplay"
+                            class="form-control"
+                            placeholder= {{article.profit}}
+                            aria-label="ProfitDisplay"
                             aria-describedby="basic-addon3"
                             />
                         </div>
@@ -182,6 +195,44 @@
                     class="form-control"
                     placeholder="Unit Price..."
                     aria-label="UnitPrice"
+                    aria-describedby="basic-addon1"
+                    />
+                </div>
+                <!-- Tax input -->
+                <label for="TaxSelect">Tax Percentage</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        ><i class="fas fa-percentage"></i>
+                    </span>
+                    </div>
+                    <input
+                    type="number"
+                    step="1"
+                    name="tax"
+                    [(ngModel)]="article.tax"
+                    class="form-control"
+                    placeholder="Tax..."
+                    aria-label="Tax"
+                    aria-describedby="basic-addon1"
+                    />
+                </div>
+                <!-- Profit  input -->
+                <label for="unitProfitSelect">Profit</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        ><i class="fas fa-dollar-sign"></i>
+                    </span>
+                    </div>
+                    <input
+                    type="number"
+                    step="1"
+                    name="Profit"
+                    [(ngModel)]="article.profit"
+                    class="form-control"
+                    placeholder="Profit..."
+                    aria-label="Profit"
                     aria-describedby="basic-addon1"
                     />
                 </div>
