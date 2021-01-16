@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sales-data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Factura" type="xs:unsignedInt" />
+              <xs:element minOccurs="0" name="Año" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="Mes" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Dia" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="AñoVencimiento" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="MesVencimiento" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="DiaVencimiento" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Cliente" type="xs:string" />
+              <xs:element minOccurs="0" name="Producto" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="Cantidad" type="xs:string" />
+              <xs:element minOccurs="0" name="Moneda" type="xs:string" />
+              <xs:element minOccurs="0" name="Precio" type="xs:string" />
+              <xs:element minOccurs="0" name="Total" type="xs:string" />
+              <xs:element minOccurs="0" name="Almacén" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Vendedor" type="xs:short" />
+              <xs:element minOccurs="0" name="TotalUSD" type="xs:string" />
+              <xs:element minOccurs="0" name="Impuesto" type="xs:string" />
+              <xs:element minOccurs="0" name="ImpuestoUSD" type="xs:string" />
+              <xs:element minOccurs="0" name="TipoDeCambio" type="xs:decimal" />
+              <xs:element minOccurs="0" name="Ganacia" type="xs:string" />
+              <xs:element minOccurs="0" name="GananciaUSD" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
