@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+      <h3><i class="fa fa-pen"></i> Edit sales goal</h3>
+      <p>Edit the information of this sales goal</p>
+      <form (ngSubmit)="onSubmit()" #salesGoalForm="ngForm">
+        <!-- Date inputs -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fa fa-calendar-plus"></i
+            ></span>
+          </div>
+          <input
+            type="number"
+            step="1"
+            name="year"
+            [(ngModel)]="salesGoal.year"
+            class="form-control"
+            placeholder="Year..."
+            aria-label="Year"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <!-- Month input -->
+        <!-- <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2"
+                  ><i class="fa fa-calendar-week"></i
+                ></span>
+              </div>
+              <input
+                type="number"
+                step="1"
+                name="month"
+                [(ngModel)]="salesGoal.month"
+                class="form-control"
+                placeholder="Month..."
+                aria-label="Month"
+                aria-describedby="basic-addon2"
+              />
+            </div>
+          </div> -->
+        <div class="form-group">
+          <label for="monthSelect">Month</label>
+          <select
+            class="form-control"
+            name="month"
+            [(ngModel)]="salesGoal.month"
+            id="monthSelect"
+          >
+            <option *ngFor="let month of months" value="{{ month.value }}">
+              {{ month.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Brand code input -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">
+              <i class="fas fa-registered"></i
+            ></span>
+          </div>
+          <input
+            type="text"
+            name="brand"
+            [(ngModel)]="salesGoal.brand"
+            class="form-control"
+            placeholder="Brand..."
+            aria-label="brand"
+            aria-describedby="basic-addon3"
+          />
+        </div>
+        <!-- Seller code -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon4">
+              <i class="fa fa-user-tie"></i
+            ></span>
+          </div>
+          <input
+            type="number"
+            step="1"
+            name="seller"
+            [(ngModel)]="salesGoal.seller"
+            class="form-control"
+            placeholder="Seller..."
+            aria-label="Seller"
+            aria-describedby="basic-addon4"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon5">
+              <i class="fa fa-dollar-sign"></i
+            ></span>
+          </div>
+          <input
+            type="number"
+            name="amount"
+            [(ngModel)]="salesGoal.amount"
+            class="form-control"
+            placeholder="Amount..."
+            aria-label="Amount"
+            aria-describedby="basic-addon5"
+          />
+        </div>
+        <button type="submit" class="btn btn-block btn-warning">
+          <i class="fa fa-pen"></i> Edit sales goal
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

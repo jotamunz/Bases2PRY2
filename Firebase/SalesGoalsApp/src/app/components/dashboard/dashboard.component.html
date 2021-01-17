@@ -1,0 +1,54 @@
+<h3><i class="fa fa-cog"></i> Dashboard</h3>
+<p>Here are the available sales goals.</p>
+<div class="row mt-4">
+  <div *ngIf="!isLoading; else loading" class="col-md-9">
+    <table
+      *ngIf="salesGoals.length > 0; else noSalesGoals"
+      class="table table-striped"
+    >
+      <thead class="thead-dark">
+        <th>Year</th>
+        <th>Month</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salesGoal of salesGoals">
+          <td>{{ salesGoal.year }}</td>
+          <td>{{ getMonthNameFromNumber(salesGoal.month) }}</td>
+          <td [ngClass]="{ 'text-success': salesGoal.amount > 0 }">
+            {{ salesGoal.amount | currency }}
+          </td>
+          <td>
+            <a routerLink="/salesGoals/{{ salesGoal.id }}"
+              ><i class="fa fa-book"></i> More info</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noSalesGoals>
+      <h4>There are no sales goals currently registered</h4>
+    </ng-template>
+  </div>
+  <!-- Loading spinner -->
+  <ng-template #loading>
+    <div class="col-md-9">
+      <div class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div
+          class="spinner-border ml-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- Dashboard sidebar -->
+  <div class="col-md-3">
+    <a routerLink="/salesGoals/add" class="btn btn-success btn-block">
+      <i class="fa fa-plus"></i> Add new sales goal
+    </a>
+  </div>
+</div>
