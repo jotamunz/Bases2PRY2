@@ -1,4 +1,5 @@
 const createFirebaseConnection = require('../config/firebaseConnection');
+const insertSalesGoal = require('../mssql/insertSalesGoal');
 
 /**
  * Listen for changes in the cloud fire store
@@ -22,9 +23,15 @@ const listenForSalesGoalsChanges = () => {
  * Handles a new sales goal change
  */
 const handleSalesGoalChange = async (fsChange) => {
-  if (fsChange.type === 'added') {
-    // Get change data
-    console.log(fsChange.doc.data());
+  try {
+    if (fsChange.type === 'added') {
+      // Get change data
+      const newSalesGoal = fsChange.doc.data();
+      // Insert sales goal into data warehouse
+      await insertSalesGoal(newSalesGoal);
+    }
+  } catch (error) {
+    console.log('Failed to insert into Data warehouse!!'.red.bold);
   }
 };
 
