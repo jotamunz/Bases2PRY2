@@ -1,5 +1,5 @@
-const createFirebaseConnection = require('../config/firebaseConnection');
-const insertSalesGoal = require('../mssql/insertSalesGoal');
+const createFirebaseConnection = require('../../config/firebaseConnection');
+const insertSalesGoal = require('../../mssql/insertSalesGoal');
 
 /**
  * Listen for changes in the cloud fire store
@@ -13,7 +13,6 @@ const listenForSalesGoalsChanges = () => {
     if (!hasChanged) {
       hasChanged = true;
     } else {
-      console.log('[FirebaseETL] New change detected in firestore!'.yellow);
       snapshot.docChanges().forEach(handleSalesGoalChange);
     }
   });
@@ -25,6 +24,7 @@ const listenForSalesGoalsChanges = () => {
 const handleSalesGoalChange = async (fsChange) => {
   try {
     if (fsChange.type === 'added') {
+      console.log('[FirebaseETL] New change detected in firestore!'.yellow);
       // Get change data
       const newSalesGoal = fsChange.doc.data();
       // Insert sales goal into data warehouse
