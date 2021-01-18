@@ -12,9 +12,7 @@ class SalesGoalModel {
     this.seller = seller;
     this.brand = brand;
     this.amount = amount;
-    // TODO: Change this value
-    // It will be hardcoded for testing
-    this.timeId = 1;
+    this.timeId = timeId;
   }
 
   /**

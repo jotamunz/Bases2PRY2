@@ -1,4 +1,6 @@
 const createFirebaseConnection = require('../../config/firebaseConnection');
+const SalesGoalModel = require('../../models/SalesGoalModel');
+const TimeDimensionModel = require('../../models/TimeDimensionModel');
 
 /**
  * Listen for changes in the cloud fire store
@@ -24,9 +26,25 @@ const handleSalesGoalChange = async (fsChange) => {
   try {
     if (fsChange.type === 'added') {
       console.log('[FirebaseETL] New change detected in firestore!'.yellow);
-      // TODO: Manage the Time Dimension ID
       // Get change data
-      const newSalesGoal = new SalesGoalModel(fsChange.doc.data());
+      const { year, month, brand, seller, amount } = fsChange.doc.data();
+      // Get id for time in the Time Dimension
+      const times = await TimeDimensionModel.getTimesByDate(year, month, 1);
+      // TODO: Insert in time dimension if time does not exist?
+      if (times.length === 0) {
+        console.log(
+          '[FirebaseETL] Could not found the time in the Time Dimension...'.red
+        );
+        return;
+      }
+      const timeId = times[0].ID;
+      // Create sales goal
+      const newSalesGoal = new SalesGoalModel({
+        seller,
+        brand,
+        amount,
+        timeId,
+      });
       console.log('[FirebaseETL] Inserting into Datawarehouse...'.gray);
       // Insert into Data Warehouse
       await newSalesGoal.insertSalesGoal();
