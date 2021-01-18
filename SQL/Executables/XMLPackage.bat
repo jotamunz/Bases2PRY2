@@ -1,0 +1,1 @@
+Dtexec /f "..\ETLs\XML_package.dtsx"

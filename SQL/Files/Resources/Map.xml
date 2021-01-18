@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sales-data xmlns:xsi="http://www.w3.org/2001XMLSchema-instance">
+
+<row>
+	<Factura>37460</Factura>
+	<Año>2019</Año>
+	<Mes>2</Mes>
+	<Dia>22</Dia>
+	<AñoVencimiento>2019</AñoVencimiento>
+	<MesVencimiento>3</MesVencimiento>
+	<DiaVencimiento>22</DiaVencimiento>
+	<Cliente>C1717</Cliente>
+	<Producto>0000202</Producto>
+	<Cantidad>12.00</Cantidad>
+	<Moneda>CRC</Moneda>
+	<Precio>1,1864.5000</Precio>
+	<Total>22,374.00</Total>
+	<Almacén>1</Almacén>
+	<Vendedor>-1</Vendedor>
+	<TotalUSD>36.58</TotalUSD>
+	<Impuesto>2,908.62</Impuesto>
+	<ImpuestoUSD>4.76</ImpuestoUSD>
+	<TipoDeCambio>1.00</TipoDeCambio>
+	<Ganacia>10,155.6600</Ganacia>
+	<GananciaUSD>166.100</GananciaUSD>
+</row>
+
+<row>
+	<Factura>38493</Factura>
+	<Año>2019</Año>
+	<Mes>2</Mes>
+	<Dia>28</Dia>
+	<AñoVencimiento>2019</AñoVencimiento>
+	<MesVencimiento>3</MesVencimiento>
+	<DiaVencimiento>28</DiaVencimiento>
+	<Cliente>C3157</Cliente>
+	<Producto>0000241</Producto>
+	<Cantidad>4.00</Cantidad>
+	<Moneda>CRC</Moneda>
+	<Precio>8,155.7400</Precio>
+	<Total>32,462.96</Total>
+	<Almacén>1</Almacén>
+	<Vendedor>-1</Vendedor>
+	<TotalUSD>53.16</TotalUSD>
+	<Impuesto>4,220.18</Impuesto>
+	<ImpuestoUSD>6.91</ImpuestoUSD>
+	<TipoDeCambio>1.00</TipoDeCambio>
+	<Ganacia>8,155.7200</Ganacia>
+	<GananciaUSD>132,900</GananciaUSD>
+</row>
+</sales-data>

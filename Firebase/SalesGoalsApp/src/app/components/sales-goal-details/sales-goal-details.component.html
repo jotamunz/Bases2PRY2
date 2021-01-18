@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="card card-body">
+      <h3><i class="fa fa-coins"></i> Sales goal information</h3>
+      <a routerLink="/"><i class="fa fa-arrow-circle-left"></i> Go back</a>
+      <hr />
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Year: </strong>
+          {{ salesGoal.year }}
+        </li>
+        <li class="list-group-item">
+          <strong>Month: </strong> {{ getMonthNameFromNumber(salesGoal.month) }}
+        </li>
+        <li class="list-group-item">
+          <strong>Brand: </strong> {{ salesGoal.brand }}
+        </li>
+        <li class="list-group-item">
+          <strong>Seller: </strong> {{ salesGoal.seller }}
+        </li>
+        <li class="list-group-item">
+          <strong>Amount: </strong>
+          {{ salesGoal.amount | currency: "₡":"symbol" }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <a
+      routerLink="/salesGoals/{{ salesGoal.id }}/edit"
+      class="btn btn-warning btn-block"
+      ><i class="fa fa-pen"></i> Edit sales goal</a
+    >
+    <button (click)="onDeleteClick()" class="btn btn-danger btn-block">
+      <i class="fa fa-times-circle"></i> Remove sales goal
+    </button>
+  </div>
+</div>
