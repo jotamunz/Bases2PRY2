@@ -29,3 +29,5 @@ app.use('/purchase', purchaseRoute);
 
 // Server start
 app.listen(3000, () => console.log('Server started on port 3000'));
+
+// TODO: Connect to Azure
