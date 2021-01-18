@@ -2,7 +2,7 @@ export interface SalesGoal {
   id?: string;
   month?: number;
   year?: number;
-  brand?: string;
+  brand?: number;
   seller?: number;
   amount?: number;
 }

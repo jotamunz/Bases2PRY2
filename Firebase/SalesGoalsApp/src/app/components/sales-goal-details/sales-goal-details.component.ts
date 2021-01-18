@@ -15,7 +15,7 @@ export class SalesGoalDetailsComponent implements OnInit {
   public salesGoal: SalesGoal = {
     year: null,
     month: null,
-    brand: '',
+    brand: null,
     seller: null,
     amount: null,
   };

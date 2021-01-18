@@ -22,25 +22,7 @@
             aria-describedby="basic-addon1"
           />
         </div>
-        <!-- Month input -->
-        <!-- <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon2"
-                  ><i class="fa fa-calendar-week"></i
-                ></span>
-              </div>
-              <input
-                type="number"
-                step="1"
-                name="month"
-                [(ngModel)]="salesGoal.month"
-                class="form-control"
-                placeholder="Month..."
-                aria-label="Month"
-                aria-describedby="basic-addon2"
-              />
-            </div>
-          </div> -->
+        <!-- Select month -->
         <div class="form-group">
           <label for="monthSelect">Month</label>
           <select
@@ -62,7 +44,8 @@
             ></span>
           </div>
           <input
-            type="text"
+            type="number"
+            step="1"
             name="brand"
             [(ngModel)]="salesGoal.brand"
             class="form-control"
@@ -89,6 +72,7 @@
             aria-describedby="basic-addon4"
           />
         </div>
+        <!-- Amount input -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon5">

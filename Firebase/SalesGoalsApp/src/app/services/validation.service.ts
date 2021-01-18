@@ -28,14 +28,14 @@ export class ValidationService {
       errors.push({ message: 'Please enter a valid month', field: 'month' });
     }
     // Check for valid brand code
-    if (salesGoal.brand === '' || salesGoal.brand.length !== 3) {
+    if (salesGoal.brand === null) {
       errors.push({
         message: 'Please enter a valid brand code',
         field: 'brand',
       });
     }
     // Check for valid seller
-    if (salesGoal.seller < 0 || salesGoal.seller === null) {
+    if (salesGoal.seller === null) {
       errors.push({
         message: 'Please enter a valid seller code',
         field: 'seller',
