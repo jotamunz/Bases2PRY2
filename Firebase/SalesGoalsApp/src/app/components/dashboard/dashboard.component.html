@@ -17,7 +17,7 @@
           <td>{{ salesGoal.year }}</td>
           <td>{{ getMonthNameFromNumber(salesGoal.month) }}</td>
           <td [ngClass]="{ 'text-success': salesGoal.amount > 0 }">
-            {{ salesGoal.amount | currency }}
+            {{ salesGoal.amount | currency: "₡":"symbol" }}
           </td>
           <td>
             <a routerLink="/salesGoals/{{ salesGoal.id }}"

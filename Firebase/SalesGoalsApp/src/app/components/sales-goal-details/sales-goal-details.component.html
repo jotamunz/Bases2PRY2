@@ -19,7 +19,8 @@
           <strong>Seller: </strong> {{ salesGoal.seller }}
         </li>
         <li class="list-group-item">
-          <strong>Amount: </strong> {{ salesGoal.amount | currency }}
+          <strong>Amount: </strong>
+          {{ salesGoal.amount | currency: "₡":"symbol" }}
         </li>
       </ul>
     </div>

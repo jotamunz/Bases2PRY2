@@ -15,3 +15,15 @@ BEGIN
 	VALUES (@SellerId, @TimeId, @Amount, @GroupId);
 END
 GO
+
+CREATE PROCEDURE getTimesByDate
+	@Year INT,
+	@Month INT,
+	@Day INT
+AS
+BEGIN
+	SELECT ID, DATE, Month, MonthNumeric, Year, Day, DollarSell, DollarBuy
+	FROM DIM_TIME
+	WHERE Year = @Year AND MonthNumeric = @Month AND Day = @Day
+END
+GO
