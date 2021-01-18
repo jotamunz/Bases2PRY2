@@ -1,4 +1,5 @@
 const createFirebaseConnection = require('../../config/firebaseConnection');
+
 const SalesGoalModel = require('../../models/SalesGoalModel');
 const TimeDimensionModel = require('../../models/TimeDimensionModel');
 

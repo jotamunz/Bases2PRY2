@@ -24,7 +24,7 @@ class SalesGoalModel {
       // Prepare execute statement
       request.input('SellerId', sql.Int, this.seller);
       request.input('GroupId', sql.Int, this.brand);
-      request.input('TimeId', sql.Int, 1);
+      request.input('TimeId', sql.Int, this.timeId);
       request.input('Amount', sql.Decimal(18, 4), this.amount);
       // Execute stored procedure
       await request.execute('insertSalesGoal');
