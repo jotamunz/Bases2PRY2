@@ -55,6 +55,11 @@ const PurchaseSchema = mongoose.Schema({
 		required: true,
 		min: 0
 	},
+	synced: {
+		type: Boolean,
+		required: true,
+		default: false
+	},
 	date: {
 		type: Date,
 		required: true,

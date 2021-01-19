@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
+const schedule = require('node-schedule');
+const sync = require('./sync');
 
 const app = express();
 
@@ -29,3 +31,8 @@ app.use('/purchase', purchaseRoute);
 
 // Server start
 app.listen(3000, () => console.log('Server started on port 3000'));
+
+// Sync job start
+schedule.scheduleJob('29 * * * *', async function () {
+	sync.syncDatabase();
+});
