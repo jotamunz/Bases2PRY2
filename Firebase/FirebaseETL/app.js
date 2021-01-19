@@ -1,9 +1,10 @@
 const dotenv = require('dotenv');
-const { connectToMSSQL } = require('./config/mssqlConnection');
-const listenForSalesGoalsChanges = require('./firebase/collectionListeners/salesGoals');
+const FirebaseConnection = require('./config/firebaseConnection');
+const SQLConnection = require('./config/mssqlConnection');
 require('colors');
 
 dotenv.config();
 
-connectToMSSQL();
-listenForSalesGoalsChanges();
+// Create database connections
+FirebaseConnection.createFirestoreConnection();
+SQLConnection.createConnection();

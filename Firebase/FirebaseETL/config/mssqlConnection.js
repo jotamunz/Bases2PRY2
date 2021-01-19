@@ -4,32 +4,34 @@ require('colors');
 
 dotenv.config();
 
-const config = {
-  user: process.env.MSSQL_USER,
-  password: process.env.MSSQL_PASSWORD,
-  server: process.env.MSSQL_HOST,
-  database: process.env.MSSQL_DB_NAME,
-  port: 1433,
-  options: { encrypt: true, enableArithAbort: true },
-};
-
-// Create SQL server connection
-const connection = new sql.ConnectionPool(config);
-
 /**
- * Connects to Microsoft SQL server
+ * Handles connectivity with Microsoft SQL Server
  */
-async function connectToMSSQL() {
-  try {
-    await connection.connect();
-    console.log('Connected to MSSQL...'.blue.bold);
-  } catch (err) {
-    console.log(`Could not connect to MSSQL...`.red.bold);
-    console.error(err);
+class SQLConnection {
+  static config = {
+    user: process.env.MSSQL_USER,
+    password: process.env.MSSQL_PASSWORD,
+    server: process.env.MSSQL_HOST,
+    database: process.env.MSSQL_DB_NAME,
+    port: 1433,
+    options: { encrypt: true, enableArithAbort: true },
+  };
+  static connection = new sql.ConnectionPool(this.config);
+
+  constructor() {}
+
+  /**
+   * Creates connection to MSSQL Database
+   */
+  static async createConnection() {
+    try {
+      await this.connection.connect();
+      console.log('Connected to MSSQL...'.blue.bold);
+    } catch (err) {
+      console.log(`Could not connect to MSSQL...`.red.bold);
+      console.error(err);
+    }
   }
 }
 
-module.exports = {
-  connection,
-  connectToMSSQL,
-};
+module.exports = SQLConnection;
