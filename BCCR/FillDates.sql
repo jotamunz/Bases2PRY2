@@ -1,4 +1,4 @@
-  DECLARE @start DATE = '2018-01-01'
+  DECLARE @start DATE = '2016-01-01'
   WHILE @start < '2022-01-01'
   BEGIN
 	INSERT INTO DIM_TIME(Date,
