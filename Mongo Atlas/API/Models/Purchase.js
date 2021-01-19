@@ -50,11 +50,6 @@ const PurchaseSchema = mongoose.Schema({
 		type: [ArticleSchema],
 		required: true
 	},
-	currency: {
-		type: Number,
-		required: true,
-		enum: [1, 2]
-	},
 	orderTotal: {
 		type: Number,
 		required: true,

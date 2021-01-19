@@ -1,5 +1,6 @@
 const express = require('express');
 const Purchase = require('../models/Purchase');
+const moment = require('moment');
 const sql = require('mssql');
 const config = require('../config');
 
@@ -19,15 +20,13 @@ const router = express.Router();
 		profit: Number,
 		tax: Number
     ],
-	currency: Number
 */
 // O: Saved purchase date
 // E: 400
 router.post('/', async (req, res) => {
 	const purchase = new Purchase({
 		clientCode: req.body.clientCode,
-		articles: req.body.articles,
-		currency: req.body.currency
+		articles: req.body.articles
 	});
 	let total = 0;
 	for (let key in purchase.articles) {
@@ -45,14 +44,45 @@ router.post('/', async (req, res) => {
 		res.status(400).json({ message: error.message });
 		return;
 	}
-
-	// TEMP QUERY
 	try {
-		let con = await sql.connect(config);
-		let ret = await con.request().query('SELECT * FROM DIM_GROUP');
-		console.log(ret.recordsets);
+		let conn = await sql.connect(config);
+		let date = moment(purchase.date).format('YYYY-MM-DD');
+		let clientCode = purchase.clientCode.replace('00', '');
+		for (let key in purchase.articles) {
+			if (purchase.articles.hasOwnProperty(key)) {
+				article = purchase.articles[key];
+				let articleCode = article.articleCode.replace('A', '0');
+				let params =
+					'(ArticleID, SellerID, ClientID, TimeID, Quantity, UnitPriceColones, TotalColones, ProfitColones, TaxColones, UnitPriceDollars, TotalDollars, ProfitDollars, TaxDollars)';
+				let valueArticle =
+					"(SELECT ID FROM DIM_ARTICLE WHERE ProvitionalCode = '" +
+					articleCode +
+					"'),";
+				let valueSeller = '(SELECT ID FROM DIM_SELLER WHERE SellerCode = -1),';
+				let valueClient =
+					"(SELECT ID FROM DIM_CLIENT WHERE ClientCode = '" +
+					clientCode +
+					"'),";
+				let valueTime =
+					"(SELECT ID FROM DIM_TIME WHERE [Date] = CAST('" +
+					date +
+					"' AS Date)),";
+				await conn.query(
+					'INSERT INTO FACT_SALES' +
+						params +
+						' VALUES (' +
+						valueArticle +
+						valueSeller +
+						valueClient +
+						valueTime +
+						'0, 0, 0, 0, 0, 0, 0, 0, 0)'
+				);
+			}
+		}
+		conn.close();
 	} catch (error) {
 		console.log(error);
+		return;
 	}
 });
 
