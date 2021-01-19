@@ -50,3 +50,7 @@ Thumbs.db
 
 # Firebase
 .firebase
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
