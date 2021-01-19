@@ -18,6 +18,7 @@ export class SalesGoalDetailsComponent implements OnInit {
     brand: null,
     seller: null,
     amount: null,
+    exported: false,
   };
 
   constructor(

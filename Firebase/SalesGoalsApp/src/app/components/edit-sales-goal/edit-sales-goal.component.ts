@@ -19,6 +19,7 @@ export class EditSalesGoalComponent implements OnInit {
     year: null,
     month: null,
     amount: 0,
+    exported: false,
   };
   private salesGoalId: string;
   public months: object[] = [
