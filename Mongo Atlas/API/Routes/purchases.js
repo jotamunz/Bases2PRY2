@@ -1,5 +1,7 @@
 const express = require('express');
 const Purchase = require('../models/Purchase');
+const sql = require('mssql');
+const config = require('../config');
 
 const router = express.Router();
 
@@ -13,7 +15,9 @@ const router = express.Router();
     [
         articleCode: String,
         quantity: Number,
-        unitPrice: Number
+		unitPrice: Number,
+		profit: Number,
+		tax: Number
     ],
 	currency: Number
 */
@@ -39,6 +43,16 @@ router.post('/', async (req, res) => {
 		res.json({ date: savedPurchase.date });
 	} catch (error) {
 		res.status(400).json({ message: error.message });
+		return;
+	}
+
+	// TEMP QUERY
+	try {
+		let con = await sql.connect(config);
+		let ret = await con.request().query('SELECT * FROM DIM_GROUP');
+		console.log(ret.recordsets);
+	} catch (error) {
+		console.log(error);
 	}
 });
 
