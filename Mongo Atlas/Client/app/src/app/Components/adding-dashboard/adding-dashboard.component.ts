@@ -13,7 +13,6 @@ export class AddingDashboardComponent implements OnInit {
   public errors : String = "";
   public purchase : Purchase = {
     clientCode : "",
-    currency : 1,
     articles : []
   };
 
@@ -25,11 +24,6 @@ export class AddingDashboardComponent implements OnInit {
     profit : 0
   }
 
-
-  public currencies = [
-    { value : 1, name: "Colones"},
-    { value : 2, name: "Dollars"}
-  ];
 
   constructor(
     private purchasesService : PurchasesService
@@ -82,7 +76,6 @@ export class AddingDashboardComponent implements OnInit {
   private resetPurchase(){
     this.purchase = {
       clientCode : "",
-      currency : 1,
       articles : []
     };
   }

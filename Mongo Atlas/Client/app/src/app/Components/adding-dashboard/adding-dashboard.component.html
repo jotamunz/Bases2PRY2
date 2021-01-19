@@ -25,26 +25,10 @@
                     aria-describedby="basic-addon3"
                     />
                 </div>
-                <!-- Currency input -->
-                <div class="form-group">
-                    <i class="fa fa-coins"></i>
-                    <label for="currencySelect">Currency</label>
-                    <select
-                    class="form-control"
-                    name="currency"
-                    [(ngModel)]="purchase.currency"
-                    id="currencySelect"
-                    >
-                    
-                    <option *ngFor="let currency of currencies" value="{{ currency.value }}">
-                        {{ currency.name }}
-                    </option>
-                    </select>
-                </div>
+                <!-- Article Code Display -->
                 <ul class="list-group">
                     <li *ngFor = "let article of purchase.articles ; let counter = index" class="list-group-item">
                         <h5>Article {{counter+1}}</h5>
-                        <!-- Article Code Display -->
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon3">
