@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const { connection } = require('../config/mssqlConnection');
+const { connection } = require('../../config/mssqlConnection');
 
 /**
  * Model that represents the time dimension in the data warehouse

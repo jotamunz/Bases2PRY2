@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const { connection } = require('../config/mssqlConnection');
+const { connection } = require('../../config/mssqlConnection');
 
 /**
  * Models that represents a sales goal in the FACT_GOALS table
