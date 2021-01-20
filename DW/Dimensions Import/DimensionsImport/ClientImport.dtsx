@@ -1,0 +1,1554 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/16/2021 11:04:43 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JOS-PC"
+  DTS:CreatorName="JOS-PC\JOS"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{78906866-7A4F-42E5-B382-471D0BDF5151}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="ClientImport"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{63713C0C-71C2-4421-A153-D28FB123CABD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{913F2B04-037B-4301-AB5C-8D1F7B62E5F4}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=bases2.database.windows.net;User ID=tecAdmin;Initial Catalog=DataWarehouse;Provider=MSOLEDBSQL;Persist Security Info=True;Initial File Name=&quot;&quot;;Server SPN=&quot;&quot;;Authentication=&quot;&quot;;Access Token=&quot;&quot;;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA1dis/oGjhE61w/6+sVDTZQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB5guvoIgl8MgIaS63y2DcTxCLImirOpkbUt4AQ17TwHgAAAAAOgAAAAAIAACAAAAAMZFgV1R66lviXWHvqfWxjO/fJVGwrmXlc15mop9M3ViAAAAB5ZB5QYr0glfDxCSXS7TgaQOhkXgvazHnJRm0XZvRrxEAAAABxeYi9qjZMdCxEm8HlsnDlE9bohsVPY5KD2WUPn8ShWevGJE+vdASsk0LnKDXGDNnOqlDHlrSe299xpBME5K4/</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{39383F03-E7B3-48CB-92F5-DFA66A78038B}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\JOS\Desktop\DATOS_MAESTROS.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Staging Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{92334BD0-9D04-444B-BCD8-76CA52F13B62}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Staging Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{913F2B04-037B-4301-AB5C-8D1F7B62E5F4}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[CANALES_TEMP] (&#xA;[Code] float,&#xA;[Name] nvarchar(255),&#xA;[Prioridad] nvarchar(255)&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[CLIENTES_TEMP] (&#xA;[Código SN] nvarchar(255),&#xA;[Nombre] nvarchar(255),&#xA;[Teléfono 1] nvarchar(255),&#xA;[Código de condiciones de pago] nvarchar(255),&#xA;[Límite de crédito] nvarchar(255),&#xA;[Vendedor] nvarchar(255),&#xA;[Moneda SN] nvarchar(255),&#xA;[Destinatario de factura: País] nvarchar(255),&#xA;[Zona] nvarchar(255),&#xA;[Ruta] nvarchar(255),&#xA;[CANAL] float&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[ZONAS_TEMP] (&#xA;[Code] float,&#xA;[Name] nvarchar(255),&#xA;[Plazo] float&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop Staging Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{08E249E6-6D8D-446F-8D70-5F9FE51988ED}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop Staging Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{913F2B04-037B-4301-AB5C-8D1F7B62E5F4}"
+          SQLTask:SqlStatementSource="DROP TABLE CANALES_TEMP&#xA;GO&#xA;&#xA;DROP TABLE CLIENTES_TEMP&#xA;GO&#xA;&#xA;DROP TABLE ZONAS_TEMP&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move Data From Excel To Staging Tables"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{99B57A11-528D-400A-8018-A561C11688F8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Move Data From Excel To Staging Tables"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - CANALES_TEMP"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CANALES_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].Columns[Code]"
+                      cachedDataType="r8"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].Columns[Prioridad]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prioridad"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Prioridad]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Prioridad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Code]"
+                      dataType="r8"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input].ExternalColumns[Prioridad]"
+                      dataType="wstr"
+                      length="255"
+                      name="Prioridad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - CLIENTES_TEMP"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CLIENTES_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Código SN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Código SN"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Código SN]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código SN]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Teléfono 1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Teléfono 1"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Teléfono 1]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Teléfono 1]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Código de condiciones de pago]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Código de condiciones de pago"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Código de condiciones de pago]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código de condiciones de pago]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Límite de crédito]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Límite de crédito"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Límite de crédito]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Límite de crédito]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Vendedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vendedor"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Vendedor]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Vendedor]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Moneda SN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Moneda SN"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Moneda SN]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Moneda SN]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Destinatario de factura: País]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Destinatario de factura: País"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Destinatario de factura: País]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Destinatario de factura: País]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Zona]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Zona"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Zona]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Zona]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[Ruta]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ruta"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Ruta]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Ruta]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].Columns[CANAL]"
+                      cachedDataType="r8"
+                      cachedName="CANAL"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[CANAL]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[CANAL]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Código SN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Código SN" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Teléfono 1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Teléfono 1" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Código de condiciones de pago]"
+                      dataType="wstr"
+                      length="255"
+                      name="Código de condiciones de pago" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Límite de crédito]"
+                      dataType="wstr"
+                      length="255"
+                      name="Límite de crédito" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Moneda SN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Moneda SN" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Destinatario de factura: País]"
+                      dataType="wstr"
+                      length="255"
+                      name="Destinatario de factura: País" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Zona]"
+                      dataType="wstr"
+                      length="255"
+                      name="Zona" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[Ruta]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ruta" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input].ExternalColumns[CANAL]"
+                      dataType="r8"
+                      name="CANAL" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 4 - ZONAS_TEMP"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ZONAS_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].Columns[Code]"
+                      cachedDataType="r8"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].Columns[Plazo]"
+                      cachedDataType="r8"
+                      cachedName="Plazo"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Plazo]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Plazo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Code]"
+                      dataType="r8"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input].ExternalColumns[Plazo]"
+                      dataType="r8"
+                      name="Plazo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - 'CANAL CLIENTES$'"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'CANAL CLIENTES$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Code]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Code]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Prioridad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Prioridad]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].Columns[Prioridad]"
+                      name="Prioridad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Code]"
+                      dataType="r8"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output].ExternalColumns[Prioridad]"
+                      dataType="wstr"
+                      length="255"
+                      name="Prioridad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Code]"
+                      dataType="r8"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Prioridad]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[Prioridad]"
+                      name="Prioridad" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 1 - CLIENTES$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">CLIENTES$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código SN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Código SN]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código SN]"
+                      name="Código SN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Teléfono 1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Teléfono 1]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Teléfono 1]"
+                      name="Teléfono 1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código de condiciones de pago]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Código de condiciones de pago]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Código de condiciones de pago]"
+                      name="Código de condiciones de pago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Límite de crédito]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Límite de crédito]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Límite de crédito]"
+                      name="Límite de crédito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Vendedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Vendedor]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Vendedor]"
+                      name="Vendedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Moneda SN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Moneda SN]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Moneda SN]"
+                      name="Moneda SN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Destinatario de factura: País]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Destinatario de factura: País]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Destinatario de factura: País]"
+                      name="Destinatario de factura: País"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Zona]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Zona]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Zona]"
+                      name="Zona"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Ruta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Ruta]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[Ruta]"
+                      name="Ruta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[CANAL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[CANAL]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[CANAL]"
+                      name="CANAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[F12]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[F12]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[F12]"
+                      name="F12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[F13]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[F13]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].Columns[F13]"
+                      name="F13"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Código SN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Código SN" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Teléfono 1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Teléfono 1" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Código de condiciones de pago]"
+                      dataType="wstr"
+                      length="255"
+                      name="Código de condiciones de pago" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Límite de crédito]"
+                      dataType="wstr"
+                      length="255"
+                      name="Límite de crédito" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Moneda SN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Moneda SN" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Destinatario de factura: País]"
+                      dataType="wstr"
+                      length="255"
+                      name="Destinatario de factura: País" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Zona]"
+                      dataType="wstr"
+                      length="255"
+                      name="Zona" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[Ruta]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ruta" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[CANAL]"
+                      dataType="r8"
+                      name="CANAL" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[F12]"
+                      dataType="wstr"
+                      length="255"
+                      name="F12" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output].ExternalColumns[F13]"
+                      dataType="wstr"
+                      length="255"
+                      name="F13" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Código SN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Código SN]"
+                      name="Código SN" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Teléfono 1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Teléfono 1]"
+                      name="Teléfono 1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Código de condiciones de pago]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Código de condiciones de pago]"
+                      name="Código de condiciones de pago" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Límite de crédito]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Límite de crédito]"
+                      name="Límite de crédito" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Vendedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Moneda SN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Moneda SN]"
+                      name="Moneda SN" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Destinatario de factura: País]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Destinatario de factura: País]"
+                      name="Destinatario de factura: País" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Zona]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Zona]"
+                      name="Zona" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Ruta]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[Ruta]"
+                      name="Ruta" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[CANAL]"
+                      dataType="r8"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[CANAL]"
+                      name="CANAL" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[F12]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[F12]"
+                      name="F12" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[F13]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[F13]"
+                      name="F13" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 4 - ZONAS$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">ZONAS$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Code]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Code]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Plazo]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Plazo]"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].Columns[Plazo]"
+                      name="Plazo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Code]"
+                      dataType="r8"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output].ExternalColumns[Plazo]"
+                      dataType="r8"
+                      name="Plazo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Code]"
+                      dataType="r8"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Plazo]"
+                      dataType="r8"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[Plazo]"
+                      name="Plazo" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output]"
+              endId="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output1]"
+              endId="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output2]"
+              endId="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move Data From Staging Tables To Dimension Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A9B5DF54-777E-4FC1-A0F0-BCBA464EE84B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Move Data From Staging Tables To Dimension Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{913F2B04-037B-4301-AB5C-8D1F7B62E5F4}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[DIM_CLIENT]&#xA;SELECT&#xA;T1.[Código SN],&#xA;T1.Nombre,&#xA;CAST(T1.CANAL AS INT),&#xA;T1.Ruta,&#xA;CAST(T2.Code AS INT),&#xA;T1.[Destinatario de factura: País],&#xA;T1.[Moneda SN],&#xA;CAST(T1.Vendedor AS INT),&#xA;CAST (REPLACE(T1.[Límite de crédito], ',', '') AS DECIMAL (18, 2)),&#xA;T1.[Teléfono 1],&#xA;T1.[Código de condiciones de pago],&#xA;T3.[Name],&#xA;T3.Prioridad,&#xA;T2.[Name],&#xA;CAST (T2.Plazo AS INT)&#xA;FROM [dbo].[CLIENTES_TEMP] T1 LEFT JOIN [dbo].[ZONAS_TEMP] T2 ON (CAST(ISNULL(T1.Zona, N'') AS float) = T2.Code) INNER JOIN [dbo].[CANALES_TEMP] T3 ON T1.CANAL = T3.Code&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2122137-DC62-42AF-9C81-AD6B58F9584C}"
+      DTS:From="Package\Move Data From Excel To Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Move Data From Staging Tables To Dimension Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{90D3616F-E93A-4C39-B682-E6B373727E34}"
+      DTS:From="Package\Move Data From Staging Tables To Dimension Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Drop Staging Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{D590781C-346F-410D-8ABA-7903D0CF8DE0\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{D590781C-346F-410D-8ABA-7903D0CF8DE0}"
+      DTS:From="Package\Create Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{D590781C-346F-410D-8ABA-7903D0CF8DE0}"
+      DTS:To="Package\Move Data From Excel To Staging Tables" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Create Staging Tables"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Drop Staging Tables"
+          TopLeft="100,343" />
+        <NodeLayout
+          Size="272,42"
+          Id="Package\Move Data From Excel To Staging Tables"
+          TopLeft="20.5,107.5" />
+        <NodeLayout
+          Size="331,42"
+          Id="Package\Move Data From Staging Tables To Dimension Tables"
+          TopLeft="43,217" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="156.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52,67.5"
+              Start="0,0"
+              End="52,60">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.75"
+                    Point2="0,33.75"
+                    Point3="4,33.75" />
+                  <mssgle:LineSegment
+                    End="48,33.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,33.75"
+                    Point2="52,33.75"
+                    Point3="52,37.75" />
+                  <mssgle:LineSegment
+                    End="52,60" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="208.5,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.5,84"
+              Start="0,0"
+              End="-21.5,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="-4,42" />
+                  <mssgle:LineSegment
+                    End="-17.5,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.5,42"
+                    Point2="-21.5,42"
+                    Point3="-21.5,46" />
+                  <mssgle:LineSegment
+                    End="-21.5,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{D590781C-346F-410D-8ABA-7903D0CF8DE0\}]"
+          TopLeft="96.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60,60"
+              Start="0,0"
+              End="60,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="56,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56,30"
+                    Point2="60,30"
+                    Point3="60,34" />
+                  <mssgle:LineSegment
+                    End="60,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Move Data From Excel To Staging Tables">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Move Data From Excel To Staging Tables\Destination 1 - CLIENTES_TEMP"
+          TopLeft="531,202" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Move Data From Excel To Staging Tables\Destination 4 - ZONAS_TEMP"
+          TopLeft="796,351" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Move Data From Excel To Staging Tables\Source - 'CANAL CLIENTES$'"
+          TopLeft="275,322" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Move Data From Excel To Staging Tables\Destination - CANALES_TEMP"
+          TopLeft="263,204" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Move Data From Excel To Staging Tables\Source 1 - CLIENTES$"
+          TopLeft="547,338" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Move Data From Excel To Staging Tables\Source 4 - ZONAS$"
+          TopLeft="801,203" />
+        <EdgeLayout
+          Id="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output2]"
+          TopLeft="382,322">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10,-76"
+              Start="0,0"
+              End="-10,-68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-34"
+                    Point2="0,-38"
+                    Point3="-4,-38" />
+                  <mssgle:LineSegment
+                    End="-6,-38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6,-38"
+                    Point2="-10,-38"
+                    Point3="-10,-42" />
+                  <mssgle:LineSegment
+                    End="-10,-68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output1]"
+          TopLeft="642.75,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-94"
+              Start="0,0"
+              End="0,-86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Move Data From Excel To Staging Tables.Paths[Excel Source Output]"
+          TopLeft="886,245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,106"
+              Start="0,0"
+              End="18.5,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49"
+                    Point2="0,53"
+                    Point3="4,53" />
+                  <mssgle:LineSegment
+                    End="14.5,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,53"
+                    Point2="18.5,53"
+                    Point3="18.5,57" />
+                  <mssgle:LineSegment
+                    End="18.5,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

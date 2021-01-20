@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DWSynchronzationSQL"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{C908A0AA-E61F-4BB3-A664-2155123F4554}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{951507C2-E58D-42CE-A867-A6414189C174}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,35 +37,7 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{20B3C4DE-5AAF-4480-8832-6F4CAF779CF3}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="IDsRecordSet">
-      <DTS:VariableValue
-        DTS:DataSubType="ManagedSerializable"
-        DTS:DataType="13">
-        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-          <SOAP-ENV:Body>
-            <xsd:anyType
-              id="ref-1"></xsd:anyType>
-          </SOAP-ENV:Body>
-        </SOAP-ENV:Envelope>
-      </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{13DE626C-6644-4472-8560-307B0B825F29}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="SaleID">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Create Temp Uploaded Ids Table"
@@ -178,13 +150,6 @@
                       cachedPrecision="30"
                       cachedScale="5"
                       lineageId="Package\Data Flow Task\SortArticle.Outputs[Sort Output].Columns[ImpuestoUSD]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\SortArticle.Outputs[Sort Output].Columns[TipoDeCambio]" />
                     <inputColumn
                       refId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
@@ -361,21 +326,6 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\AddArticleID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\AddArticleID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -599,13 +549,6 @@
                       cachedScale="5"
                       lineageId="Package\Data Flow Task\SortClient.Outputs[Sort Output].Columns[ImpuestoUSD]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\AddClientID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\SortClient.Outputs[Sort Output].Columns[TipoDeCambio]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\AddClientID.Inputs[Merge Join Left Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
                       cachedName="GananciaUSD"
@@ -790,21 +733,6 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Data Flow Task\AddClientID.Inputs[Merge Join Left Input].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\AddClientID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -1002,13 +930,6 @@
                       cachedScale="5"
                       lineageId="Package\Data Flow Task\SortDates.Outputs[Sort Output].Columns[ImpuestoUSD]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\SortDates.Outputs[Sort Output].Columns[TipoDeCambio]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
                       cachedName="GananciaUSD"
@@ -1084,6 +1005,20 @@
                       cachedDataType="i4"
                       cachedName="ID"
                       lineageId="Package\Data Flow Task\SortDateID.Outputs[Sort Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Right Input].Columns[DollarBuy]"
+                      cachedDataType="numeric"
+                      cachedName="DollarBuy"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\SortDateID.Outputs[Sort Output].Columns[DollarBuy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Right Input].Columns[DollarSell]"
+                      cachedDataType="numeric"
+                      cachedName="DollarSell"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\SortDateID.Outputs[Sort Output].Columns[DollarSell]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1187,21 +1122,6 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -1333,6 +1253,36 @@
                           name="InputColumnID">#{Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input].Columns[SaleID]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]"
+                      name="DollarBuy"
+                      precision="18"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\AddDateID.Inputs[Merge Join Right Input].Columns[DollarBuy]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]"
+                      name="DollarSell"
+                      precision="18"
+                      scale="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\AddDateID.Inputs[Merge Join Right Input].Columns[DollarSell]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1412,13 +1362,6 @@
                       cachedPrecision="30"
                       cachedScale="5"
                       lineageId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[ImpuestoUSD]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\AddSellerID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[TipoDeCambio]" />
                     <inputColumn
                       refId="Package\Data Flow Task\AddSellerID.Inputs[Merge Join Left Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
@@ -1600,21 +1543,6 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Data Flow Task\AddSellerID.Inputs[Merge Join Left Input].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\AddSellerID.Inputs[Merge Join Left Input].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2004,7 +1932,10 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+(TRIM(ClientCode)) AS ClientCode,
+[ID]
+FROM [DataWarehouse].[dbo].[DIM_CLIENT]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2021,7 +1952,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2068,76 +1999,9 @@
                       length="5"
                       name="ClientCode" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                      dataType="wstr"
-                      length="15"
-                      name="Name" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ChannelCode]"
-                      dataType="i4"
-                      name="ChannelCode" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Route]"
-                      dataType="wstr"
-                      length="20"
-                      name="Route" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ZoneCode]"
-                      dataType="i4"
-                      name="ZoneCode" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Country]"
-                      dataType="wstr"
-                      length="5"
-                      name="Country" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
-                      dataType="wstr"
-                      length="5"
-                      name="Currency" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Seller]"
-                      dataType="i4"
-                      name="Seller" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[CreditLimit]"
-                      dataType="numeric"
-                      name="CreditLimit"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
-                      dataType="wstr"
-                      length="15"
-                      name="Phone" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[PaymentConditionsCode]"
-                      dataType="wstr"
-                      length="30"
-                      name="PaymentConditionsCode" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ID]"
                       dataType="i4"
                       name="ID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ChannelName]"
-                      dataType="wstr"
-                      length="20"
-                      name="ChannelName" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ChannelPriority]"
-                      dataType="wstr"
-                      length="15"
-                      name="ChannelPriority" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ZoneName]"
-                      dataType="wstr"
-                      length="20"
-                      name="ZoneName" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output].ExternalColumns[ZoneTerm]"
-                      dataType="i4"
-                      name="ZoneTerm" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2531,6 +2395,648 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task\Fact Sales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact Sales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FACT_SALES]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Fact Sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JOS-PC.DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[JOS-PC.DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[TimeID]"
+                      cachedDataType="i4"
+                      cachedName="TimeID"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TimeID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[SellerID]"
+                      cachedDataType="i4"
+                      cachedName="SellerID"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[SellerID]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SellerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[ClientID]"
+                      cachedDataType="i4"
+                      cachedName="ClientID"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ClientID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[ItemID]"
+                      cachedDataType="i4"
+                      cachedName="ItemID"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ArticleID]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ItemID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[PrecioCRC]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceColones]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[TotalCRC]"
+                      cachedDataType="numeric"
+                      cachedName="TotalCRC"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TotalColones]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[ImpuestoCRC]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TaxColones]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoCRC]"
+                      name="ImpuestoCRC" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[GananciaCRC]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ProfitColones]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[PrecioUSD]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceDollars]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioUSD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TotalDollars]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalUSD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ProfitDollars]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TaxDollars]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoUSD]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ArticleID]"
+                      dataType="i4"
+                      name="ArticleID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[SellerID]"
+                      dataType="i4"
+                      name="SellerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
+                      dataType="i4"
+                      name="ClientID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
+                      dataType="i4"
+                      name="TimeID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceColones]"
+                      dataType="numeric"
+                      name="UnitPriceColones"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TotalColones]"
+                      dataType="numeric"
+                      name="TotalColones"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TaxColones]"
+                      dataType="numeric"
+                      name="TaxColones"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ProfitColones]"
+                      dataType="numeric"
+                      name="ProfitColones"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceDollars]"
+                      dataType="numeric"
+                      name="UnitPriceDollars"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TotalDollars]"
+                      dataType="numeric"
+                      name="TotalDollars"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[ProfitDollars]"
+                      dataType="numeric"
+                      name="ProfitDollars"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input].ExternalColumns[TaxDollars]"
+                      dataType="numeric"
+                      name="TaxDollars"
+                      precision="18"
+                      scale="4" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fact Sales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fact Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fact Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fact Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Fill CRC Columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Fill CRC Columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TotalCRC / DollarSell</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[TotalCRC]"
+                      cachedDataType="numeric"
+                      cachedName="TotalCRC"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[DollarSell]"
+                      cachedDataType="numeric"
+                      cachedName="DollarSell"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ImpuestoCRC / DollarSell</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GananciaCRC / DollarSell</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[ImpuestoCRC]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[GananciaCRC]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[PrecioUSD]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">PrecioCRC / DollarSell</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input].Columns[PrecioCRC]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Fill USD Columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Fill USD Columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ImpuestoCRC / DollarBuy</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]} / #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GananciaCRC / DollarBuy</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[TotalCRC]"
+                      cachedDataType="numeric"
+                      cachedName="TotalCRC"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]} * #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DollarBuy * TotalUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[ImpuestoCRC]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[GananciaCRC]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[PrecioUSD]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[PrecioCRC]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]} * #{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DollarBuy * PrecioUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input].Columns[DollarBuy]"
+                      cachedDataType="numeric"
+                      cachedName="DollarBuy"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\LocalSells"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -2558,7 +3064,7 @@
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
 T1.Id,
 T1.Fecha AS Fecha,
-T1.Cliente AS Cliente,
+(TRIM(T1.Cliente)) AS Cliente,
 T1.Producto AS Producto,
 T1.Cantidad AS Cantidad,
 T1.Moneda AS Moneda,
@@ -2570,7 +3076,6 @@ T1.Almacen AS Almacen,
 (CASE WHEN T1.Moneda = N'USD' THEN T1.Precio * T1.Cantidad ELSE 0 END) AS TotalUSD,
 T1.Impuesto AS ImpuestoCRC,
 T1.ImpuestoUSD AS ImpuestoUSD,
-T1.TipoDeCambio AS TipoDeCambio,
 T1.Ganancia AS GananciaCRC,
 T1.GananciaUSD AS GananciaUSD
 FROM VENTAS T1 WHERE T1.DW = 0</property>
@@ -2699,17 +3204,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       scale="5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].ExternalColumns[TipoDeCambio]"
-                      lineageId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[GananciaUSD]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
@@ -2828,12 +3322,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].ExternalColumns[ImpuestoUSD]"
                       dataType="numeric"
                       name="ImpuestoUSD"
-                      precision="30"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].ExternalColumns[TipoDeCambio]"
-                      dataType="numeric"
-                      name="TipoDeCambio"
                       precision="30"
                       scale="5" />
                     <externalMetadataColumn
@@ -2969,13 +3457,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       precision="30"
                       scale="5" />
                     <outputColumn
-                      refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Error Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Error Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5" />
-                    <outputColumn
                       refId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Error Output].Columns[GananciaCRC]"
                       dataType="numeric"
                       lineageId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Error Output].Columns[GananciaCRC]"
@@ -3007,12 +3488,51 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\OLE DB Destination"
+              refId="Package\Data Flow Task\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SalesIDSs"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="SalesIDSs"
               usesDispositions="true"
+              validateExternalMetadata="False"
               version="4">
               <properties>
                 <property
@@ -3022,7 +3542,7 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FACT_SALES]</property>
+                  name="OpenRowset">[dbo].[UPLOADED_IDS]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3056,7 +3576,7 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -3064,211 +3584,54 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[JOS-PC.DataWarehouse]"
-                  connectionManagerRefId="Package.ConnectionManagers[JOS-PC.DataWarehouse]"
+                  refId="Package\Data Flow Task\SalesIDSs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JOS-PC.SQL_VENTAS_MAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[JOS-PC.SQL_VENTAS_MAIN]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TimeID]"
+                      refId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input].Columns[SaleID]"
                       cachedDataType="i4"
-                      cachedName="TimeID"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TimeID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SellerID]"
-                      cachedDataType="i4"
-                      cachedName="SellerID"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SellerID]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[SellerID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ClientID]"
-                      cachedDataType="i4"
-                      cachedName="ClientID"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ClientID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemID]"
-                      cachedDataType="i4"
-                      cachedName="ItemID"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArticleID]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ItemID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cantidad]"
-                      cachedDataType="i4"
-                      cachedName="Cantidad"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Cantidad]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PrecioCRC]"
-                      cachedDataType="numeric"
-                      cachedName="PrecioCRC"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceColones]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalCRC]"
-                      cachedDataType="numeric"
-                      cachedName="TotalCRC"
-                      cachedPrecision="38"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalColones]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ImpuestoCRC]"
-                      cachedDataType="numeric"
-                      cachedName="ImpuestoCRC"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxColones]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]"
-                      name="ImpuestoCRC" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GananciaCRC]"
-                      cachedDataType="numeric"
-                      cachedName="GananciaCRC"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitColones]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PrecioUSD]"
-                      cachedDataType="numeric"
-                      cachedName="PrecioUSD"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceDollars]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalUSD]"
-                      cachedDataType="numeric"
-                      cachedName="TotalUSD"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalDollars]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GananciaUSD]"
-                      cachedDataType="numeric"
-                      cachedName="GananciaUSD"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitDollars]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaUSD]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ImpuestoUSD]"
-                      cachedDataType="numeric"
-                      cachedName="ImpuestoUSD"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxDollars]"
-                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoUSD]" />
+                      cachedName="SaleID"
+                      externalMetadataColumnId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input].ExternalColumns[SaleId]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SaleID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      refId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input].ExternalColumns[SaleId]"
                       dataType="i4"
-                      name="ID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArticleID]"
-                      dataType="i4"
-                      name="ArticleID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SellerID]"
-                      dataType="i4"
-                      name="SellerID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
-                      dataType="i4"
-                      name="ClientID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
-                      dataType="i4"
-                      name="TimeID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      dataType="i4"
-                      name="Quantity" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceColones]"
-                      dataType="numeric"
-                      name="UnitPriceColones"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalColones]"
-                      dataType="numeric"
-                      name="TotalColones"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxColones]"
-                      dataType="numeric"
-                      name="TaxColones"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitColones]"
-                      dataType="numeric"
-                      name="ProfitColones"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceDollars]"
-                      dataType="numeric"
-                      name="UnitPriceDollars"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalDollars]"
-                      dataType="numeric"
-                      name="TotalDollars"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitDollars]"
-                      dataType="numeric"
-                      name="ProfitDollars"
-                      precision="18"
-                      scale="4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaxDollars]"
-                      dataType="numeric"
-                      name="TaxDollars"
-                      precision="18"
-                      scale="4" />
+                      name="SaleId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\SalesIDSs.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\SalesIDSs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\SalesIDSs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\SalesIDSs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\SalesIDSs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3522,24 +3885,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       cachedPrecision="30"
                       cachedScale="5"
                       lineageId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[ImpuestoUSD]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\SortArticle.Inputs[Sort Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[TipoDeCambio]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3811,21 +4156,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\SortArticle.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\SortArticle.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\AddClientID.Outputs[Merge Join Output].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -4224,24 +4554,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\SortClient.Inputs[Sort Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[TipoDeCambio]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\SortClient.Inputs[Sort Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
                       cachedName="GananciaUSD"
@@ -4499,21 +4811,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\SortClient.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\SortClient.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -4928,24 +5225,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\SortDates.Inputs[Sort Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output].Columns[TipoDeCambio]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\SortDates.Inputs[Sort Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
                       cachedName="GananciaUSD"
@@ -5206,21 +5485,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output].Columns[ImpuestoUSD]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\SortDates.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\SortDates.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output].Columns[TipoDeCambio]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5499,24 +5763,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\SortSeller.Inputs[Sort Input].Columns[TipoDeCambio]"
-                      cachedDataType="numeric"
-                      cachedName="TipoDeCambio"
-                      cachedPrecision="30"
-                      cachedScale="5"
-                      lineageId="Package\Data Flow Task\AddArticleID.Outputs[Merge Join Output].Columns[TipoDeCambio]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\SortSeller.Inputs[Sort Input].Columns[GananciaUSD]"
                       cachedDataType="numeric"
                       cachedName="GananciaUSD"
@@ -5781,21 +6027,6 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[TipoDeCambio]"
-                      name="TipoDeCambio"
-                      precision="30"
-                      scale="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\AddArticleID.Outputs[Merge Join Output].Columns[TipoDeCambio]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[GananciaUSD]"
                       dataType="numeric"
                       lineageId="Package\Data Flow Task\SortSeller.Outputs[Sort Output].Columns[GananciaUSD]"
@@ -6029,50 +6260,812 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task\Split CRC From USD Rows"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Split CRC From USD Rows"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input].Columns[Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Moneda"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Moneda]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[USD]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="USD"
+                  synchronousInputId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Moneda]} == "USD"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Moneda == "USD"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[CRC]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="CRC"
+                  synchronousInputId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[TimeID]"
+                      cachedDataType="i4"
+                      cachedName="TimeID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TimeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TimeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[SellerID]"
+                      cachedDataType="i4"
+                      cachedName="SellerID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[SellerID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SellerID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Cantidad]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Cantidad]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Moneda"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Moneda]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Moneda]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Almacen]"
+                      cachedDataType="i4"
+                      cachedName="Almacen"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Almacen]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Almacen]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[TotalCRC]"
+                      cachedDataType="numeric"
+                      cachedName="TotalCRC"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ImpuestoCRC]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[GananciaCRC]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ClientID]"
+                      cachedDataType="i4"
+                      cachedName="ClientID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ClientID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ClientID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ItemID]"
+                      cachedDataType="i4"
+                      cachedName="ItemID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ItemID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ItemID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[PrecioUSD]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[PrecioCRC]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[SaleID]"
+                      cachedDataType="i4"
+                      cachedName="SaleID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[SaleID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SaleID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[DollarBuy]"
+                      cachedDataType="numeric"
+                      cachedName="DollarBuy"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarBuy]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[DollarSell]"
+                      cachedDataType="numeric"
+                      cachedName="DollarSell"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarSell]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[TimeID]"
+                      cachedDataType="i4"
+                      cachedName="TimeID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TimeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TimeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[SellerID]"
+                      cachedDataType="i4"
+                      cachedName="SellerID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[SellerID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SellerID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Cantidad]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Cantidad]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Moneda"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Moneda]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Moneda]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Almacen]"
+                      cachedDataType="i4"
+                      cachedName="Almacen"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[Almacen]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Almacen]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[TotalCRC]"
+                      cachedDataType="numeric"
+                      cachedName="TotalCRC"
+                      cachedPrecision="38"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[TotalCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[ImpuestoCRC]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ImpuestoCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[GananciaCRC]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[GananciaCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[ClientID]"
+                      cachedDataType="i4"
+                      cachedName="ClientID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ClientID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ClientID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[ItemID]"
+                      cachedDataType="i4"
+                      cachedName="ItemID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[ItemID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ItemID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[PrecioUSD]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUSD"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioUSD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioUSD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[PrecioCRC]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioCRC"
+                      cachedPrecision="30"
+                      cachedScale="5"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[PrecioCRC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioCRC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[SaleID]"
+                      cachedDataType="i4"
+                      cachedName="SaleID"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[SaleID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SaleID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[DollarBuy]"
+                      cachedDataType="numeric"
+                      cachedName="DollarBuy"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarBuy]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarBuy]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[DollarSell]"
+                      cachedDataType="numeric"
+                      cachedName="DollarSell"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      lineageId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output].Columns[DollarSell]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarSell]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TimeID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TimeID]"
+                      name="TimeID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SellerID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SellerID]"
+                      name="SellerID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Moneda]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Almacen]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalUSD]"
+                      name="TotalUSD"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaUSD]"
+                      name="GananciaUSD"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalCRC]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[TotalCRC]"
+                      name="TotalCRC"
+                      precision="38"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoCRC]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ImpuestoCRC]"
+                      name="ImpuestoCRC"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaCRC]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GananciaCRC]"
+                      name="GananciaCRC"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ClientID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ClientID]"
+                      name="ClientID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ItemID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ItemID]"
+                      name="ItemID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioUSD]"
+                      name="PrecioUSD"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioCRC]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[PrecioCRC]"
+                      name="PrecioCRC"
+                      precision="30"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SaleID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SaleID]"
+                      name="SaleID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarBuy]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarBuy]"
+                      name="DollarBuy"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarSell]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[DollarSell]"
+                      name="DollarSell"
+                      precision="18"
+                      scale="4" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[CRC]"
+              endId="Package\Data Flow Task\Fill CRC Columns.Inputs[Derived Column Input]"
+              name="CRC"
+              startId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[CRC]" />
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output]"
               endId="Package\Data Flow Task\SortSellerID.Inputs[Sort Input]"
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Merge Join Output3]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Merge Join Output"
-              startId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output]" />
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Fill CRC Columns.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Merge Join Output2]"
-              endId="Package\Data Flow Task\SortDates.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Merge Join Output]"
-              endId="Package\Data Flow Task\SortArticle.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output]" />
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Fill USD Columns.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Merge Join Output1]"
               endId="Package\Data Flow Task\SortSeller.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\Data Flow Task\AddArticleID.Outputs[Merge Join Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output2]"
+              endId="Package\Data Flow Task\Split CRC From USD Rows.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\AddDateID.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output3]"
+              endId="Package\Data Flow Task\SortArticle.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\AddClientID.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\SortDates.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\AddSellerID.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Multicast Output 1]"
+              endId="Package\Data Flow Task\Fact Sales.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Multicast Output 2]"
+              endId="Package\Data Flow Task\SalesIDSs.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]" />
+            <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\SortCliendCode.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output4]"
-              endId="Package\Data Flow Task\SortDateID.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\DimTime.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output3]"
-              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\DimSeller.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output2]"
               endId="Package\Data Flow Task\SortClient.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\LocalSells.Outputs[OLE DB Source Output]" />
@@ -6082,81 +7075,107 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\DimArticle.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+              endId="Package\Data Flow Task\SortDateID.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\DimTime.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output3]"
+              endId="Package\Data Flow Task\SortCliendCode.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\DimClients.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output4]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\DimSeller.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output7]"
+              endId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\SortArticle.Outputs[Sort Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Sort Output6]"
               endId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\SortDates.Outputs[Sort Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Sort Output1]"
-              endId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Sort Output3]"
-              endId="Package\Data Flow Task\AddSellerID.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task\SortSellerID.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Sort Output4]"
               endId="Package\Data Flow Task\AddSellerID.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\SortSeller.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output]"
+              refId="Package\Data Flow Task.Paths[Sort Output4]"
+              endId="Package\Data Flow Task\AddSellerID.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\SortSellerID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output3]"
               endId="Package\Data Flow Task\AddClientID.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\SortCliendCode.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output5]"
+              refId="Package\Data Flow Task.Paths[Sort Output2]"
               endId="Package\Data Flow Task\AddClientID.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\SortClient.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output2]"
-              endId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Left Input]"
+              refId="Package\Data Flow Task.Paths[Sort Output5]"
+              endId="Package\Data Flow Task\AddArticleID.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\Data Flow Task\SortArticle.Outputs[Sort Output]" />
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output7]"
+              refId="Package\Data Flow Task.Paths[Sort Output]"
               endId="Package\Data Flow Task\AddDateID.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\SortDateID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Union All Output 1]"
+              endId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
+              name="Union All Output 1"
+              startId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[USD]"
+              endId="Package\Data Flow Task\Fill USD Columns.Inputs[Derived Column Input]"
+              name="USD"
+              startId="Package\Data Flow Task\Split CRC From USD Rows.Outputs[USD]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Execute SQL Task"
+      DTS:refId="Package\Drop Uploaded IDs Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C7D0777D-16C0-4ADE-9BA9-90066D66D6E8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop Uploaded IDs Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{269889FD-639F-4C9C-8040-0CAB409DCBA3}"
+          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS UPLOADED_IDS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Uploaded Rows"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{22A5193D-F1DA-4EE0-A563-A165CDBCFBED}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task"
+      DTS:ObjectName="Update Uploaded Rows"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{269889FD-639F-4C9C-8040-0CAB409DCBA3}"
-          SQLTask:SqlStatementSource="UPDATE [dbo].[VENTAS]&#xA;SET DW = 1&#xA;WHERE [Id] IN (SELECT [SellId] FROM [dbo].[UPLOADED_IDS]) " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Execute SQL Task 1"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{335DACA4-4EC6-46C5-9294-06037AF4633B}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task 1"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{269889FD-639F-4C9C-8040-0CAB409DCBA3}"
-          SQLTask:SqlStatementSource="DROP TABLE UPLOADED_IDS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE VENTAS &#xA;SET DW = 1 &#xA;FROM VENTAS T1 INNER JOIN UPLOADED_IDS T2 ON T1.Id = T2.SaleId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -6176,15 +7195,15 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
       DTS:From="Package\Data Flow Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Execute SQL Task" />
+      DTS:To="Package\Update Uploaded Rows" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{B32AFC0B-3FEF-42A6-9308-F255ACA3621C}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:DTSID="{E3386EE3-8CB6-4BB3-AA4A-4405E210DC58}"
+      DTS:From="Package\Update Uploaded Rows"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Execute SQL Task 1" />
+      DTS:To="Package\Drop Uploaded IDs Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6199,13 +7218,21 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="234,42"
+          Id="Package\Create Temp Uploaded Ids Table"
+          TopLeft="426,78" />
+        <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="463,161" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\Create Temp Uploaded Ids Table"
-          TopLeft="426,78" />
+          Size="198,42"
+          Id="Package\Drop Uploaded IDs Table"
+          TopLeft="456,322" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Update Uploaded Rows"
+          TopLeft="449,241" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="540.75,120">
@@ -6228,24 +7255,32 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Execute SQL Task"
-          TopLeft="460,241" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="540,203">
+          TopLeft="538.5,203">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="9,38"
               Start="0,0"
-              End="0,30.5">
+              End="9,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,19"
+                    Point2="9,19"
+                    Point3="9,23" />
+                  <mssgle:LineSegment
+                    End="9,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6254,24 +7289,20 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Execute SQL Task 1"
-          TopLeft="452,324" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="539.75,283">
+          TopLeft="551.25,283">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,33.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6287,86 +7318,106 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="873,462" />
+          Size="201,42"
+          Id="Package\Data Flow Task\Split CRC From USD Rows"
+          TopLeft="1254,352" />
         <NodeLayout
           Size="125,42"
           Id="Package\Data Flow Task\SortDates"
-          TopLeft="1033,283" />
+          TopLeft="1108,235" />
         <NodeLayout
           Size="130,42"
           Id="Package\Data Flow Task\AddDateID"
-          TopLeft="1192,282" />
-        <NodeLayout
-          Size="131,42"
-          Id="Package\Data Flow Task\SortDateID"
-          TopLeft="1194,185" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Data Flow Task\AddSellerID"
-          TopLeft="873,282" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Data Flow Task\SortSellerID"
-          TopLeft="879,187" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="875,121" />
+          TopLeft="1288,239" />
         <NodeLayout
           Size="124,42"
           Id="Package\Data Flow Task\SortSeller"
-          TopLeft="714,286" />
+          TopLeft="738,238" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\AddArticleID"
-          TopLeft="544,284" />
-        <NodeLayout
-          Size="127,42"
-          Id="Package\Data Flow Task\SortArticle"
-          TopLeft="373,289" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Data Flow Task\AddClientID"
-          TopLeft="133,289" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Data Flow Task\SortClient"
-          TopLeft="40,192" />
-        <NodeLayout
-          Size="98,42"
-          Id="Package\Data Flow Task\Sort"
-          TopLeft="570,195" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task\SortCliendCode"
-          TopLeft="205,186" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Data Flow Task\DimArticle"
-          TopLeft="540,109" />
-        <NodeLayout
-          Size="124,42"
-          Id="Package\Data Flow Task\DimTime"
-          TopLeft="1205,114" />
-        <NodeLayout
-          Size="124,42"
-          Id="Package\Data Flow Task\DimSeller"
-          TopLeft="886,51" />
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="907,100" />
         <NodeLayout
           Size="150,42"
           Id="Package\Data Flow Task\DimClients"
-          TopLeft="206,107" />
+          TopLeft="224,74" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Data Flow Task\SortSellerID"
+          TopLeft="923,171" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Data Flow Task\SortArticle"
+          TopLeft="347,236" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Data Flow Task\Fact Sales"
+          TopLeft="268,335" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Data Flow Task\AddClientID"
+          TopLeft="139,239" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Data Flow Task\SortDateID"
+          TopLeft="1285,163" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Data Flow Task\DimTime"
+          TopLeft="1287,84" />
         <NodeLayout
           Size="144,42"
           Id="Package\Data Flow Task\LocalSells"
-          TopLeft="25,106" />
+          TopLeft="48,74" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Data Flow Task\SalesIDSs"
+          TopLeft="272,398" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\SortCliendCode"
+          TopLeft="224,149" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Data Flow Task\DimSeller"
+          TopLeft="925,29" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\Fill USD Columns"
+          TopLeft="956,316" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Data Flow Task\Multicast"
+          TopLeft="506,371" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\Fill CRC Columns"
+          TopLeft="963,399" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task\AddSellerID"
+          TopLeft="923,237" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Data Flow Task\SortClient"
+          TopLeft="62,142" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\DimArticle"
+          TopLeft="522,97" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\AddArticleID"
+          TopLeft="537,238" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="558,163" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="280.75,149">
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+          TopLeft="1349.75,126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6388,18 +7439,18 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="621.25,151">
+          TopLeft="606.25,139">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,24"
               Start="0,0"
-              End="0,36.5">
+              End="0,16.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6409,19 +7460,19 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output2]"
-          TopLeft="99.75,148">
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="122.25,116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,36.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6431,31 +7482,31 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output]"
-          TopLeft="280.5,228">
+          Id="Package\Data Flow Task.Paths[Multicast Output 2]"
+          TopLeft="506,397.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58.8333333333333,61"
+              EndConnector="-109,21.3333333333333"
               Start="0,0"
-              End="-58.8333333333333,53.5">
+              End="-101.5,21.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.1713030746706" />
+                    End="-42,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.1713030746706"
-                    Point2="0,36.1713030746706"
-                    Point3="-4,36.1713030746706" />
+                    Point1="-42,0"
+                    Point2="-46,0"
+                    Point3="-46,4" />
                   <mssgle:LineSegment
-                    End="-54.8333333333333,36.1713030746706" />
+                    End="-46,17.3333333333333" />
                   <mssgle:CubicBezierSegment
-                    Point1="-54.8333333333333,36.1713030746706"
-                    Point2="-58.8333333333333,36.1713030746706"
-                    Point3="-58.8333333333333,40.1713030746706" />
+                    Point1="-46,17.3333333333333"
+                    Point2="-46,21.3333333333333"
+                    Point3="-50,21.3333333333333" />
                   <mssgle:LineSegment
-                    End="-58.8333333333333,53.5" />
+                    End="-101.5,21.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6465,19 +7516,31 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output]"
-          TopLeft="268,310">
+          Id="Package\Data Flow Task.Paths[Multicast Output 1]"
+          TopLeft="506,386.333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105,0"
+              EndConnector="-112,-30.3333333333333"
               Start="0,0"
-              End="97.5,0">
+              End="-104.5,-30.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="97.5,0" />
+                    End="-43.2660550458715,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43.2660550458715,0"
+                    Point2="-47.2660550458715,0"
+                    Point3="-47.2660550458715,-4" />
+                  <mssgle:LineSegment
+                    End="-47.2660550458715,-26.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.2660550458715,-26.3333333333333"
+                    Point2="-47.2660550458715,-30.3333333333333"
+                    Point3="-51.2660550458715,-30.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-104.5,-30.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6487,19 +7550,19 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output1]"
-          TopLeft="616,237">
+          Id="Package\Data Flow Task.Paths[Merge Join Output3]"
+          TopLeft="274,258.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="73,0"
               Start="0,0"
-              End="0,39.5">
+              End="65.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="65.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6509,19 +7572,19 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output2]"
-          TopLeft="500,307.5">
+          Id="Package\Data Flow Task.Paths[Merge Join Output2]"
+          TopLeft="1353.75,281">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44,0"
+              EndConnector="0,71"
               Start="0,0"
-              End="36.5,0">
+              End="0,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.5,0" />
+                    End="0,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6532,18 +7595,18 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Merge Join Output1]"
-          TopLeft="682,306">
+          TopLeft="675,259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="32,0"
+              EndConnector="63,0"
               Start="0,0"
-              End="24.5,0">
+              End="55.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="24.5,0" />
+                    End="55.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6553,19 +7616,19 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output3]"
-          TopLeft="950.5,93">
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="1057,257">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28"
+              EndConnector="51,0"
               Start="0,0"
-              End="0,20.5">
+              End="43.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="43.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6576,7 +7639,95 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="949.75,163">
+          TopLeft="987.75,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output7]"
+          TopLeft="474,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,0"
+              Start="0,0"
+              End="55.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="55.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output6]"
+          TopLeft="1233,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55,0"
+              Start="0,0"
+              End="47.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output5]"
+          TopLeft="606.5,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output4]"
+          TopLeft="990.25,213">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6598,18 +7749,30 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Sort Output3]"
-          TopLeft="943.25,229">
+          TopLeft="299.5,191">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53"
+              EndConnector="-71.8333333333334,48"
               Start="0,0"
-              End="0,45.5">
+              End="-71.8333333333334,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,24.4626647144948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.4626647144948"
+                    Point2="0,28.4626647144948"
+                    Point3="-4,28.4626647144948" />
+                  <mssgle:LineSegment
+                    End="-67.8333333333334,28.4626647144948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.8333333333334,28.4626647144948"
+                    Point2="-71.8333333333334,28.4626647144948"
+                    Point3="-71.8333333333334,32.4626647144948" />
+                  <mssgle:LineSegment
+                    End="-71.8333333333334,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6619,19 +7782,75 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output4]"
-          TopLeft="838,305">
+          Id="Package\Data Flow Task.Paths[Sort Output2]"
+          TopLeft="124.5,184">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="35,0"
+              EndConnector="60.8333333333333,55"
               Start="0,0"
-              End="27.5,0">
+              End="60.8333333333333,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="27.5,0" />
+                    End="0,28.6134699853587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.6134699853587"
+                    Point2="0,32.6134699853587"
+                    Point3="4,32.6134699853587" />
+                  <mssgle:LineSegment
+                    End="56.8333333333333,32.6134699853587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56.8333333333333,32.6134699853587"
+                    Point2="60.8333333333333,32.6134699853587"
+                    Point3="60.8333333333333,36.6134699853587" />
+                  <mssgle:LineSegment
+                    End="60.8333333333333,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="862,258.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61,0"
+              Start="0,0"
+              End="53.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="1351.75,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6642,7 +7861,7 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output4]"
-          TopLeft="1263.25,156">
+          TopLeft="986,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6663,19 +7882,57 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output2]"
-          TopLeft="1007,303.5">
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output3]"
+          TopLeft="299.25,116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="26,0"
+              EndConnector="0,33"
               Start="0,0"
-              End="18.5,0">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="18.5,0" />
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="712,374" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="956,337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-123,52.3333333333333"
+              Start="0,0"
+              End="-115.5,52.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-67.0917431192661,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.0917431192661,0"
+                    Point2="-71.0917431192661,0"
+                    Point3="-71.0917431192661,4" />
+                  <mssgle:LineSegment
+                    End="-71.0917431192661,48.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.0917431192661,48.3333333333333"
+                    Point2="-71.0917431192661,52.3333333333333"
+                    Point3="-75.0917431192661,52.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-115.5,52.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6685,31 +7942,31 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output5]"
-          TopLeft="102.5,234">
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="963,420">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="76.8333333333333,55"
+              EndConnector="-130,-19.3333333333333"
               Start="0,0"
-              End="76.8333333333333,47.5">
+              End="-122.5,-19.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6134699853587" />
+                    End="-71.1376146788991,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.6134699853587"
-                    Point2="0,32.6134699853587"
-                    Point3="4,32.6134699853587" />
+                    Point1="-71.1376146788991,0"
+                    Point2="-75.1376146788991,0"
+                    Point3="-75.1376146788991,-4" />
                   <mssgle:LineSegment
-                    End="72.8333333333333,32.6134699853587" />
+                    End="-75.1376146788991,-15.3333333333333" />
                   <mssgle:CubicBezierSegment
-                    Point1="72.8333333333333,32.6134699853587"
-                    Point2="76.8333333333333,32.6134699853587"
-                    Point3="76.8333333333333,36.6134699853587" />
+                    Point1="-75.1376146788991,-15.3333333333333"
+                    Point2="-75.1376146788991,-19.3333333333333"
+                    Point3="-79.1376146788991,-19.3333333333333" />
                   <mssgle:LineSegment
-                    End="76.8333333333333,47.5" />
+                    End="-122.5,-19.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6719,31 +7976,19 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output3]"
-          TopLeft="1257,324">
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="712,393.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-298.5,138"
+              EndConnector="-86,0"
               Start="0,0"
-              End="-298.5,130.5">
+              End="-78.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,65"
-                    Point2="0,69"
-                    Point3="-4,69" />
-                  <mssgle:LineSegment
-                    End="-294.5,69" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-294.5,69"
-                    Point2="-298.5,69"
-                    Point3="-298.5,73" />
-                  <mssgle:LineSegment
-                    End="-298.5,130.5" />
+                    End="-78.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6753,51 +7998,126 @@ FROM VENTAS T1 WHERE T1.DW = 0</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output6]"
-          TopLeft="1158,303.5">
+          Id="Package\Data Flow Task.Paths[USD]"
+          TopLeft="1254,373">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="34,0"
+              EndConnector="-139,-36"
               Start="0,0"
-              End="26.5,0">
+              End="-131.5,-36">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="26.5,0" />
+                    End="-90.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-90.5,0"
+                    Point2="-94.5,0"
+                    Point3="-94.5,-4" />
+                  <mssgle:LineSegment
+                    End="-94.5,-32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-94.5,-32"
+                    Point2="-94.5,-36"
+                    Point3="-98.5,-36" />
+                  <mssgle:LineSegment
+                    End="-131.5,-36" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-104.47515625,1,19.9503125,9.5537109375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output7]"
-          TopLeft="1258.25,227">
+          Id="Package\Data Flow Task.Paths[CRC]"
+          TopLeft="1254,386">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="-133,34"
               Start="0,0"
-              End="0,47.5">
+              End="-125.5,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="-52.1284403669724,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.1284403669724,0"
+                    Point2="-56.1284403669724,0"
+                    Point3="-56.1284403669724,4" />
+                  <mssgle:LineSegment
+                    End="-56.1284403669724,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-56.1284403669724,30"
+                    Point2="-56.1284403669724,34"
+                    Point3="-60.1284403669724,34" />
+                  <mssgle:LineSegment
+                    End="-125.5,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-65.9972294294724,-15.5341796875,19.737578125,9.5341796875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DimClients">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Fact Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\LocalSells">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\SalesIDSs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
