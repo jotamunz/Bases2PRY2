@@ -4,12 +4,15 @@ const chalk = require('chalk');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
 const SQLConnection = require('./config/mssqlConnection');
-require('colors');
-
+const FirestoreConnection = require('./config/firebaseConnection');
 const exportFirebaseData = require('./lib/exportFirebaseData');
+require('colors');
 
 dotenv.config();
 
+/**
+ * Handles the user input
+ */
 const userInput = async () => {
   const questions = [
     {
@@ -19,12 +22,16 @@ const userInput = async () => {
       choices: ['Watch mode', 'Export once'],
     },
   ];
+  // Wait for user input
   const inputData = await inquirer.prompt(questions);
   return inputData;
 };
 
 const checkExportMode = async (inputData) => {
   try {
+    // Create database connections
+    FirestoreConnection.connect();
+    await SQLConnection.createConnection();
     // Check export mode
     const { mode } = inputData;
     if (mode === 'Export once') {
@@ -32,7 +39,9 @@ const checkExportMode = async (inputData) => {
     } else {
       // TODO: Export firebase data in watch mode
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 (async function () {
@@ -43,9 +52,9 @@ const checkExportMode = async (inputData) => {
     );
     console.log(chalk.yellow('Firebase and Microsoft SQL Server ETL'));
     const inputData = await userInput();
-    // Create database connections
-    await SQLConnection.createConnection();
+    // Check export mode
     await checkExportMode(inputData);
-    console.log('finished...');
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 })();
