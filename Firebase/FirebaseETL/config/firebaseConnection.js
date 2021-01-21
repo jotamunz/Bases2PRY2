@@ -2,17 +2,22 @@ const firebase = require('firebase');
 require('firebase/firestore');
 
 /**
- * Creates a new connection to Firebase and Cloud Firestore
+ * Handles connection with firestore database
  */
-const createFirebaseConnection = () => {
-  firebase.initializeApp({
-    apiKey: process.env.FB_API_KEY,
-    authDomain: process.env.FB_AUTH_DOMAIN,
-    projectId: process.env.FB_PROJECT_ID,
-  });
-  const db = firebase.firestore();
-  console.log('Connected to Firebase...'.yellow.bold);
-  return db;
-};
+class FirestoreConnection {
+  static fs = null;
 
-module.exports = createFirebaseConnection;
+  /**
+   * Initializes firebase and connects
+   */
+  static connect() {
+    firebase.initializeApp({
+      apiKey: process.env.FB_API_KEY,
+      authDomain: process.env.FB_AUTH_DOMAIN,
+      projectId: process.env.FB_PROJECT_ID,
+    });
+    this.fs = firebase.firestore();
+  }
+}
+
+module.exports = FirestoreConnection;

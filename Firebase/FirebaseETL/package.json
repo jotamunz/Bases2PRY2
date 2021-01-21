@@ -10,12 +10,18 @@
   "author": "Andrés Aguilar Moya",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^4.1.0",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
+    "figlet": "^1.5.0",
     "firebase": "^8.2.2",
+    "inquirer": "^7.3.3",
     "mssql": "^6.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "bin": {
+    "firebaseetl": "./app.js"
   }
 }

@@ -1,12 +1,10 @@
 const sql = require('mssql');
-const { connection } = require('../config/mssqlConnection');
+const SQLConnection = require('../../config/mssqlConnection');
 
 /**
  * Model that represents the time dimension in the data warehouse
  */
 class TimeDimensionModel {
-  static dbConnection = connection;
-
   constructor(timeDimensionData) {
     const { year, month } = timeDimensionData;
     this.year = year;
@@ -21,7 +19,8 @@ class TimeDimensionModel {
    */
   static async getTimesByDate(year, month, day) {
     try {
-      const request = this.dbConnection.request();
+      const { connection } = SQLConnection;
+      const request = connection.request();
       // Prepare statement
       request.input('Year', sql.Int, year);
       request.input('Month', sql.Int, month);

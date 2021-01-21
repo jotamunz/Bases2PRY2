@@ -1,12 +1,10 @@
 const sql = require('mssql');
-const { connection } = require('../config/mssqlConnection');
+const SQLConnection = require('../../config/mssqlConnection');
 
 /**
  * Models that represents a sales goal in the FACT_GOALS table
  */
 class SalesGoalModel {
-  static dbConnection = connection;
-
   constructor(salesGoalData) {
     const { seller, brand, amount, timeId } = salesGoalData;
     this.seller = seller;
@@ -20,6 +18,7 @@ class SalesGoalModel {
    */
   async insertSalesGoal() {
     try {
+      const { connection } = SQLConnection;
       const request = connection.request();
       // Prepare execute statement
       request.input('SellerId', sql.Int, this.seller);

@@ -5,4 +5,5 @@ export interface SalesGoal {
   brand?: number;
   seller?: number;
   amount?: number;
+  exported?: boolean;
 }
