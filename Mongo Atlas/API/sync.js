@@ -13,11 +13,31 @@ async function syncDatabase() {
 			let conn = await sql.connect(config);
 			let params =
 				'(ArticleID, SellerID, ClientID, TimeID, Quantity, UnitPriceColones, TotalColones, ProfitColones, TaxColones, UnitPriceDollars, TotalDollars, ProfitDollars, TaxDollars)';
+			let prevDate = '';
+			let dollarSell;
 			for (let key in purchases) {
 				if (purchases.hasOwnProperty(key)) {
 					let purchase = purchases[key];
 					let date = moment(purchase.date).format('YYYY-MM-DD');
 					let clientCode = purchase.clientCode.replace('00', '');
+					if (date != prevDate) {
+						try {
+							let res = await conn
+								.request()
+								.query(
+									"SELECT DollarSell FROM DIM_TIME WHERE [Date] = CAST('" +
+										date +
+										"' AS Date)"
+								);
+							dollarSell = res.recordset[0].DollarSell;
+							prevDate = date;
+						} catch (error) {
+							console.log('Error retrieving currency exchange for ' + date);
+							console.log('The following purchase failed to sync');
+							console.log(purchase);
+							continue;
+						}
+					}
 					for (let key in purchase.articles) {
 						if (purchase.articles.hasOwnProperty(key)) {
 							let article = purchase.articles[key];
@@ -55,9 +75,17 @@ async function syncDatabase() {
 										',' +
 										article.tax.toString() +
 										',' +
-										'0, 0, 0, 0)'
+										(article.unitPrice / dollarSell).toString() +
+										',' +
+										(article.articleTotal / dollarSell).toString() +
+										',' +
+										(article.profit / dollarSell).toString() +
+										',' +
+										(article.tax / dollarSell).toString() +
+										')'
 								);
 							} catch (error) {
+								console.log('Error in values or foreign keys');
 								console.log('The following article failed to sync:');
 								console.log(article);
 							}
@@ -68,13 +96,11 @@ async function syncDatabase() {
 			conn.close();
 			console.log('Data Warehouse sync completed');
 		} catch (error) {
-			// Azure error
-			console.log(error);
+			console.log('Error establishing connection to Azure');
 		}
 		// Update synced value
 	} catch (error) {
-		// Atlas error
-		console.log(error);
+		console.log('Error retrieving data from Atlas');
 	}
 }
 
