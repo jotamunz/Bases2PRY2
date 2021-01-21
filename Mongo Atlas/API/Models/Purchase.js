@@ -33,8 +33,12 @@ const ArticleSchema = mongoose.Schema(
 		tax: {
 			type: Number,
 			required: true,
-			min: 0,
-			max: 1
+			min: 0
+		},
+		synced: {
+			type: Boolean,
+			required: true,
+			default: false
 		}
 	},
 	{ _id: false }
@@ -54,11 +58,6 @@ const PurchaseSchema = mongoose.Schema({
 		type: Number,
 		required: true,
 		min: 0
-	},
-	synced: {
-		type: Boolean,
-		required: true,
-		default: false
 	},
 	date: {
 		type: Date,

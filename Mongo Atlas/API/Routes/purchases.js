@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
 			article = purchase.articles[key];
 			article.articleTotal = article.quantity * article.unitPrice;
 			total += article.articleTotal;
+			article.tax = article.articleTotal * article.tax;
 		}
 	}
 	purchase.orderTotal = total;

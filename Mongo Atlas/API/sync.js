@@ -6,8 +6,8 @@ const Purchase = require('./models/Purchase');
 async function syncDatabase() {
 	try {
 		const purchases = await Purchase.find(
-			{ synced: false },
-			{ _id: 0, __v: 0 }
+			{ 'articles.synced': false },
+			{ __v: 0 }
 		);
 		try {
 			let conn = await sql.connect(config);
@@ -17,7 +17,7 @@ async function syncDatabase() {
 			let dollarSell;
 			for (let key in purchases) {
 				if (purchases.hasOwnProperty(key)) {
-					let purchase = purchases[key];
+					const purchase = purchases[key];
 					let date = moment(purchase.date).format('YYYY-MM-DD');
 					let clientCode = purchase.clientCode.replace('00', '');
 					if (date != prevDate) {
@@ -40,7 +40,10 @@ async function syncDatabase() {
 					}
 					for (let key in purchase.articles) {
 						if (purchase.articles.hasOwnProperty(key)) {
-							let article = purchase.articles[key];
+							const article = purchase.articles[key];
+							if (article.synced == true) {
+								continue;
+							}
 							let articleCode = article.articleCode.replace('A', '0');
 							let valueArticle =
 								"(SELECT ID FROM DIM_ARTICLE WHERE ProvitionalCode = '" +
@@ -88,8 +91,15 @@ async function syncDatabase() {
 								console.log('Error in values or foreign keys');
 								console.log('The following article failed to sync:');
 								console.log(article);
+								continue;
 							}
+							article.synced = true;
 						}
+					}
+					try {
+						await purchase.save();
+					} catch (error) {
+						console.log('Error saving data to Atlas');
 					}
 				}
 			}
@@ -98,7 +108,6 @@ async function syncDatabase() {
 		} catch (error) {
 			console.log('Error establishing connection to Azure');
 		}
-		// Update synced value
 	} catch (error) {
 		console.log('Error retrieving data from Atlas');
 	}
