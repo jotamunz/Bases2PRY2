@@ -1,0 +1,2401 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/15/2021 9:06:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OTPH7AK"
+  DTS:CreatorName="DESKTOP-OTPH7AK\alega"
+  DTS:DTSID="{67B9DB64-DC65-493F-8235-0EEC30C2D80A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{3CE7C325-2A7B-47AA-9B37-8FED16FBB487}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{17DEBC6B-9C7C-4BF8-8BC6-168B059B6EBA}"
+      DTS:ObjectName="DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Initial Catalog=Demo_Complete_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1CBDC4E5-C116-4DDE-8CE4-95D5652E10B6}"
+      DTS:ObjectName="DESKTOP-OTPH7AK.Demo_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Initial Catalog=Demo_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK.tempdb]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F172DCAC-20C2-4941-8B2F-63B83AFCCAA2}"
+      DTS:ObjectName="DESKTOP-OTPH7AK.tempdb">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Initial Catalog=tempdb;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Test]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{60C0501B-D637-4CFF-9DF3-45343930CAF1}"
+      DTS:ObjectName="Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create staging Final Data in Azure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create a global temp table"
+      DTS:Disabled="True"
+      DTS:DTSID="{8F03DD84-C224-4C6A-AD78-C48B7D6350DC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create staging Final Data in Azure"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{17DEBC6B-9C7C-4BF8-8BC6-168B059B6EBA}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##tmpMongo') IS NOT NULL&#xA;    DROP TABLE ##tmpMongo&#xA;    CREATE TABLE ##tmpMongo&#xA;    (&#xA;&#x9;&#x9;id int primary key not null,&#xA;        Almacen nvarchar(50),&#xA;&#x9;&#x9;Cantidad int,&#xA;&#x9;&#x9;Cliente nvarchar(50),&#xA;&#x9;&#x9;Fecha date,&#xA;&#x9;&#x9;FechaVencimiento date,&#xA;&#x9;&#x9;Ganancia decimal(18,4),&#xA;&#x9;&#x9;GananciaUSD decimal(18,4),&#xA;&#x9;&#x9;Impuesto decimal(18,4),&#xA;&#x9;&#x9;ImpuestoUSD decimal(18,4),&#xA;&#x9;&#x9;Moneda nvarchar(50),&#xA;&#x9;&#x9;Precio decimal(18,4),&#xA;&#x9;&#x9;Producto nvarchar(50),&#xA;&#x9;&#x9;Tipo_de_cambio decimal(18,4),&#xA;&#x9;&#x9;Total decimal(18,4),&#xA;&#x9;&#x9;TotalUSD decimal(18,4),&#xA;&#x9;&#x9;Vendedor decimal(18,4)&#xA;    )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Staging Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create Staging Tables"
+      DTS:DTSID="{6c1d9a22-5884-4654-a7bc-1432711ad890}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Staging Tables"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{17DEBC6B-9C7C-4BF8-8BC6-168B059B6EBA}"
+          SQLTask:SqlStatementSource="DROP TABLE DESTINATION_STRINGS&#xA;DROP TABLE DESTINATION_CASTING&#xA;DROP TABLE DESTINATION_DATATYPES&#xA;&#xA;CREATE TABLE DESTINATION_STRINGS&#xA;    (&#xA;&#x9;&#x9;id int IDENTITY(1,1) primary key not null,&#xA;        Almacen nvarchar(50),&#xA;&#x9;&#x9;Cantidad nvarchar(50),&#xA;&#x9;&#x9;Cliente nvarchar(50),&#xA;&#x9;&#x9;Fecha nvarchar(50),&#xA;&#x9;&#x9;FechaVencimiento nvarchar(50),&#xA;&#x9;&#x9;Ganancia nvarchar(50),&#xA;&#x9;&#x9;GananciaUSD nvarchar(50),&#xA;&#x9;&#x9;Impuesto nvarchar(50),&#xA;&#x9;&#x9;ImpuestoUSD nvarchar(50),&#xA;&#x9;&#x9;Moneda nvarchar(50),&#xA;&#x9;&#x9;Precio nvarchar(50),&#xA;&#x9;&#x9;Producto nvarchar(50),&#xA;&#x9;&#x9;Tipo_de_cambio nvarchar(50),&#xA;&#x9;&#x9;Total nvarchar(50),&#xA;&#x9;&#x9;TotalUSD nvarchar(50),&#xA;&#x9;&#x9;Vendedor nvarchar(50)&#xA;    )&#xA;&#xA;CREATE TABLE DESTINATION_CASTING&#xA;    (&#xA;&#x9;&#x9;id int primary key not null,&#xA;        Almacen nvarchar(50),&#xA;&#x9;&#x9;Cantidad int,&#xA;&#x9;&#x9;Cliente nvarchar(50),&#xA;&#x9;&#x9;Fecha date,&#xA;&#x9;&#x9;FechaVencimiento date,&#xA;&#x9;&#x9;Ganancia decimal(18,4),&#xA;&#x9;&#x9;GananciaUSD decimal(18,4),&#xA;&#x9;&#x9;Impuesto decimal(18,4),&#xA;&#x9;&#x9;ImpuestoUSD decimal(18,4),&#xA;&#x9;&#x9;Moneda nvarchar(50),&#xA;&#x9;&#x9;Precio decimal(18,4),&#xA;&#x9;&#x9;Producto nvarchar(50),&#xA;&#x9;&#x9;Tipo_de_cambio decimal(18,4),&#xA;&#x9;&#x9;Total decimal(18,4),&#xA;&#x9;&#x9;TotalUSD decimal(18,4),&#xA;&#x9;&#x9;Vendedor int,&#xA;&#x9;&#x9;PrecioUSD decimal(18,4) DEFAULT(0)&#xA;    )&#xA;&#xA;&#xA;CREATE TABLE DESTINATION_DATATYPES&#xA;    (&#xA;&#x9;&#x9;id int primary key not null,&#xA;        ArticleID int,&#xA;&#x9;&#x9;SellerID int,&#xA;&#x9;&#x9;ClientID int,&#xA;&#x9;&#x9;TimeID int,&#xA;&#x9;&#x9;Quantity int,&#xA;&#x9;&#x9;UnitPriceColones decimal(18,4),&#xA;&#x9;&#x9;TotalColones decimal (18,4),&#xA;&#x9;&#x9;TaxColones decimal(18,4),&#xA;&#x9;&#x9;ProfitColones decimal(18,4),&#xA;&#x9;&#x9;UnitPriceDollars decimal(18,4),&#xA;&#x9;&#x9;TotalDollars decimal(18,4),&#xA;&#x9;&#x9;ProfitDollars decimal(18,4),&#xA;&#x9;&#x9;TaxDollars decimal(18,4)&#xA;    )&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Data for Final Staging Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5A1D8872-5493-447A-AE78-BA5261F9E0F6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Data for Final Staging Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Data for Final Staging Table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[##tmpMongo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Data for Final Staging Table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.tempdb]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.tempdb]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Almacen]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Almacen"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Cliente"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaVencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaVencimiento"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ganancia]"
+                      cachedDataType="numeric"
+                      cachedName="Ganancia"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GananciaUSD]"
+                      cachedDataType="numeric"
+                      cachedName="GananciaUSD"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Impuesto]"
+                      cachedDataType="numeric"
+                      cachedName="Impuesto"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ImpuestoUSD]"
+                      cachedDataType="numeric"
+                      cachedName="ImpuestoUSD"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Moneda"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Precio]"
+                      cachedDataType="numeric"
+                      cachedName="Precio"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Producto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Producto"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tipo_de_cambio]"
+                      cachedDataType="numeric"
+                      cachedName="Tipo_de_cambio"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total]"
+                      cachedDataType="numeric"
+                      cachedName="Total"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalUSD]"
+                      cachedDataType="numeric"
+                      cachedName="TotalUSD"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]" />
+                    <inputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vendedor]"
+                      cachedDataType="numeric"
+                      cachedName="Vendedor"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      dataType="dbDate"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      dataType="dbDate"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      dataType="numeric"
+                      name="Ganancia"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      dataType="numeric"
+                      name="GananciaUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      dataType="numeric"
+                      name="Impuesto"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      dataType="numeric"
+                      name="ImpuestoUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      dataType="numeric"
+                      name="Precio"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      dataType="numeric"
+                      name="Tipo_de_cambio"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      dataType="numeric"
+                      name="TotalUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      dataType="numeric"
+                      name="Vendedor"
+                      precision="18"
+                      scale="4" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Data for Final Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Data for Final Staging Table\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DESTINATION_CASTING]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Data for Final Staging Table\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]"
+                      name="Almacen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cliente]"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]"
+                      name="Cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]"
+                      name="Fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ganancia]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]"
+                      name="Ganancia"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]"
+                      name="GananciaUSD"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Impuesto]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]"
+                      name="Impuesto"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]"
+                      name="Moneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]"
+                      name="Precio"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Producto]"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]"
+                      name="Producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tipo_de_cambio]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]"
+                      name="Tipo_de_cambio"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]"
+                      name="Total"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]"
+                      name="TotalUSD"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vendedor]"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]"
+                      name="Vendedor"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fecha]"
+                      dataType="dbDate"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaVencimiento]"
+                      dataType="dbDate"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ganancia]"
+                      dataType="numeric"
+                      name="Ganancia"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GananciaUSD]"
+                      dataType="numeric"
+                      name="GananciaUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Impuesto]"
+                      dataType="numeric"
+                      name="Impuesto"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImpuestoUSD]"
+                      dataType="numeric"
+                      name="ImpuestoUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      dataType="numeric"
+                      name="Precio"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tipo_de_cambio]"
+                      dataType="numeric"
+                      name="Tipo_de_cambio"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalUSD]"
+                      dataType="numeric"
+                      name="TotalUSD"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vendedor]"
+                      dataType="numeric"
+                      name="Vendedor"
+                      precision="18"
+                      scale="4" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fecha]"
+                      dataType="dbDate"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaVencimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ganancia]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ganancia]"
+                      name="Ganancia"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GananciaUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GananciaUSD]"
+                      name="GananciaUSD"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Impuesto]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Impuesto]"
+                      name="Impuesto"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImpuestoUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      name="Precio"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tipo_de_cambio]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tipo_de_cambio]"
+                      name="Tipo_de_cambio"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      name="Total"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalUSD]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalUSD]"
+                      name="TotalUSD"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vendedor]"
+                      dataType="numeric"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vendedor]"
+                      name="Vendedor"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Data for Final Staging Table.Paths[OLE DB Source Output]"
+              endId="Package\Import Data for Final Staging Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Data for Final Staging Table\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Mongo Data to SQL Local"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3BAACC1B-1BCD-4F7B-9B56-E5D2EBC10769}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Mongo Data to SQL Local">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Mongo Data to SQL Local\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Almacen]"
+                      cachedDataType="nText"
+                      cachedName="Almacen"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Cliente]"
+                      cachedDataType="nText"
+                      cachedName="Cliente"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Fecha]"
+                      cachedDataType="nText"
+                      cachedName="Fecha"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Vendedor]"
+                      cachedDataType="nText"
+                      cachedName="Vendedor"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Cantidad]"
+                      cachedDataType="nText"
+                      cachedName="Cantidad"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[FechaVencimiento]"
+                      cachedDataType="nText"
+                      cachedName="FechaVencimiento"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Ganacia]"
+                      cachedDataType="nText"
+                      cachedName="Ganacia"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[GananciaUSD]"
+                      cachedDataType="nText"
+                      cachedName="GananciaUSD"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Impuesto]"
+                      cachedDataType="nText"
+                      cachedName="Impuesto"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[ImpuestoUSD]"
+                      cachedDataType="nText"
+                      cachedName="ImpuestoUSD"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Moneda]"
+                      cachedDataType="nText"
+                      cachedName="Moneda"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Precio]"
+                      cachedDataType="nText"
+                      cachedName="Precio"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Producto]"
+                      cachedDataType="nText"
+                      cachedName="Producto"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Tipo de cambio]"
+                      cachedDataType="nText"
+                      cachedName="Tipo de cambio"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[Total]"
+                      cachedDataType="nText"
+                      cachedName="Total"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Total]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input].Columns[TotalUSD]"
+                      cachedDataType="nText"
+                      cachedName="TotalUSD"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Almacen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Almacen]"
+                      name="Copy of Almacen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cantidad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cantidad]"
+                      name="Copy of Cantidad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cliente]"
+                      name="Copy of Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Fecha]"
+                      name="Copy of Fecha"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FechaVencimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FechaVencimiento]"
+                      name="Copy of FechaVencimiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ganacia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ganacia]"
+                      name="Copy of Ganacia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of GananciaUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of GananciaUSD]"
+                      name="Copy of GananciaUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Impuesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Impuesto]"
+                      name="Copy of Impuesto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImpuestoUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImpuestoUSD]"
+                      name="Copy of ImpuestoUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Moneda]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Moneda]"
+                      name="Copy of Moneda"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Precio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Precio]"
+                      name="Copy of Precio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Producto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Producto]"
+                      name="Copy of Producto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tipo de cambio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tipo de cambio]"
+                      name="Copy of Tipo de cambio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total]"
+                      name="Copy of Total"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Total]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TotalUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TotalUSD]"
+                      name="Copy of TotalUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Vendedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Vendedor]"
+                      name="Copy of Vendedor"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Mongo Data to SQL Local\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">new_posts</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Mongo Data to SQL Local\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Test]"
+                  connectionManagerRefId="Package.ConnectionManagers[Test]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[_id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[_id]"
+                      name="_id" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]"
+                      name="Ganacia" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]"
+                      name="GananciaUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]"
+                      name="Impuesto" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]"
+                      name="Tipo de cambio" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Total]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]"
+                      name="TotalUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      dataType="nText"
+                      name="_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      dataType="nText"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      dataType="nText"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      dataType="nText"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      dataType="nText"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      dataType="nText"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      dataType="nText"
+                      name="Ganacia" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      dataType="nText"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      dataType="nText"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      dataType="nText"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      dataType="nText"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      dataType="nText"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      dataType="nText"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      dataType="nText"
+                      name="Tipo de cambio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      dataType="nText"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      dataType="nText"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      dataType="nText"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[_id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[_id]"
+                      name="_id" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Almacen]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cantidad]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cliente]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Fecha]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[FechaVencimiento]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Ganacia]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Ganacia]"
+                      name="Ganacia" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[GananciaUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[GananciaUSD]"
+                      name="GananciaUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Impuesto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Impuesto]"
+                      name="Impuesto" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ImpuestoUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Moneda]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Precio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Producto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Tipo de cambio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Tipo de cambio]"
+                      name="Tipo de cambio" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Total]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[TotalUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[TotalUSD]"
+                      name="TotalUSD" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Vendedor]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Mongo Data to SQL Local\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DESTINATION_STRINGS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Almacen]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Almacen"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Almacen]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Cantidad]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Cantidad"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cantidad]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Cliente"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cliente]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Fecha]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Fecha"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Fecha]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of FechaVencimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of FechaVencimiento"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FechaVencimiento]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Ganacia]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Ganacia"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ganacia]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of GananciaUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of GananciaUSD"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Impuesto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Impuesto"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Impuesto]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ImpuestoUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of ImpuestoUSD"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImpuestoUSD]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Moneda"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Moneda]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Precio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Precio"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Precio]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Producto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Producto"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Producto]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Tipo de cambio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Tipo de cambio"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tipo de cambio]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Total]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Total"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of TotalUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of TotalUSD"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TotalUSD]" />
+                    <inputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Vendedor]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Vendedor"
+                      externalMetadataColumnId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      lineageId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Vendedor]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ganancia" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Tipo_de_cambio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="wstr"
+                      length="50"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Mongo Data to SQL Local.Paths[Data Conversion Output]"
+              endId="Package\Load Mongo Data to SQL Local\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Mongo Data to SQL Local\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Mongo Data to SQL Local.Paths[ODBC Source Output]"
+              endId="Package\Load Mongo Data to SQL Local\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Load Mongo Data to SQL Local\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Staging Table Data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Add corresponding datatypes"
+      DTS:DTSID="{87552582-67A9-4804-BBE6-9F993AA3E39E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Staging Table Data"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{17DEBC6B-9C7C-4BF8-8BC6-168B059B6EBA}"
+          SQLTask:SqlStatementSource="INSERT INTO dbo.DESTINATION_CASTING (&#xA;&#x9;   [id]&#xA;      ,[Fecha]&#xA;      ,[FechaVencimiento]&#xA;      ,[Cliente]&#xA;&#x9;  ,[Producto]&#xA;      ,[Cantidad]&#xA;      ,[Moneda]&#xA;      ,[Precio]&#xA;      ,[Total]&#xA;      ,[Almacen]&#xA;      ,[Vendedor]&#xA;      ,[TotalUSD]&#xA;      ,[Impuesto]&#xA;      ,[ImpuestoUSD]&#xA;      ,[Tipo_de_cambio]&#xA;      ,[Ganancia]&#xA;      ,[GananciaUSD]&#xA;)&#xA;SELECT &#xA;T1.id,&#xA;Convert(date,T1.Fecha,102) ,&#xA;Convert(date,T1.FechaVencimiento,102) ,&#xA;CAST (T1.Cliente AS NCHAR(5)),&#xA;CAST (T1.Producto AS NCHAR(7)),&#xA;CAST ((CONVERT(DECIMAL(10,2), T1.Cantidad)) AS INT),&#xA;CAST (T1.Moneda AS NCHAR (3)),&#xA;CAST (T1.Precio AS DECIMAL (30, 5)),&#xA;CAST (T1.Total AS DECIMAL (30, 5)),&#xA;CAST (T1.Almacen AS INT),&#xA;CAST (T1.Vendedor AS INT),&#xA;CONVERT(DECIMAL(18,4),T1.TotalUSD),&#xA;CONVERT(DECIMAL(18,4),T1.Impuesto),&#xA;CONVERT(DECIMAL(18,4),T1.ImpuestoUSD),&#xA;CONVERT(DECIMAL(18,4),T1.Tipo_de_cambio),&#xA;CONVERT(DECIMAL(18,4),T1.Ganancia),&#xA;CONVERT(DECIMAL(18,4),T1.GananciaUSD)&#xA;FROM dbo.DESTINATION_STRINGS AS T1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1942AD2C-C2C1-48EB-92F2-8EB7E8BBBECE}"
+      DTS:From="Package\Create Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Mongo Data to SQL Local" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD8CB854-F114-4C16-9EFC-E290D1BD3D1E}"
+      DTS:From="Package\Load Mongo Data to SQL Local"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Transfer Staging Table Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B1607B97-01E7-4289-A456-502A6B5FB931}"
+      DTS:From="Package\Transfer Staging Table Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Create staging Final Data in Azure" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{73E3B73A-3154-407F-A62C-C9E186FF9737}"
+      DTS:From="Package\Create staging Final Data in Azure"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Import Data for Final Staging Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Create staging Final Data in Azure"
+          TopLeft="427,361" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Create Staging Tables"
+          TopLeft="456,105" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\Import Data for Final Staging Table"
+          TopLeft="422,438" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Load Mongo Data to SQL Local"
+          TopLeft="430.5,188.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Transfer Staging Table Data"
+          TopLeft="428,283" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="547,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5"
+              Start="0,0"
+              End="0,34">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="547.75,230.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="549.75,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="548.75,403">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Data for Final Staging Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Data for Final Staging Table\OLE DB Source"
+          TopLeft="452,234" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Import Data for Final Staging Table\OLE DB Destination"
+          TopLeft="445,375" />
+        <EdgeLayout
+          Id="Package\Import Data for Final Staging Table.Paths[OLE DB Source Output]"
+          TopLeft="532,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99"
+              Start="0,0"
+              End="0,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Data for Final Staging Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Data for Final Staging Table\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Mongo Data to SQL Local">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load Mongo Data to SQL Local\OLE DB Destination"
+          TopLeft="240,234" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Load Mongo Data to SQL Local\ODBC Source"
+          TopLeft="256,16" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Load Mongo Data to SQL Local\Data Conversion"
+          TopLeft="253,119" />
+        <EdgeLayout
+          Id="Package\Load Mongo Data to SQL Local.Paths[ODBC Source Output]"
+          TopLeft="332,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Mongo Data to SQL Local.Paths[Data Conversion Output]"
+          TopLeft="331,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Mongo Data to SQL Local\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Mongo Data to SQL Local\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

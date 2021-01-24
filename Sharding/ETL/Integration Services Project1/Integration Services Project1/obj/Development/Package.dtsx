@@ -1,0 +1,2084 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/15/2021 9:06:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OTPH7AK"
+  DTS:CreatorName="DESKTOP-OTPH7AK\alega"
+  DTS:DTSID="{67B9DB64-DC65-493F-8235-0EEC30C2D80A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{C4177B4C-06BE-43BE-BA19-DD4A8B4B699F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{87F9AC4A-E0D6-41FA-B82B-C5D53734C5B3}"
+      DTS:ObjectName="DESKTOP-OTPH7AK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{04DDDBC1-F1B4-4DC7-BFE3-DBC657086E3E}"
+      DTS:ObjectName="DESKTOP-OTPH7AK 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{17DEBC6B-9C7C-4BF8-8BC6-168B059B6EBA}"
+      DTS:ObjectName="DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Initial Catalog=Demo_Complete_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1CBDC4E5-C116-4DDE-8CE4-95D5652E10B6}"
+      DTS:ObjectName="DESKTOP-OTPH7AK.Demo_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-OTPH7AK;Initial Catalog=Demo_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Test]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{60C0501B-D637-4CFF-9DF3-45343930CAF1}"
+      DTS:ObjectName="Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Mongo Transaction"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{3BAACC1B-1BCD-4F7B-9B56-E5D2EBC10769}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Mongo Transaction">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Mongo Transaction\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Almacen]"
+                      cachedDataType="nText"
+                      cachedName="Almacen"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Cliente]"
+                      cachedDataType="nText"
+                      cachedName="Cliente"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Fecha]"
+                      cachedDataType="nText"
+                      cachedName="Fecha"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Vendedor]"
+                      cachedDataType="nText"
+                      cachedName="Vendedor"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Cantidad]"
+                      cachedDataType="nText"
+                      cachedName="Cantidad"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[FechaVencimiento]"
+                      cachedDataType="nText"
+                      cachedName="FechaVencimiento"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Ganacia]"
+                      cachedDataType="nText"
+                      cachedName="Ganacia"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[GananciaUSD]"
+                      cachedDataType="nText"
+                      cachedName="GananciaUSD"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Impuesto]"
+                      cachedDataType="nText"
+                      cachedName="Impuesto"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[ImpuestoUSD]"
+                      cachedDataType="nText"
+                      cachedName="ImpuestoUSD"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Moneda]"
+                      cachedDataType="nText"
+                      cachedName="Moneda"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Precio]"
+                      cachedDataType="nText"
+                      cachedName="Precio"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Producto]"
+                      cachedDataType="nText"
+                      cachedName="Producto"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Tipo de cambio]"
+                      cachedDataType="nText"
+                      cachedName="Tipo de cambio"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[Total]"
+                      cachedDataType="nText"
+                      cachedName="Total"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Total]" />
+                    <inputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input].Columns[TotalUSD]"
+                      cachedDataType="nText"
+                      cachedName="TotalUSD"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Almacen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Almacen]"
+                      name="Copy of Almacen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cantidad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cantidad]"
+                      name="Copy of Cantidad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Cliente]"
+                      name="Copy of Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Fecha]"
+                      name="Copy of Fecha"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FechaVencimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FechaVencimiento]"
+                      name="Copy of FechaVencimiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ganacia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Ganacia]"
+                      name="Copy of Ganacia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of GananciaUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of GananciaUSD]"
+                      name="Copy of GananciaUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Impuesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Impuesto]"
+                      name="Copy of Impuesto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImpuestoUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ImpuestoUSD]"
+                      name="Copy of ImpuestoUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Moneda]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Moneda]"
+                      name="Copy of Moneda"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Precio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Precio]"
+                      name="Copy of Precio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Producto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Producto]"
+                      name="Copy of Producto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tipo de cambio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tipo de cambio]"
+                      name="Copy of Tipo de cambio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total]"
+                      name="Copy of Total"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Total]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TotalUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TotalUSD]"
+                      name="Copy of TotalUSD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Vendedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Vendedor]"
+                      name="Copy of Vendedor"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mongo Transaction\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">blog_posts</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Mongo Transaction\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Test]"
+                  connectionManagerRefId="Package.ConnectionManagers[Test]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[_id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[_id]"
+                      name="_id" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Ganacia]"
+                      name="Ganacia" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[GananciaUSD]"
+                      name="GananciaUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Impuesto]"
+                      name="Impuesto" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Tipo de cambio]"
+                      name="Tipo de cambio" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Total]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[TotalUSD]"
+                      name="TotalUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      dataType="nText"
+                      name="_id" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      dataType="nText"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      dataType="nText"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      dataType="nText"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      dataType="nText"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      dataType="nText"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      dataType="nText"
+                      name="Ganacia" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      dataType="nText"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      dataType="nText"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      dataType="nText"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      dataType="nText"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      dataType="nText"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      dataType="nText"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      dataType="nText"
+                      name="Tipo de cambio" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      dataType="nText"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      dataType="nText"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      dataType="nText"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[_id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[_id]"
+                      name="_id" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Almacen]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Almacen]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cantidad]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cliente]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Cliente]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Fecha]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[FechaVencimiento]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Ganacia]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Ganacia]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Ganacia]"
+                      name="Ganacia" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[GananciaUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[GananciaUSD]"
+                      name="GananciaUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Impuesto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Impuesto]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Impuesto]"
+                      name="Impuesto" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ImpuestoUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Moneda]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Moneda]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Precio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Producto]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Producto]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Tipo de cambio]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Tipo de cambio]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Tipo de cambio]"
+                      name="Tipo de cambio" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Total]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[TotalUSD]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TotalUSD]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[TotalUSD]"
+                      name="TotalUSD" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Vendedor]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[Vendedor]"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Mongo Transaction\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FACT_SALES_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Mongo Transaction\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ganancia" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Tipo_de_cambio" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="wstr"
+                      length="50"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Mongo Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Mongo Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Mongo Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Mongo Transaction.Paths[Data Conversion Output]"
+              endId="Package\Mongo Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Mongo Transaction\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Mongo Transaction.Paths[ODBC Source Output]"
+              endId="Package\Mongo Transaction\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Mongo Transaction\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Transaction"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{79F1608C-7A9A-4832-B341-B2949A22B330}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Transaction"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SQL Transaction\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OLE DB Destination]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SQL Transaction\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_Complete_DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Almacen]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Almacen"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Cliente"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Fecha"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaVencimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FechaVencimiento"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ganancia]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Ganancia"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GananciaUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="GananciaUSD"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Impuesto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Impuesto"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ImpuestoUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ImpuestoUSD"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Moneda]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Moneda"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Precio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Precio"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Producto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Producto"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tipo_de_cambio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Tipo_de_cambio"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Total"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TotalUSD"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]" />
+                    <inputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vendedor]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vendedor"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVencimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ganancia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ganancia" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GananciaUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Impuesto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImpuestoUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Tipo_de_cambio" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="wstr"
+                      length="50"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SQL Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SQL Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SQL Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SQL Transaction\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FACT_SALES_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SQL Transaction\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-OTPH7AK.Demo_DataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Almacen]"
+                      name="Almacen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cliente]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cliente]"
+                      name="Cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fecha]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fecha]"
+                      name="Fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaVencimiento]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ganancia]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ganancia]"
+                      name="Ganancia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GananciaUSD]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[GananciaUSD]"
+                      name="GananciaUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Impuesto]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Impuesto]"
+                      name="Impuesto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImpuestoUSD]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Moneda]"
+                      name="Moneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Precio]"
+                      name="Precio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Producto]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Producto]"
+                      name="Producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tipo_de_cambio]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tipo_de_cambio]"
+                      name="Tipo_de_cambio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Total]"
+                      name="Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalUSD]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalUSD]"
+                      name="TotalUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vendedor]"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vendedor]"
+                      name="Vendedor"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fecha]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaVencimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="FechaVencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ganancia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ganancia" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GananciaUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="GananciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Impuesto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImpuestoUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="ImpuestoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      name="Moneda" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Tipo_de_cambio" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      dataType="wstr"
+                      length="50"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalUSD]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalUSD" />
+                    <externalMetadataColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vendedor" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fecha]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaVencimiento]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaVencimiento]"
+                      name="FechaVencimiento" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ganancia]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ganancia]"
+                      name="Ganancia" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GananciaUSD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GananciaUSD]"
+                      name="GananciaUSD" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Impuesto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Impuesto]"
+                      name="Impuesto" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImpuestoUSD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImpuestoUSD]"
+                      name="ImpuestoUSD" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                      name="Moneda" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tipo_de_cambio]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tipo_de_cambio]"
+                      name="Tipo_de_cambio" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalUSD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalUSD]"
+                      name="TotalUSD" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vendedor]"
+                      name="Vendedor" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SQL Transaction.Paths[OLE DB Source Output]"
+              endId="Package\SQL Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\SQL Transaction\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Mongo Transaction"
+          TopLeft="66.5,158.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\SQL Transaction"
+          TopLeft="285,164" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Mongo Transaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Mongo Transaction\OLE DB Destination"
+          TopLeft="240,234" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Mongo Transaction\ODBC Source"
+          TopLeft="252,36" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Mongo Transaction\Data Conversion"
+          TopLeft="253,119" />
+        <EdgeLayout
+          Id="Package\Mongo Transaction.Paths[ODBC Source Output]"
+          TopLeft="330,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Mongo Transaction.Paths[Data Conversion Output]"
+          TopLeft="331,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Mongo Transaction\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Mongo Transaction\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SQL Transaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\SQL Transaction\OLE DB Source"
+          TopLeft="240,211" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\SQL Transaction\OLE DB Destination"
+          TopLeft="233,370" />
+        <EdgeLayout
+          Id="Package\SQL Transaction.Paths[OLE DB Source Output]"
+          TopLeft="320,253">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,117"
+              Start="0,0"
+              End="0,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SQL Transaction\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SQL Transaction\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
