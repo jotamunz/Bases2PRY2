@@ -28,9 +28,9 @@ export class ValidationService {
       errors.push({ message: 'Please enter a valid month', field: 'month' });
     }
     // Check for valid brand code
-    if (salesGoal.brand === null) {
+    if (salesGoal.brand === '') {
       errors.push({
-        message: 'Please enter a valid brand code',
+        message: 'Please enter a valid brand name',
         field: 'brand',
       });
     }
