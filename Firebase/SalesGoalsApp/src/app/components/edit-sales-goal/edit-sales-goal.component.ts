@@ -15,7 +15,7 @@ import { ValidationError } from '../../models/ValidationError';
 export class EditSalesGoalComponent implements OnInit {
   public salesGoal: SalesGoal = {
     seller: null,
-    brand: null,
+    brand: '',
     year: null,
     month: null,
     amount: 0,
