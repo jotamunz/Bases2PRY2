@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
+const schedule = require('node-schedule');
+const sync = require('./sync');
 
 const app = express();
 
@@ -19,7 +21,7 @@ mongoose.connect(
 	process.env.DB_CONNECTION,
 	{ useUnifiedTopology: true, useNewUrlParser: true },
 	() => {
-		console.log('connected to DB');
+		console.log('connected to Atlas');
 	}
 );
 
@@ -30,4 +32,7 @@ app.use('/purchase', purchaseRoute);
 // Server start
 app.listen(3000, () => console.log('Server started on port 3000'));
 
-// TODO: Connect to Azure
+// Sync job start
+schedule.scheduleJob('10 * * * *', async function () {
+	sync.syncDatabase();
+});

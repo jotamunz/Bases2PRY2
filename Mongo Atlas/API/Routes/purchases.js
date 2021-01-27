@@ -13,17 +13,17 @@ const router = express.Router();
     [
         articleCode: String,
         quantity: Number,
-        unitPrice: Number
-    ],
-	currency: Number
+		unitPrice: Number,
+		profit: Number,
+		tax: Number
+    ]
 */
 // O: Saved purchase date
 // E: 400
 router.post('/', async (req, res) => {
 	const purchase = new Purchase({
 		clientCode: req.body.clientCode,
-		articles: req.body.articles,
-		currency: req.body.currency
+		articles: req.body.articles
 	});
 	let total = 0;
 	for (let key in purchase.articles) {
@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
 			article = purchase.articles[key];
 			article.articleTotal = article.quantity * article.unitPrice;
 			total += article.articleTotal;
+			article.tax = article.articleTotal * article.tax;
 		}
 	}
 	purchase.orderTotal = total;

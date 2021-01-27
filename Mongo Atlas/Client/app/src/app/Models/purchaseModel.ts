@@ -8,6 +8,5 @@ export interface Article {
 
 export interface Purchase {
   clientCode?: string;
-  currency?: number;
   articles?: Article[];
 }
