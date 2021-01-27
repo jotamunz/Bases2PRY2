@@ -1,7 +1,9 @@
+const SQLConnection = require('../config/mssqlConnection');
 const SalesGoalCollection = require('../firebase/collections/SalesGoalCollection');
 const TimeDimensionModel = require('../mssql/models/TimeDimensionModel');
+const SellerDimensionModel = require('../mssql/models/SellerDimensionModel');
+const GroupDimensionModel = require('../mssql/models/GroupDimensionModel');
 const SalesGoalModel = require('../mssql/models/SalesGoalModel');
-const SQLConnection = require('../config/mssqlConnection');
 
 /**
  * Exports all the new firebase documents
@@ -44,11 +46,30 @@ const exportSalesGoal = async (salesGoal) => {
       );
       return;
     }
+    // Get id from the seller dimension
+    const sellers = await SellerDimensionModel.getSellerByCode(seller);
+    if (sellers.length === 0) {
+      console.log(
+        '[FirebaseETL] Could not found the seller in the Seller Dimension...'
+          .red
+      );
+      return;
+    }
+    // Get id from the Group Dimension
+    const groups = await GroupDimensionModel.getGroupByName(brand);
+    if (groups.length === 0) {
+      console.log(
+        '[FirebaseETL] Could not found the group in the Group Dimension...'.red
+      );
+      return;
+    }
+    const groupId = groups[0].ID;
+    const sellerId = sellers[0].ID;
     const timeId = times[0].ID;
     // Create new sales goal
     const newSalesGoal = new SalesGoalModel({
-      seller,
-      brand,
+      seller: sellerId,
+      brand: groupId,
       amount,
       timeId,
     });
